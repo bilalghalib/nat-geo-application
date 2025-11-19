@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Space Wireframe</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .role-toggle {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .tab {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #666;
+            position: relative;
+        }
+        .tab.active {
+            background: #f0f0f0;
+            color: #000;
+        }
+        .tab .count {
+            display: inline-block;
+            margin-left: 6px;
+            padding: 2px 6px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            font-size: 11px;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .send-next {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 2px dashed #ddd;
+        }
+        .send-next-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .send-next-preview {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        .card {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .card-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .btn-primary {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+        .submission-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .submission-item:last-child {
+            border-bottom: none;
+        }
+        .student-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .submission-status {
+            font-size: 12px;
+            color: #666;
+        }
+        .gallery-item {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            background: #fafafa;
+        }
+        .annotation {
+            background: #f9f9f9;
+            padding: 12px;
+            margin-top: 20px;
+            border-left: 3px solid #ddd;
+            font-size: 13px;
+            color: #666;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #666;
+        }
+        .suggestion-box {
+            background: #fffbf0;
+            border: 1px solid #ffe4a0;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .suggestion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+        }
+        .suggestion-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .suggestion-content {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Philosophy 101: Fall 2025</h1>
+            <div style="color: #666; font-size: 14px; margin-top: 5px;">
+                32 participants • Using "Foundations" guide
+            </div>
+            <div class="role-toggle">🔄 Switch to participant view</div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active">Facilitate</div>
+            <div class="tab">Review <span class="count">8</span></div>
+            <div class="tab">Gallery</div>
+            <div class="tab">Suggestions <span class="count">3</span></div>
+            <div class="tab">Members</div>
+        </div>
+
+        <!-- FACILITATE TAB -->
+        <div class="section">
+            <h2 style="margin-bottom: 15px;">Send Next Invitation</h2>
+            
+            <div class="send-next">
+                <div class="send-next-title">Next: Exercise #4 - Truth vs. Opinion</div>
+                <div class="send-next-preview">
+                    "What's the difference between believing something and knowing it? Pick a belief you hold strongly..."
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-primary">Send to all participants now</button>
+                    <button class="btn">Schedule for Thursday 9am</button>
+                    <button class="btn">Skip this one</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="margin-bottom: 10px; font-size: 15px;">Or send something custom</h3>
+                <button class="btn">+ Create and send new page</button>
+                <button class="btn" style="margin-left: 8px;">+ Send from your library</button>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h3 style="margin-bottom: 10px; font-size: 15px;">Previously sent</h3>
+                <div class="card">
+                    <div style="font-weight: 600; margin-bottom: 5px;">Exercise #3: The Cave Allegory</div>
+                    <div style="font-size: 13px; color: #666;">
+                        Sent Oct 16 • 24 begun • 18 submitted • 3 featured
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REVIEW TAB (shown as second wireframe) -->
+        <div class="section" style="margin-top: 40px; border-top: 3px solid #000; padding-top: 20px;">
+            <h2 style="margin-bottom: 15px;">Review: Exercise #3 Submissions</h2>
+            
+            <div class="card">
+                <div class="submission-item">
+                    <div>
+                        <div class="student-name">Alex Chen</div>
+                        <div class="submission-status">Submitted Oct 18 • 847 words</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Read & comment</button>
+                        <button class="btn">✨ Request to feature</button>
+                    </div>
+                </div>
+
+                <div class="submission-item">
+                    <div>
+                        <div class="student-name">Jamie Rodriguez</div>
+                        <div class="submission-status">Submitted Oct 17 • 1,203 words • Featured (approved)</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn">View submission</button>
+                        <span class="badge">In gallery</span>
+                    </div>
+                </div>
+
+                <div class="submission-item">
+                    <div>
+                        <div class="student-name">Sam Parker</div>
+                        <div class="submission-status">Submitted Oct 19 • 654 words • Pending approval</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn">View submission</button>
+                        <span class="badge" style="background: #fff4e0;">Awaiting consent</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-size: 13px; color: #666; margin-top: 15px;">
+                8 submissions • 3 not yet submitted • All private unless student approves gallery feature
+            </div>
+        </div>
+
+        <!-- SUGGESTIONS TAB -->
+        <div class="section" style="margin-top: 40px; border-top: 3px solid #000; padding-top: 20px;">
+            <h2 style="margin-bottom: 15px;">Participant Suggestions</h2>
+            
+            <div class="suggestion-box">
+                <div class="suggestion-header">
+                    <div>
+                        <div class="suggestion-title">Suggested by Alex Chen</div>
+                        <div style="font-size: 12px; color: #999; margin-top: 2px;">Oct 18, 2025</div>
+                    </div>
+                    <span class="badge">Pending</span>
+                </div>
+                <div class="suggestion-content">
+                    "Could we do an exercise about embodied philosophy? Maybe visit the sculpture garden and write about physical experience vs abstract thought?"
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-primary">Create page from this</button>
+                    <button class="btn">Reply to Alex</button>
+                    <button class="btn">Dismiss</button>
+                </div>
+            </div>
+
+            <div class="suggestion-box">
+                <div class="suggestion-header">
+                    <div>
+                        <div class="suggestion-title">Adjustment suggestion by Jamie Rodriguez</div>
+                        <div style="font-size: 12px; color: #999; margin-top: 2px;">Oct 17, 2025</div>
+                    </div>
+                    <span class="badge">Pending</span>
+                </div>
+                <div class="suggestion-content">
+                    "The Cave allegory prompt felt rushed for me. Could we have 5 days instead of 3 for exercises with required reading?"
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-primary">Adjust schedule</button>
+                    <button class="btn">Reply to Jamie</button>
+                    <button class="btn">Note for later</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="annotation">
+            <strong>Design note:</strong> The group space is the facilitation hub. Hosts send invitations (which become mail_items), review submissions (private by default), request to feature work (requires student consent), and respond to suggestions. Participants see a simpler view with just their invitations and the gallery.
+        </div>
+
+        <div class="annotation" style="margin-top: 10px;">
+            <strong>The consent-based curation flow:</strong>
+            <div style="font-family: monospace; font-size: 12px; margin-top: 8px; line-height: 1.8;">
+1. Student submits → appears in Review (private)
+2. Host clicks "Request to feature" → student gets notification
+3. Student approves/declines → curation_metadata updated
+4. If approved → appears in Gallery (public to group)
+5. Student can revoke at any time → removed from gallery
+            </div>
+        </div>
+
+        <div class="annotation" style="margin-top: 10px;">
+            <strong>Participant feedback loop:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li><strong>New prompt suggestions:</strong> Participants can propose topics/activities (bottom-up curation)</li>
+                <li><strong>Adjustment requests:</strong> Can ask for timing changes, clarifications, or modifications</li>
+                <li><strong>Host inbox:</strong> All suggestions appear in "Suggestions" tab (separate from Review)</li>
+                <li><strong>Action options:</strong> Host can approve, edit-then-approve, reply, or dismiss</li>
+            </ul>
+        </div>
+
+        <div class="annotation" style="margin-top: 10px;">
+            <strong>Values alignment:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li><strong>Consent & agency:</strong> Students control what becomes public, can defer work, can suggest changes</li>
+                <li><strong>Human curation:</strong> Host decides what to send, when, and what to feature</li>
+                <li><strong>Bidirectional:</strong> Not just top-down—participants can contribute to the curriculum</li>
+                <li><strong>Privacy by default:</strong> Submissions stay private until explicit consent given</li>
+                <li><strong>Deep thinking:</strong> Review interface encourages reading and commenting, not quick scoring</li>
+            </ul>
+        </div>
+
+        <div class="annotation" style="margin-top: 10px;">
+            <strong>White-label implications:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li>Group URL: cursive.ai/groups/phil101 OR school.edu/phil101</li>
+                <li>Vocabulary customizable: "Exercise"→"Reflection", "Review"→"Reading room", "Gallery"→"Anthology"</li>
+                <li>Domain ownership: School runs this on their domain, full control over data</li>
+                <li>Cross-pollination: Can still import/use guides from other instances</li>
+            </ul>
+        </div>
+
+        <div class="annotation" style="margin-top: 10px;">
+            <strong>Connection dimensions embedded:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li><strong>Self:</strong> Private journal space on Today page for reflection</li>
+                <li><strong>Others:</strong> Whispers can suggest connections between participants' work</li>
+                <li><strong>World:</strong> Suggestions like "visit sculpture garden" encourage embodied experiences</li>
+                <li><strong>Truth:</strong> Review process is about depth, not grades; gallery showcases craft</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

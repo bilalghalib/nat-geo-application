@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Privacy & Federation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .tab {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #666;
+        }
+        .tab.active {
+            background: #f0f0f0;
+            color: #000;
+        }
+        
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-info {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .setting-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        .setting-description {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .setting-control {
+            min-width: 200px;
+            text-align: right;
+        }
+        
+        .toggle {
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+            background: #ccc;
+            border-radius: 14px;
+            position: relative;
+            cursor: pointer;
+        }
+        .toggle.on {
+            background: #4CAF50;
+        }
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: 0.3s;
+        }
+        .toggle.on::after {
+            left: 25px;
+        }
+        
+        .select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            min-width: 200px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-primary {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #856404;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border: 1px solid #2196F3;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #0d47a1;
+        }
+        
+        .knowledge-graph-preview {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .entity-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 4px;
+            font-size: 13px;
+        }
+        .entity-tag button {
+            margin-left: 8px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .export-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .export-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .export-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Settings</h1>
+            <div style="color: #666; font-size: 14px; margin-top: 5px;">alex@cursive.com</div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab">Profile</div>
+            <div class="tab active">Privacy & Data</div>
+            <div class="tab">Federation</div>
+            <div class="tab">Notifications</div>
+        </div>
+
+        <!-- PRIVACY SECTION -->
+        <div class="section">
+            <div class="section-title">Privacy Defaults</div>
+            
+            <div class="warning-box">
+                <strong>⚠️ Private by default</strong><br>
+                All letters start private. You must explicitly make them public or share them. We never share your work without permission.
+            </div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">Default letter privacy</div>
+                    <div class="setting-description">
+                        New letters are always private. You can change this per letter.
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <select class="select" disabled>
+                        <option selected>Private (locked)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">Public profile visibility</div>
+                    <div class="setting-description">
+                        Control who can see your profile at cursive.com/alex
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <select class="select">
+                        <option>Everyone (public)</option>
+                        <option selected>Logged-in users only</option>
+                        <option>Only people I share with</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">Show location data</div>
+                    <div class="setting-description">
+                        When you tag letters with location, should it be visible on your public profile?
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KNOWLEDGE GRAPH / DISCOVERY -->
+        <div class="section">
+            <div class="section-title">Discoverability & Knowledge Graph</div>
+            
+            <div class="info-box">
+                <strong>How discovery works:</strong> If you opt in, we analyze your letters to extract themes and suggest connections with other writers. This happens locally on your instance. Cross-instance discovery requires additional opt-in.
+            </div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">Enable discovery</div>
+                    <div class="setting-description">
+                        Allow the system to analyze your public letters and suggest connections with other writers. You can review and delete extracted data at any time.
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle on"></div>
+                </div>
+            </div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">Discovery scope</div>
+                    <div class="setting-description">
+                        Where can people discover your work? Cross-instance requires both users to opt in.
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <select class="select">
+                        <option>Disabled</option>
+                        <option selected>My instance only (cursive.com)</option>
+                        <option>All federated instances</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="knowledge-graph-preview">
+                <div style="font-weight: 600; margin-bottom: 15px;">Your Knowledge Graph</div>
+                <div style="font-size: 13px; color: #666; margin-bottom: 15px;">
+                    We've extracted these themes from your public letters. Remove anything incorrect or private.
+                </div>
+                
+                <div>
+                    <div style="font-size: 12px; color: #999; margin-bottom: 8px; text-transform: uppercase;">People & Authors</div>
+                    <span class="entity-tag">Plato <button>✕</button></span>
+                    <span class="entity-tag">Sarah Parker <button>✕</button></span>
+                    <span class="entity-tag">Paulo Freire <button>✕</button></span>
+                </div>
+                
+                <div style="margin-top: 15px;">
+                    <div style="font-size: 12px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Concepts & Themes</div>
+                    <span class="entity-tag">embodied knowledge <button>✕</button></span>
+                    <span class="entity-tag">teaching authority <button>✕</button></span>
+                    <span class="entity-tag">perception <button>✕</button></span>
+                    <span class="entity-tag">shadows <button>✕</button></span>
+                </div>
+                
+                <div style="margin-top: 15px;">
+                    <div style="font-size: 12px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Places</div>
+                    <span class="entity-tag">Westwood Sculpture Garden <button>✕</button></span>
+                    <span class="entity-tag">Campus Library <button>✕</button></span>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <button class="btn">Refresh from recent letters</button>
+                    <button class="btn btn-danger" style="margin-left: 10px;">Delete all graph data</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPORT & PORTABILITY -->
+        <div class="section">
+            <div class="section-title">Export & Data Portability</div>
+            
+            <div class="info-box">
+                <strong>Your data belongs to you.</strong> Export it anytime, in standard formats. You can import these files into any Cursive instance or use them with other tools.
+            </div>
+            
+            <div class="export-section">
+                <div class="export-item">
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 4px;">All letters (JSON)</div>
+                        <div style="font-size: 13px; color: #666;">Complete archive in portable format</div>
+                    </div>
+                    <button class="btn btn-primary">Export</button>
+                </div>
+                
+                <div class="export-item">
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 4px;">All letters (Markdown + drawings)</div>
+                        <div style="font-size: 13px; color: #666;">Text as .md files, drawings as .svg</div>
+                    </div>
+                    <button class="btn btn-primary">Export</button>
+                </div>
+                
+                <div class="export-item">
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 4px;">Guides I created</div>
+                        <div style="font-size: 13px; color: #666;">Templates you can import elsewhere</div>
+                    </div>
+                    <button class="btn btn-primary">Export</button>
+                </div>
+                
+                <div class="export-item">
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 4px;">Complete data archive</div>
+                        <div style="font-size: 13px; color: #666;">Everything: letters, groups, comments, settings</div>
+                    </div>
+                    <button class="btn btn-primary">Export</button>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button class="btn">Schedule automatic backups</button>
+                <div style="font-size: 13px; color: #666; margin-top: 8px;">
+                    We'll email you a backup every month. You can also enable Dropbox/Google Drive sync.
+                </div>
+            </div>
+        </div>
+
+        <!-- FEDERATION TAB -->
+        <div class="section" style="border-top: 3px solid #000; margin-top: 40px;">
+            <div class="section-title">Federation & Instances</div>
+            
+            <div class="info-box">
+                <strong>Connected instances:</strong> Your identity (alex@cursive.com) works across all Cursive instances. You can interact with people at other schools and organizations that run their own instances.
+            </div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">Your home instance</div>
+                    <div class="setting-description">
+                        This is where your data lives. You can change this by migrating to another instance.
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <strong>cursive.com</strong>
+                </div>
+            </div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">Allow cross-instance connections</div>
+                    <div class="setting-description">
+                        Can people at other instances (like school.edu) send you letters or request to connect?
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle on"></div>
+                </div>
+            </div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">ActivityPub (Fediverse)</div>
+                    <div class="setting-description">
+                        Enable your profile to be followed from Mastodon, etc. Your public letters will appear in followers' feeds.
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle"></div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+                <div style="font-weight: 600; margin-bottom: 15px;">Other instances you've connected with</div>
+                
+                <div style="padding: 12px; background: #f9f9f9; border-radius: 4px; margin-bottom: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong>westwood.edu</strong>
+                            <div style="font-size: 13px; color: #666;">Philosophy 101 group</div>
+                        </div>
+                        <button class="btn">View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADVANCED -->
+        <div class="section">
+            <div class="section-title">Advanced</div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">Low-tech mode</div>
+                    <div class="setting-description">
+                        Disables whispers, discovery, and all AI features. Just writing and sending.
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle"></div>
+                </div>
+            </div>
+            
+            <div class="setting-row">
+                <div class="setting-info">
+                    <div class="setting-label">Offline mode</div>
+                    <div class="setting-description">
+                        Download letters for offline access. Syncs automatically when you're back online.
+                    </div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle on"></div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+                <div style="font-weight: 600; margin-bottom: 10px; color: #dc3545;">Danger Zone</div>
+                
+                <button class="btn btn-danger">Download all data and delete account</button>
+                <div style="font-size: 13px; color: #666; margin-top: 8px;">
+                    This will permanently delete your account. You'll get a complete export first.
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #f0f9ff; padding: 15px; border-left: 3px solid #3b82f6; margin-top: 20px; font-size: 13px; color: #1e3a8a;">
+            <strong>Zuboff Compliance:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li>No graph without explicit opt-in ✓</li>
+                <li>User can view and delete all extracted data ✓</li>
+                <li>Transparent about what's analyzed and why ✓</li>
+                <li>Export anytime, in standard formats ✓</li>
+                <li>Discovery requires mutual consent ✓</li>
+                <li>No predictive modeling or behavior profiling ✓</li>
+                <li>Low-tech mode as escape hatch ✓</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

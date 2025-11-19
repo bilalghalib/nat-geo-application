@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursive Protocol: Architecture & Use Cases</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #fafaf9;
+            color: #292524;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: #1c1917;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #57534e;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .section {
+            background: white;
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: #292524;
+            border-bottom: 1px solid #e7e5e4;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin: 1.5rem 0 1rem;
+            color: #44403c;
+        }
+
+        .architecture {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .layer {
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+            padding: 1.5rem;
+            background: #fafaf9;
+        }
+
+        .layer h3 {
+            margin-top: 0;
+            color: #1c1917;
+        }
+
+        .layer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .layer li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f5f5f4;
+            font-size: 0.875rem;
+            color: #57534e;
+        }
+
+        .layer li:last-child {
+            border-bottom: none;
+        }
+
+        .layer li:before {
+            content: "→ ";
+            color: #a8a29e;
+        }
+
+        .use-case {
+            border: 1px solid #d6d3d1;
+            border-radius: 2px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: white;
+        }
+
+        .use-case h3 {
+            margin-top: 0;
+            color: #1c1917;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: #f5f5f4;
+            border-radius: 2px;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #57534e;
+        }
+
+        .flow {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #fafaf9;
+            border-left: 2px solid #e7e5e4;
+            font-family: monospace;
+            font-size: 0.875rem;
+            line-height: 1.8;
+            color: #44403c;
+        }
+
+        .components {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .component {
+            padding: 0.5rem 0.75rem;
+            background: #e7e5e4;
+            border-radius: 2px;
+            font-size: 0.75rem;
+            color: #292524;
+        }
+
+        .component.core {
+            background: #d6d3d1;
+        }
+
+        .component.solo {
+            background: #a8a29e;
+            color: white;
+        }
+
+        .component.cohort {
+            background: #78716c;
+            color: white;
+        }
+
+        .interactive-demo {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #fafaf9;
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: #292524;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: none;
+        }
+
+        button:hover {
+            background: #292524;
+            color: #fafaf9;
+        }
+
+        button.active {
+            background: #292524;
+            color: #fafaf9;
+        }
+
+        .demo-content {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+            min-height: 300px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .data-flow {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #fafaf9;
+        }
+
+        .data-node {
+            padding: 1rem;
+            background: white;
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .data-arrow {
+            color: #a8a29e;
+            font-size: 1.5rem;
+        }
+
+        .legend {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #fafaf9;
+            border-radius: 2px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .legend-color {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 2px;
+        }
+
+        code {
+            background: #f5f5f4;
+            padding: 0.125rem 0.25rem;
+            border-radius: 2px;
+            font-family: monospace;
+            font-size: 0.875rem;
+        }
+
+        .canvas-demo {
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+            cursor: crosshair;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+            padding: 0.5rem;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: #57534e;
+        }
+
+        .featured {
+            border: 2px solid #292524;
+        }
+
+        .math-problem {
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .peer-suggestion {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #fafaf9;
+            border: 1px solid #e7e5e4;
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #d6d3d1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .data-flow {
+                grid-template-columns: 1fr;
+            }
+            .data-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cursive Protocol</h1>
+        <p class="subtitle">Documents that understand themselves • Structured analysis with evidence • Human-curated publishing</p>
+
+        <!-- Architecture Section -->
+        <div class="section">
+            <h2>Protocol Architecture</h2>
+            <div class="architecture">
+                <div class="layer">
+                    <h3>Core Layer (Required)</h3>
+                    <ul>
+                        <li>Page format (TipTap JSON)</li>
+                        <li>Ink strokes (vector paths)</li>
+                        <li>Provenance signatures</li>
+                        <li>Embeddings header</li>
+                        <li>Export format (.cursive.zip)</li>
+                    </ul>
+                </div>
+
+                <div class="layer">
+                    <h3>Analysis Layer</h3>
+                    <ul>
+                        <li>Structured prompting (LLM)</li>
+                        <li>Score (0-100)</li>
+                        <li>Reasoning (qualitative)</li>
+                        <li>Evidence (from ground truth)</li>
+                        <li>Confidence (0-100)</li>
+                        <li>Embedding similarity (supporting)</li>
+                    </ul>
+                </div>
+
+                <div class="layer">
+                    <h3>Solo Profile</h3>
+                    <ul>
+                        <li>Core + Analysis layers</li>
+                        <li>Routing hints (structured)</li>
+                        <li>Gap detection</li>
+                        <li>Similarity search</li>
+                        <li>Self-routing pages</li>
+                    </ul>
+                </div>
+
+                <div class="layer">
+                    <h3>Cohort Profile</h3>
+                    <ul>
+                        <li>Everything in Solo, plus:</li>
+                        <li>Curation manifests (signed)</li>
+                        <li>Capability grants (UCAN)</li>
+                        <li>Invitation envelopes</li>
+                        <li>Privacy labels</li>
+                        <li>Gallery primitives</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e7e5e4;"></div>
+                    <span>Core Components</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #a8a29e;"></div>
+                    <span>Solo Profile</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #78716c;"></div>
+                    <span>Cohort Profile</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Use Cases Section -->
+        <div class="section">
+            <h2>Three Use Cases</h2>
+
+            <!-- Use Case 1: Drawing Game -->
+            <div class="use-case">
+                <h3>
+                    <span>1. Collaborative Drawing Game: "Exquisite Corpse"</span>
+                    <span class="badge">Cohort Profile</span>
+                </h3>
+                <p><strong>Scenario:</strong> Weekly drawing challenge where participants create sequential art, host curates best chains for gallery</p>
+                
+                <div class="flow">Host creates invitation with drawing prompt
+↓
+Participants receive via mail (scheduled release)
+↓
+Each draws on Cursive Page (ink strokes recorded)
+↓
+Tool analyzes drawing with structured prompt:
+  {
+    style_score: {
+      gestural: 78,
+      geometric: 23,
+      organic: 65
+    },
+    reasoning: "Loose, flowing strokes with natural curves.
+                Minimal straight lines. Hand speed varies (200-650ms).",
+    evidence: [
+      {metric: "stroke_duration_variance", value: 234, from: "ink_analysis"},
+      {metric: "curve_to_line_ratio", value: 0.82, from: "geometry"}
+    ],
+    confidence: 89
+  }
+↓
+Next artist suggestion (structured matching):
+  {
+    artist: "Sarah Anderson",
+    match_score: 87,
+    reasoning: "Similar gestural style, complementary color palette,
+                good collaboration history",
+    evidence: [
+      {fact: "style_similarity", cosine: 0.91, from: "embeddings"},
+      {fact: "successful_chains", count: 3, from: "past_collaborations"},
+      {fact: "active_recently", last_work: "2 days ago", from: "activity"}
+    ],
+    confidence: 85,
+    alternatives: [
+      {artist: "Mike Chen", score: 72, reason: "geometric complement"},
+      {artist: "Ana Rivera", score: 68, reason: "similar medium"}
+    ]
+  }
+↓
+Chain forms: Artist A → Artist B → Artist C
+↓
+Proof-of-human verifies authentic handwork:
+  {
+    human_score: 94,
+    reasoning: "Stroke timing variance consistent with human hand (234ms),
+                natural hesitation patterns, corrections mid-stroke",
+    evidence: [
+      {signal: "stroke_variance", value: 234, human_range: [200,800]},
+      {signal: "idle_gaps", count: 5, threshold: 3},
+      {signal: "corrections", rate: 0.12, human_range: [0.05,0.20]}
+    ],
+    confidence: 96
+  }
+↓
+Host curates gallery (structured decisions):
+  {
+    chain_id: "A→B→C",
+    placement: "featured",
+    curation_score: 92,
+    reasoning: "Exceptional flow between artists, coherent narrative,
+                technical excellence throughout",
+    evidence: [
+      {metric: "style_coherence", value: 0.88},
+      {metric: "narrative_strength", value: 0.91},
+      {metric: "community_feedback", positive: 23, neutral: 2}
+    ],
+    confidence: 87,
+    alternatives_considered: [
+      {chain: "D→E", score: 78, reason: "good but less coherent"}
+    ]
+  }
+↓
+Curation manifest published (signed, portable)
+↓
+Community views gallery, sees process timeline + curation reasoning</div>
+
+                <div class="components">
+                    <span class="component core">Pages + Ink</span>
+                    <span class="component core">Embeddings (style vectors)</span>
+                    <span class="component solo">Structured Style Analysis</span>
+                    <span class="component solo">Artist Matching (scored)</span>
+                    <span class="component cohort">Invitations</span>
+                    <span class="component cohort">Curation (with reasoning)</span>
+                    <span class="component cohort">Gallery</span>
+                    <span class="component core">Proof-of-Human</span>
+                </div>
+
+                <h4>Data Flow:</h4>
+                <div class="data-flow">
+                    <div class="data-node">
+                        <strong>Invitation</strong><br>
+                        <small>Scheduled prompt</small>
+                    </div>
+                    <div class="data-arrow">→</div>
+                    <div class="data-node">
+                        <strong>Page + Ink</strong><br>
+                        <small>Drawing created</small>
+                    </div>
+                    <div class="data-arrow">→</div>
+                    <div class="data-node">
+                        <strong>Curation</strong><br>
+                        <small>Host selects</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Use Case 2: Calculus Book -->
+            <div class="use-case">
+                <h3>
+                    <span>2. Adaptive Calculus Textbook</span>
+                    <span class="badge">Solo Profile</span>
+                    <span class="badge">Cohort Profile</span>
+                </h3>
+                <p><strong>Scenario:</strong> Self-paced learning with semantic routing, gap detection, and peer help via Chrome extension</p>
+                
+                <div class="flow">Student reads Chapter 3: Integration by Parts
+↓
+Struggles on practice problems (proof-of-human: many corrections)
+↓
+Tool analyzes page with structured prompt:
+  {
+    score: 35/100,  // Low mastery
+    reasoning: "Student attempting integration by parts but 
+                consistently misidentifying u and dv. Shows 
+                confusion about which function to differentiate.",
+    evidence: [
+      {from: "problem_3_attempt", 
+       excerpt: "chose u = eˣ instead of u = x",
+       timestamp: "14:23"},
+      {from: "problem_5_attempt",
+       excerpt: "same error pattern repeated",
+       timestamp: "14:31"}
+    ],
+    confidence: 87%  // High confidence in assessment
+  }
+↓
+Gap detection (LLM + embeddings):
+  "Missing prerequisite: u-substitution fundamentals"
+  Evidence: Student hasn't internalized derivative patterns
+  Score: Gap severity 78/100 (critical)
+  Confidence: 92%
+↓
+Routing decision (structured):
+  {
+    route: "chapter_2_3_u_substitution",
+    score: 89/100,  // High relevance
+    reasoning: "Need to solidify derivative pattern recognition
+                before tackling integration by parts",
+    alternatives: [
+      {route: "practice_derivatives", score: 72},
+      {route: "video_tutorial", score: 65}
+    ],
+    confidence: 85%
+  }
+↓
+Student still stuck → clicks "Ask for help" (Chrome extension)
+↓
+Peer matching (LLM analysis):
+  {
+    peer: "Sarah Kim",
+    score: 91/100,  // Excellent match
+    reasoning: "Sarah recently mastered this exact topic (2 weeks ago),
+                knows common pitfalls, available now, good teaching history",
+    evidence: [
+      {fact: "mastered_integration_by_parts", date: "Oct 20"},
+      {fact: "helped_3_students_this_week", success_rate: "100%"},
+      {fact: "online_now", last_active: "2 min ago"}
+    ],
+    confidence: 88%
+  }
+↓
+Capability grant: student can @mention Sarah in page margin
+↓
+Sarah receives notification with context:
+  "Alex needs help with integration by parts.
+   Specific issue: u/dv selection (confidence: 87%)
+   Suggested approach: Review derivative patterns first"
+↓
+After mastery verified (structured assessment):
+  {score: 85/100, confidence: 91%, gap_closed: true}
+  → Route to: "advanced_techniques"</div>
+
+                <div class="components">
+                    <span class="component core">Pages (textbook content)</span>
+                    <span class="component core">Embeddings (initial filter)</span>
+                    <span class="component solo">Structured Analysis (score/reasoning/evidence/confidence)</span>
+                    <span class="component solo">Gap Detection (with reasoning)</span>
+                    <span class="component solo">Routing Decisions (scored alternatives)</span>
+                    <span class="component cohort">Peer Matching (analyzed fit)</span>
+                    <span class="component cohort">Capability Grants (@mention)</span>
+                    <span class="component core">Proof-of-Human (struggle detection)</span>
+                </div>
+
+                <h4>Chrome Extension Flow:</h4>
+                <div class="data-flow">
+                    <div class="data-node">
+                        <strong>Detect Struggle</strong><br>
+                        <small>Corrections tracked</small>
+                    </div>
+                    <div class="data-arrow">→</div>
+                    <div class="data-node">
+                        <strong>Find Peer</strong><br>
+                        <small>Embedding distance</small>
+                    </div>
+                    <div class="data-arrow">→</div>
+                    <div class="data-node">
+                        <strong>Request Help</strong><br>
+                        <small>Capability grant</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Use Case 3: Research Lab Journal -->
+            <div class="use-case">
+                <h3>
+                    <span>3. Lab Research Journal with GPS Fieldwork</span>
+                    <span class="badge">Solo Profile</span>
+                    <span class="badge">Cohort Profile</span>
+                </h3>
+                <p><strong>Scenario:</strong> Biologists doing field research with GPS-anchored observations, transclusions, and verified portfolios</p>
+                
+                <div class="flow">Researcher visits field site (GPS: 47.6062°N, 122.3321°W)
+↓
+Creates observation page (photos, notes, drawings)
+↓
+Page carries GPS anchor + timestamp (consent-based)
+↓
+Routing hint: find_nearby_observations(radius: 500m)
+  → Shows 3 past observations at same location
+↓
+Researcher transcludes relevant past observation into current page
+↓
+Lab daily page auto-transcludes today's field entries
+↓
+Monthly: PI curates "Significant Findings" gallery
+  → Curation manifest: featured observations with scientific rationale
+↓
+Grant season: Export .cursive.zip as verified research portfolio
+  → Includes: GPS provenance, photo timestamps, sketch process
+  → Proof-of-human: all observations hand-drawn, not AI-generated
+↓
+Publish findings: Curation manifest becomes supplementary material
+  → Reviewers can verify field authenticity via GPS + timestamps</div>
+
+                <div class="components">
+                    <span class="component core">Pages (observations)</span>
+                    <span class="component core">GPS Anchors (opt-in)</span>
+                    <span class="component core">Transclusion</span>
+                    <span class="component solo">Spatial Routing (nearby)</span>
+                    <span class="component cohort">Daily Page Pattern</span>
+                    <span class="component cohort">Gallery Curation</span>
+                    <span class="component core">Export (.cursive.zip)</span>
+                    <span class="component core">Proof-of-Human (field authenticity)</span>
+                </div>
+
+                <h4>What This Uses That Others Don't:</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li><strong>GPS Anchors:</strong> Place-based content with privacy controls</li>
+                    <li><strong>Transclusion:</strong> Reference past work while maintaining provenance</li>
+                    <li><strong>Spatial Routing:</strong> "find_nearby" based on location embeddings</li>
+                    <li><strong>Export as Portfolio:</strong> Verified research output with full provenance</li>
+                    <li><strong>Scientific Curation:</strong> Evidence-based gallery with peer review rationale</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Interactive Demo Section -->
+        <div class="section">
+            <h2>Interactive Demonstrations</h2>
+            
+            <div class="interactive-demo">
+                <button onclick="showDemo('drawing')" class="active" id="btn-drawing">Drawing Game</button>
+                <button onclick="showDemo('calculus')" id="btn-calculus">Calculus Textbook</button>
+                <button onclick="showDemo('research')" id="btn-research">Research Lab</button>
+
+                <!-- Drawing Demo -->
+                <div id="demo-drawing" class="demo-content">
+                    <h3>Exquisite Corpse Drawing Chain</h3>
+                    <p style="margin-bottom: 1rem; color: #57534e;">Draw something, see how the system finds the next artist based on style similarity</p>
+                    
+                    <canvas id="drawingCanvas" class="canvas-demo" width="400" height="300"></canvas>
+                    <div style="margin-top: 1rem;">
+                        <button onclick="clearCanvas()">Clear</button>
+                        <button onclick="analyzeDrawing()">Analyze Style</button>
+                    </div>
+                    
+                    <div id="styleAnalysis" style="margin-top: 1rem; display: none;">
+                        <div style="background: white; border: 1px solid #e7e5e4; padding: 1.5rem; border-radius: 2px; margin-bottom: 1rem;">
+                            <h4 style="margin-top: 0;">📊 Style Analysis</h4>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <strong>Style Scores:</strong>
+                                <div style="margin-top: 0.5rem;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                        <span style="font-size: 0.875rem;">Gestural</span>
+                                        <span style="font-size: 0.875rem;">78/100</span>
+                                    </div>
+                                    <div style="background: #f5f5f4; height: 6px; border-radius: 3px;">
+                                        <div style="background: #78716c; width: 78%; height: 100%; border-radius: 3px;"></div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 0.5rem;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                        <span style="font-size: 0.875rem;">Geometric</span>
+                                        <span style="font-size: 0.875rem;">23/100</span>
+                                    </div>
+                                    <div style="background: #f5f5f4; height: 6px; border-radius: 3px;">
+                                        <div style="background: #78716c; width: 23%; height: 100%; border-radius: 3px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: #fafaf9; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                                <strong>Reasoning:</strong>
+                                <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #44403c;">
+                                    Loose, flowing strokes with natural curves. Minimal straight lines. 
+                                    Hand speed varies naturally (200-650ms stroke duration).
+                                </p>
+                            </div>
+
+                            <div style="background: #fafaf9; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                                <strong>Evidence:</strong>
+                                <ul style="margin: 0.5rem 0 0 1.5rem; font-size: 0.875rem; color: #44403c;">
+                                    <li>Stroke duration variance: 234ms <code style="font-size: 0.75rem;">from: ink_analysis</code></li>
+                                    <li>Curve-to-line ratio: 0.82 <code style="font-size: 0.75rem;">from: geometry</code></li>
+                                </ul>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; font-size: 0.875rem; color: #57534e;">
+                                <span><strong>Confidence:</strong> 89%</span>
+                                <span><strong>Embedding:</strong> <code style="font-size: 0.75rem;">[0.234, -0.456, 0.123, ...]</code></span>
+                            </div>
+                        </div>
+
+                        <h4>Next Artist Suggestion:</h4>
+                        <div style="background: white; border: 1px solid #e7e5e4; padding: 1.5rem; border-radius: 2px;">
+                            <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="avatar">SA</div>
+                                <div style="flex: 1;">
+                                    <strong>Sarah Anderson</strong>
+                                    <div style="display: flex; gap: 1rem; margin-top: 0.25rem; font-size: 0.875rem; color: #57534e;">
+                                        <span>Match Score: 87/100</span>
+                                        <span>Confidence: 85%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: #fafaf9; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                                <strong>Why This Match:</strong>
+                                <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #44403c;">
+                                    Similar gestural style, complementary color palette, successful collaboration history.
+                                </p>
+                            </div>
+
+                            <div style="background: #fafaf9; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                                <strong>Evidence:</strong>
+                                <ul style="margin: 0.5rem 0 0 1.5rem; font-size: 0.875rem; color: #44403c;">
+                                    <li>Style similarity (cosine): 0.91</li>
+                                    <li>Successful chains together: 3</li>
+                                    <li>Last work: 2 days ago (active)</li>
+                                </ul>
+                            </div>
+
+                            <details style="font-size: 0.875rem; color: #57534e;">
+                                <summary style="cursor: pointer;">Alternatives considered</summary>
+                                <ul style="margin: 0.5rem 0 0 1.5rem;">
+                                    <li>Mike Chen (score: 72) - geometric complement</li>
+                                    <li>Ana Rivera (score: 68) - similar medium</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 2rem;">Curated Gallery:</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item featured">
+                            <div style="font-size: 2rem;">🎨</div>
+                            <div><strong>Featured</strong></div>
+                            <small>Chain: A→B→C</small>
+                        </div>
+                        <div class="gallery-item">
+                            <div style="font-size: 2rem;">✏️</div>
+                            <div>Visible</div>
+                            <small>Chain: D→E</small>
+                        </div>
+                        <div class="gallery-item">
+                            <div style="font-size: 2rem;">🖊️</div>
+                            <div>Visible</div>
+                            <small>Solo work</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculus Demo -->
+                <div id="demo-calculus" class="demo-content hidden">
+                    <h3>Adaptive Calculus Navigation</h3>
+                    
+                    <div class="math-problem">
+                        <h4>Current Topic: Integration by Parts</h4>
+                        <p style="margin: 1rem 0;">Solve: ∫ x·eˣ dx</p>
+                        <p style="color: #57534e; font-size: 0.875rem;">Student has made 7 attempts with corrections...</p>
+                    </div>
+
+                    <div style="background: white; border: 1px solid #e7e5e4; padding: 1.5rem; border-radius: 2px; margin-bottom: 1rem;">
+                        <h4 style="margin-top: 0; color: #1c1917;">📊 Structured Analysis</h4>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <strong>Mastery Score:</strong> 35/100
+                                <div style="background: #f5f5f4; height: 8px; border-radius: 4px; margin-top: 0.25rem;">
+                                    <div style="background: #ef4444; width: 35%; height: 100%; border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <strong>Confidence:</strong> 87%
+                                <div style="background: #f5f5f4; height: 8px; border-radius: 4px; margin-top: 0.25rem;">
+                                    <div style="background: #78716c; width: 87%; height: 100%; border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: #fafaf9; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                            <strong>Reasoning:</strong>
+                            <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #44403c;">
+                                Student attempting integration by parts but consistently misidentifying u and dv. 
+                                Shows confusion about which function to differentiate. Pattern suggests missing 
+                                fundamental understanding of derivative recognition.
+                            </p>
+                        </div>
+
+                        <div style="background: #fafaf9; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                            <strong>Evidence:</strong>
+                            <div style="margin-top: 0.5rem;">
+                                <div style="padding: 0.5rem; border-left: 2px solid #ef4444; margin-bottom: 0.5rem; font-size: 0.875rem;">
+                                    <strong>Problem 3 (14:23):</strong> Chose u = eˣ instead of u = x<br>
+                                    <code style="font-size: 0.75rem; background: white; padding: 0.25rem;">from: fields.problem_3_attempt</code>
+                                </div>
+                                <div style="padding: 0.5rem; border-left: 2px solid #ef4444; font-size: 0.875rem;">
+                                    <strong>Problem 5 (14:31):</strong> Same error pattern repeated<br>
+                                    <code style="font-size: 0.75rem; background: white; padding: 0.25rem;">from: fields.problem_5_attempt</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: #fef3c7; border: 1px solid #fbbf24; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                        <h4 style="margin-top: 0;">⚠️ Gap Detected</h4>
+                        <p style="margin-bottom: 0.5rem;">
+                            <strong>Missing Prerequisite:</strong> u-substitution fundamentals<br>
+                            <strong>Gap Severity:</strong> 78/100 (critical)<br>
+                            <strong>Confidence:</strong> 92%
+                        </p>
+                        <p style="font-size: 0.875rem; color: #57534e; margin-top: 0.5rem;">
+                            <em>Need to solidify derivative pattern recognition before tackling integration by parts.</em>
+                        </p>
+                        <button onclick="alert('Routing to: Chapter 2.3 - u-Substitution Fundamentals\n\nAlternatives:\n• Practice Derivatives (score: 72/100)\n• Video Tutorial (score: 65/100)')" style="margin-top: 0.5rem;">View Recommended Path</button>
+                    </div>
+
+                    <h4>Need Help? Suggested Peer:</h4>
+                    <div style="background: white; border: 1px solid #e7e5e4; padding: 1.5rem; border-radius: 2px;">
+                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
+                            <div class="avatar">SK</div>
+                            <div style="flex: 1;">
+                                <strong>Sarah Kim</strong>
+                                <div style="display: flex; gap: 1rem; margin-top: 0.25rem; font-size: 0.875rem; color: #57534e;">
+                                    <span>Match Score: 91/100</span>
+                                    <span>Confidence: 88%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: #fafaf9; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                            <strong>Why This Match:</strong>
+                            <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #44403c;">
+                                Sarah recently mastered this exact topic (2 weeks ago), knows common pitfalls, 
+                                available now, and has excellent teaching history.
+                            </p>
+                        </div>
+
+                        <div style="background: #fafaf9; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                            <strong>Evidence:</strong>
+                            <ul style="margin: 0.5rem 0 0 1.5rem; font-size: 0.875rem; color: #44403c;">
+                                <li>Mastered integration by parts on Oct 20, 2025</li>
+                                <li>Helped 3 students this week (100% success rate)</li>
+                                <li>Online now (last active: 2 min ago)</li>
+                            </ul>
+                        </div>
+
+                        <button onclick="alert('Capability granted!\n\nSarah will receive:\n• Your specific struggle (u/dv selection)\n• Confidence level (87%)\n• Suggested approach (review derivative patterns first)')">Request Help from Sarah</button>
+                    </div>
+                </div>
+
+                <!-- Research Demo -->
+                <div id="demo-research" class="demo-content hidden">
+                    <h3>Field Research with GPS + Transclusion</h3>
+                    
+                    <div style="background: #fafaf9; padding: 1rem; border-radius: 2px; margin-bottom: 1rem;">
+                        <h4 style="margin-top: 0;">Current Observation:</h4>
+                        <p><strong>Location:</strong> Discovery Park, Seattle (47.6597°N, 122.4122°W)</p>
+                        <p><strong>Date:</strong> November 5, 2025, 2:30 PM</p>
+                        <p><strong>Notes:</strong> Observed 3 Great Blue Herons at low tide...</p>
+                    </div>
+
+                    <h4>Nearby Past Observations (within 500m):</h4>
+                    <div style="border: 1px solid #e7e5e4; border-radius: 2px; padding: 1rem; margin-bottom: 1rem;">
+                        <p><strong>Oct 12, 2024:</strong> "Heron nesting behavior at same location"</p>
+                        <small>Distance: 120m • Author: Dr. Chen</small><br>
+                        <button onclick="alert('Transclusion created: Past observation now referenced in current page')" style="margin-top: 0.5rem;">Transclude This</button>
+                    </div>
+
+                    <h4>Export Options:</h4>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <button onclick="alert('.cursive.zip exported with:\n- 47 observation pages\n- GPS provenance for each\n- All hand-drawn sketches (proof-of-human)\n- Curation manifest (PI-selected findings)')">Export as Portfolio</button>
+                        <button onclick="alert('Publishing curation manifest:\n- 12 significant findings\n- Each with scientific rationale\n- GPS + timestamp verification\n- Reviewable by grant committee')">Publish Findings</button>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1rem; background: #fafaf9; border-left: 2px solid #292524;">
+                        <strong>Why This Works for Research:</strong>
+                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                            <li>GPS proves you were actually in the field</li>
+                            <li>Timestamps verify real-time observations</li>
+                            <li>Proof-of-human shows hand-drawn sketches (not AI)</li>
+                            <li>Transclusion maintains research continuity</li>
+                            <li>Export creates verified portfolio for grants/papers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Insights Section -->
+        <div class="section">
+            <h2>Structured Analysis Protocol</h2>
+            
+            <p style="margin-bottom: 1.5rem; color: #57534e;">
+                Instead of relying only on embedding distance, the protocol uses structured LLM prompting 
+                to provide explainable, evidence-based analysis for routing, tools, and curation decisions.
+            </p>
+
+            <div style="background: #fafaf9; border: 1px solid #e7e5e4; border-radius: 2px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h3 style="margin-top: 0;">Standard Analysis Format</h3>
+                <pre style="background: white; padding: 1rem; border-radius: 2px; overflow-x: auto; font-size: 0.875rem; line-height: 1.6;"><code>{
+  "score": 0-100,           // Quantified assessment
+  "reasoning": "string",    // Qualitative explanation
+  "evidence": [             // Ground truth references
+    {
+      "from": "field_name",
+      "excerpt": "exact quote",
+      "timestamp": "ISO 8601"
+    }
+  ],
+  "confidence": 0-100,      // How certain is this analysis
+  "alternatives": [         // Other options considered
+    {
+      "option": "string",
+      "score": 0-100
+    }
+  ]
+}</code></pre>
+            </div>
+
+            <h3>Example: Gap Detection</h3>
+            <div style="background: white; border: 1px solid #e7e5e4; border-radius: 2px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <pre style="background: #fafaf9; padding: 1rem; border-radius: 2px; overflow-x: auto; font-size: 0.875rem; line-height: 1.6;"><code>{
+  "gap": "u-substitution fundamentals",
+  "severity_score": 78,
+  "reasoning": "Student hasn't internalized derivative patterns needed 
+                for integration by parts. Consistently choosing wrong 
+                functions to differentiate/integrate.",
+  "evidence": [
+    {
+      "from": "fields.problem_3_attempt",
+      "excerpt": "chose u = eˣ instead of u = x",
+      "timestamp": "2025-11-05T14:23:00Z"
+    },
+    {
+      "from": "fields.problem_5_attempt", 
+      "excerpt": "same error pattern repeated",
+      "timestamp": "2025-11-05T14:31:00Z"
+    }
+  ],
+  "confidence": 92,
+  "recommended_route": {
+    "path": "chapter_2_3_u_substitution",
+    "score": 89,
+    "reasoning": "Need to solidify derivative pattern recognition"
+  }
+}</code></pre>
+            </div>
+
+            <h3>Example: Peer Matching</h3>
+            <div style="background: white; border: 1px solid #e7e5e4; border-radius: 2px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <pre style="background: #fafaf9; padding: 1rem; border-radius: 2px; overflow-x: auto; font-size: 0.875rem; line-height: 1.6;"><code>{
+  "peer_id": "user-sarah-kim",
+  "match_score": 91,
+  "reasoning": "Recently mastered this exact topic, knows common pitfalls,
+                available now, excellent teaching history",
+  "evidence": [
+    {
+      "fact": "mastered_integration_by_parts",
+      "date": "2025-10-20",
+      "source": "assessment_records"
+    },
+    {
+      "fact": "helped_3_students_this_week",
+      "success_rate": 100,
+      "source": "peer_help_logs"
+    },
+    {
+      "fact": "currently_online",
+      "last_active": "2 min ago",
+      "source": "presence_stream"
+    }
+  ],
+  "confidence": 88,
+  "context_for_helper": {
+    "student_issue": "u/dv selection in integration by parts",
+    "confidence_in_diagnosis": 87,
+    "suggested_approach": "Review derivative patterns first"
+  }
+}</code></pre>
+            </div>
+
+            <div style="padding: 1.5rem; background: #fef3c7; border: 1px solid #fbbf24; border-radius: 2px;">
+                <h3 style="margin-top: 0;">Why This Matters</h3>
+                <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 1.8;">
+                    <li><strong>Embeddings alone</strong> can find similarity but can't explain <em>why</em></li>
+                    <li><strong>Free-form LLMs</strong> are powerful but unpredictable and hard to trust</li>
+                    <li><strong>Structured analysis</strong> gives you explainability + reliability + auditability</li>
+                    <li>Every decision shows its work: score + reasoning + evidence + confidence</li>
+                    <li>Users can contest decisions by pointing to missing or incorrect evidence</li>
+                    <li>System improves by learning from evidence that led to wrong scores</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Key Insights Section -->
+        <div class="section">
+            <h2>What Makes This Different</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="border-left: 3px solid #292524; padding-left: 1rem;">
+                    <h3 style="margin-top: 0;">Explainable Analysis</h3>
+                    <p>Every decision (routing, curation, peer matching) includes score, reasoning, evidence from ground truth, and confidence. Not a black box.</p>
+                </div>
+
+                <div style="border-left: 3px solid #292524; padding-left: 1rem;">
+                    <h3 style="margin-top: 0;">No Likes, Only Curation</h3>
+                    <p>Galleries require explicit curation decisions (featured/visible/hidden) with optional rationale. No engagement metrics.</p>
+                </div>
+
+                <div style="border-left: 3px solid #292524; padding-left: 1rem;">
+                    <h3 style="margin-top: 0;">Proof of Human</h3>
+                    <p>Stroke variance, timing, corrections prove authentic human work. Can't be faked by AI or copy-paste.</p>
+                </div>
+
+                <div style="border-left: 3px solid #292524; padding-left: 1rem;">
+                    <h3 style="margin-top: 0;">Evidence-Based Routing</h3>
+                    <p>Routes aren't just "similar" - they're justified with specific evidence from your work and alternatives considered.</p>
+                </div>
+
+                <div style="border-left: 3px solid #292524; padding-left: 1rem;">
+                    <h3 style="margin-top: 0;">Full Portability</h3>
+                    <p>.cursive.zip exports include everything: content, provenance, GPS, embeddings, analysis logs. True data sovereignty.</p>
+                </div>
+
+                <div style="border-left: 3px solid #292524; padding-left: 1rem;">
+                    <h3 style="margin-top: 0;">Capability-Based</h3>
+                    <p>No hidden side effects. Every action (create page, notify, curate) requires explicit capability grant. Auditable.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Canvas drawing functionality
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas ? canvas.getContext('2d') : null;
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        if (canvas) {
+            canvas.addEventListener('mousedown', (e) => {
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                lastX = e.clientX - rect.left;
+                lastY = e.clientY - rect.top;
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                if (!isDrawing) return;
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.strokeStyle = '#292524';
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+
+                lastX = x;
+                lastY = y;
+            });
+
+            canvas.addEventListener('mouseup', () => {
+                isDrawing = false;
+            });
+
+            canvas.addEventListener('mouseleave', () => {
+                isDrawing = false;
+            });
+
+            // Touch support
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                const touch = e.touches[0];
+                lastX = touch.clientX - rect.left;
+                lastY = touch.clientY - rect.top;
+            });
+
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                if (!isDrawing) return;
+                const rect = canvas.getBoundingClientRect();
+                const touch = e.touches[0];
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.strokeStyle = '#292524';
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+
+                lastX = x;
+                lastY = y;
+            });
+
+            canvas.addEventListener('touchend', () => {
+                isDrawing = false;
+            });
+        }
+
+        function clearCanvas() {
+            if (ctx) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                document.getElementById('styleAnalysis').style.display = 'none';
+            }
+        }
+
+        function analyzeDrawing() {
+            document.getElementById('styleAnalysis').style.display = 'block';
+        }
+
+        function showDemo(demo) {
+            // Hide all demos
+            document.querySelectorAll('.demo-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected demo
+            document.getElementById('demo-' + demo).classList.remove('hidden');
+            document.getElementById('btn-' + demo).classList.add('active');
+        }
+    </script>
+</body>
+</html>

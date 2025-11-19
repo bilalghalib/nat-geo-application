@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Profile - ActivityPub Ready</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .profile-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .profile-name {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .profile-username {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .profile-bio {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .profile-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #666;
+        }
+        .profile-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .letter-card {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+        }
+        .letter-card:hover {
+            background: #f5f5f5;
+        }
+        .letter-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .letter-excerpt {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .letter-meta {
+            font-size: 13px;
+            color: #999;
+            display: flex;
+            gap: 15px;
+        }
+        .federation-info {
+            background: #e3f2fd;
+            border: 1px solid #2196F3;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #0d47a1;
+        }
+        .follow-options {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .follow-method {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .follow-method:last-child {
+            border-bottom: none;
+        }
+        .follow-icon {
+            font-size: 24px;
+        }
+        .follow-details {
+            flex: 1;
+        }
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- PROFILE HEADER -->
+        <div class="profile-header">
+            <div class="profile-name">Alex Chen</div>
+            <div class="profile-username">@alex@cursive.com</div>
+            
+            <div class="profile-bio">
+                Philosophy graduate student exploring embodied knowledge and dialogic learning. Interested in how we understand the world through movement, making, and conversation—not just abstract thought.
+            </div>
+            
+            <div class="profile-meta">
+                <div>📍 Los Angeles, CA</div>
+                <div>🎓 UCLA Philosophy PhD</div>
+                <div>✍️ 47 letters published</div>
+                <div>🌐 cursive.com</div>
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn btn-primary">Send a letter</button>
+                <button class="btn">Follow via ActivityPub</button>
+                <button class="btn">Subscribe (RSS)</button>
+                <button class="btn">Export as vCard</button>
+            </div>
+        </div>
+
+        <!-- FEDERATION OPTIONS -->
+        <div class="section">
+            <div class="section-title">
+                <span>Follow Alex Across the Fediverse</span>
+            </div>
+
+            <div class="federation-info">
+                <strong>ActivityPub enabled!</strong> Alex's public letters can appear in your Mastodon, Pixelfed, or any ActivityPub-compatible feed. Alex can also respond to your comments from other platforms.
+            </div>
+
+            <div class="follow-options">
+                <div class="follow-method">
+                    <div class="follow-icon">🐘</div>
+                    <div class="follow-details">
+                        <strong>Follow from Mastodon</strong>
+                        <p style="font-size: 13px; color: #666; margin: 5px 0;">
+                            Search for <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">@alex@cursive.com</code> in Mastodon and click Follow
+                        </p>
+                    </div>
+                </div>
+
+                <div class="follow-method">
+                    <div class="follow-icon">📡</div>
+                    <div class="follow-details">
+                        <strong>Subscribe via RSS</strong>
+                        <p style="font-size: 13px; color: #666; margin: 5px 0;">
+                            Add this feed to your RSS reader:
+                        </p>
+                        <div class="code-block">https://cursive.com/alex/feed.rss</div>
+                    </div>
+                </div>
+
+                <div class="follow-method">
+                    <div class="follow-icon">📧</div>
+                    <div class="follow-details">
+                        <strong>Email notifications</strong>
+                        <p style="font-size: 13px; color: #666; margin: 5px 0;">
+                            Get notified when Alex publishes new letters
+                        </p>
+                        <input type="email" placeholder="your@email.com" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px; width: 250px; margin-top: 8px;" />
+                        <button class="btn btn-primary" style="margin-left: 8px;">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PUBLIC LETTERS -->
+        <div class="section">
+            <div class="section-title">
+                <span>Public Letters</span>
+                <div style="font-size: 14px; font-weight: normal; color: #666;">
+                    47 published
+                </div>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-title">On Embodied Knowledge</div>
+                <div class="letter-excerpt">
+                    I visited the sculpture garden today and had a moment of understanding that couldn't have come from reading alone. Walking around to the back of a bronze piece, the entire meaning shifted...
+                </div>
+                <div class="letter-meta">
+                    <span>Oct 20, 2025</span>
+                    <span>📍 Westwood Sculpture Garden</span>
+                    <span>2 responses</span>
+                </div>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-title">Teaching as Dialogue, Not Transmission</div>
+                <div class="letter-excerpt">
+                    Sarah asked me yesterday: "Who really holds authority in a learning space?" This question has been echoing. I used to think teaching was about transferring knowledge from expert to novice...
+                </div>
+                <div class="letter-meta">
+                    <span>Oct 15, 2025</span>
+                    <span>5 responses</span>
+                </div>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-title">Plato's Cave, Revisited</div>
+                <div class="letter-excerpt">
+                    What if the allegory isn't about truth vs. illusion, but about the multiplicity of perspectives? The prisoners aren't wrong about the shadows—they're seeing one valid aspect of reality...
+                </div>
+                <div class="letter-meta">
+                    <span>Oct 10, 2025</span>
+                    <span>📚 In response to: Philosophy 101</span>
+                    <span>12 responses</span>
+                </div>
+            </div>
+
+            <button class="btn" style="width: 100%;">Load more letters</button>
+        </div>
+
+        <!-- GUIDES CREATED -->
+        <div class="section">
+            <div class="section-title">
+                <span>Guides Created</span>
+                <div style="font-size: 14px; font-weight: normal; color: #666;">
+                    3 published
+                </div>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-title">📖 Embodied Philosophy: A Walking Curriculum</div>
+                <div class="letter-excerpt">
+                    A 6-week guide that pairs philosophical readings with physical experiences. Each week includes a place to visit and embodied exercises.
+                </div>
+                <div class="letter-meta">
+                    <span>12 participants</span>
+                    <span>Free</span>
+                    <span><button class="btn">Import to your group →</button></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TECHNICAL DETAILS -->
+        <div class="section">
+            <div class="section-title">For Developers</div>
+
+            <div style="font-size: 14px; margin-bottom: 20px;">
+                Alex's profile is available in multiple machine-readable formats:
+            </div>
+
+            <div style="padding: 15px; background: #f9f9f9; border-radius: 6px; margin-bottom: 15px;">
+                <strong>ActivityPub Actor</strong>
+                <div class="code-block">GET https://cursive.com/users/alex
+Accept: application/activity+json</div>
+                <p style="font-size: 13px; color: #666; margin-top: 8px;">
+                    Returns ActivityPub Actor object with inbox, outbox, followers, following
+                </p>
+            </div>
+
+            <div style="padding: 15px; background: #f9f9f9; border-radius: 6px; margin-bottom: 15px;">
+                <strong>RSS Feed</strong>
+                <div class="code-block">GET https://cursive.com/alex/feed.rss</div>
+                <p style="font-size: 13px; color: #666; margin-top: 8px;">
+                    Standard RSS 2.0 feed of public letters
+                </p>
+            </div>
+
+            <div style="padding: 15px; background: #f9f9f9; border-radius: 6px; margin-bottom: 15px;">
+                <strong>JSON Feed</strong>
+                <div class="code-block">GET https://cursive.com/alex/feed.json</div>
+                <p style="font-size: 13px; color: #666; margin-top: 8px;">
+                    JSON Feed v1.1 format (modern alternative to RSS)
+                </p>
+            </div>
+
+            <div style="padding: 15px; background: #f9f9f9; border-radius: 6px;">
+                <strong>WebFinger</strong>
+                <div class="code-block">GET https://cursive.com/.well-known/webfinger
+?resource=acct:alex@cursive.com</div>
+                <p style="font-size: 13px; color: #666; margin-top: 8px;">
+                    Discovery endpoint for federated protocols
+                </p>
+            </div>
+        </div>
+
+        <div style="background: #f0f9ff; padding: 15px; border-left: 3px solid #3b82f6; margin-top: 20px; font-size: 13px; color: #1e3a8a;">
+            <strong>Why this matters:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li><strong>Not platform-locked:</strong> Your letters exist at a URL, can be followed from anywhere</li>
+                <li><strong>ActivityPub native:</strong> Participate in the fediverse—Cursive is a node, not a silo</li>
+                <li><strong>RSS/JSON feeds:</strong> Classic protocols still work—no new account needed</li>
+                <li><strong>Static site ready:</strong> Profile can be exported as HTML, hosted anywhere</li>
+                <li><strong>Protocol > Platform:</strong> You own cursive.com/alex or school.edu/alex</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

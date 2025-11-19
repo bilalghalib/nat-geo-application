@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursive - Navigation & Structure Wireframe</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: #f8f9fa;
+      color: #2c3e50;
+    }
+    
+    /* App Container */
+    .app {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: #2c3e50;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    
+    .logo {
+      padding: 24px 20px;
+      font-size: 28px;
+      font-weight: 700;
+      font-style: italic;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .nav-section {
+      padding: 16px 0;
+    }
+    
+    .nav-section-title {
+      padding: 8px 20px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+    
+    .nav-item {
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+    }
+    
+    .nav-item:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .nav-item.active {
+      background: #3498db;
+      font-weight: 500;
+    }
+    
+    .nav-icon {
+      font-size: 18px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Folder Tree */
+    .folder-tree {
+      padding: 8px 0;
+    }
+    
+    .folder-item {
+      padding: 8px 20px 8px 36px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    
+    .folder-item:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .folder-item.active {
+      background: rgba(52, 152, 219, 0.3);
+      font-weight: 500;
+    }
+    
+    .folder-icon {
+      font-size: 14px;
+    }
+    
+    .folder-expand {
+      width: 16px;
+      text-align: center;
+      font-size: 10px;
+      margin-left: -24px;
+    }
+    
+    /* Main Content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: white;
+    }
+    
+    /* Breadcrumb Header */
+    .header {
+      background: white;
+      border-bottom: 2px solid #ecf0f1;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+    
+    .breadcrumb-item {
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    
+    .breadcrumb-item:hover {
+      color: #3498db;
+    }
+    
+    .breadcrumb-item.current {
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    
+    .breadcrumb-separator {
+      color: #bdc3c7;
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: #3498db;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #2980b9;
+    }
+    
+    .btn-secondary {
+      background: #ecf0f1;
+      color: #2c3e50;
+    }
+    
+    .btn-secondary:hover {
+      background: #dfe6e9;
+    }
+    
+    /* Content Area */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 32px;
+      background: #f8f9fa;
+    }
+    
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .card-meta {
+      font-size: 13px;
+      color: #7f8c8d;
+    }
+    
+    .card-badge {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: #e8f4f8;
+      color: #3498db;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    
+    .card-badge.facilitated {
+      background: #fef5e7;
+      color: #f39c12;
+    }
+    
+    /* Page List */
+    .page-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .page-item {
+      padding: 16px;
+      background: white;
+      border: 1px solid #e1e8ed;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .page-item:hover {
+      border-color: #3498db;
+      background: #f8f9fa;
+    }
+    
+    .page-item-icon {
+      font-size: 20px;
+      margin-right: 12px;
+    }
+    
+    .page-item-content {
+      flex: 1;
+    }
+    
+    .page-item-title {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    
+    .page-item-meta {
+      font-size: 12px;
+      color: #7f8c8d;
+    }
+    
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 64px 24px;
+      color: #7f8c8d;
+    }
+    
+    .empty-state-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      opacity: 0.3;
+    }
+    
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .modal {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 500px;
+      width: 90%;
+    }
+    
+    .modal-header {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #dfe6e9;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    
+    .form-radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .form-radio {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .form-radio:hover {
+      border-color: #3498db;
+      background: #f8f9fa;
+    }
+    
+    .form-radio.selected {
+      border-color: #3498db;
+      background: #ebf5fb;
+    }
+    
+    .form-radio input {
+      margin-right: 12px;
+      margin-top: 2px;
+    }
+    
+    .form-radio-content {
+      flex: 1;
+    }
+    
+    .form-radio-title {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    
+    .form-radio-description {
+      font-size: 13px;
+      color: #7f8c8d;
+    }
+    
+    /* Collection View */
+    .collection-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 48px 32px;
+      border-radius: 12px 12px 0 0;
+      margin: -32px -32px 32px -32px;
+    }
+    
+    .collection-header-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .collection-header-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .collection-header-meta {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    
+    .collection-actions {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+    }
+    
+    .btn-white {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+    
+    .btn-white:hover {
+      background: rgba(255,255,255,0.9);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function App() {
+      const [currentView, setCurrentView] = useState('today');
+      const [currentPath, setCurrentPath] = useState(['Today']);
+      const [expandedFolders, setExpandedFolders] = useState({
+        myCollections: true,
+        enrolled: true,
+      });
+      const [showPublishModal, setShowPublishModal] = useState(false);
+      const [publishMode, setPublishMode] = useState('self-paced');
+
+      const handleNavigate = (view, pathArray) => {
+        setCurrentView(view);
+        setCurrentPath(pathArray);
+      };
+
+      const toggleFolder = (folderKey) => {
+        setExpandedFolders(prev => ({
+          ...prev,
+          [folderKey]: !prev[folderKey]
+        }));
+      };
+
+      return (
+        <div className="app">
+          <Sidebar 
+            currentView={currentView}
+            onNavigate={handleNavigate}
+            expandedFolders={expandedFolders}
+            onToggleFolder={toggleFolder}
+          />
+          
+          <div className="main">
+            <Header 
+              path={currentPath}
+              onNavigate={handleNavigate}
+              onPublish={() => setShowPublishModal(true)}
+            />
+            
+            <div className="content">
+              {currentView === 'today' && <TodayView />}
+              {currentView === 'mailbox' && <MailboxView />}
+              {currentView === 'journal' && <JournalView />}
+              {currentView === 'collection-enrolled' && <EnrolledCollectionView />}
+              {currentView === 'collection-my' && <MyCollectionView />}
+              {currentView === 'collection-detail' && <CollectionDetailView />}
+            </div>
+          </div>
+
+          {showPublishModal && (
+            <PublishModal
+              mode={publishMode}
+              setMode={setPublishMode}
+              onClose={() => setShowPublishModal(false)}
+            />
+          )}
+        </div>
+      );
+    }
+
+    function Sidebar({ currentView, onNavigate, expandedFolders, onToggleFolder }) {
+      return (
+        <div className="sidebar">
+          <div className="logo">Cursive</div>
+          
+          {/* Primary Navigation */}
+          <div className="nav-section">
+            <div 
+              className={`nav-item ${currentView === 'today' ? 'active' : ''}`}
+              onClick={() => onNavigate('today', ['Today'])}
+            >
+              <span className="nav-icon">📅</span>
+              <span>Today</span>
+            </div>
+            
+            <div 
+              className={`nav-item ${currentView === 'mailbox' ? 'active' : ''}`}
+              onClick={() => onNavigate('mailbox', ['Mailbox'])}
+            >
+              <span className="nav-icon">📬</span>
+              <span>Mailbox</span>
+            </div>
+            
+            <div 
+              className={`nav-item ${currentView === 'journal' ? 'active' : ''}`}
+              onClick={() => onNavigate('journal', ['Journal'])}
+            >
+              <span className="nav-icon">✏️</span>
+              <span>Journal</span>
+            </div>
+          </div>
+
+          {/* Collections Section */}
+          <div className="nav-section">
+            <div className="nav-section-title">Collections</div>
+            
+            {/* Enrolled Collections */}
+            <div className="folder-tree">
+              <div className="folder-item" onClick={() => onToggleFolder('enrolled')}>
+                <span className="folder-expand">
+                  {expandedFolders.enrolled ? '▼' : '▶'}
+                </span>
+                <span className="folder-icon">📚</span>
+                <span>Enrolled</span>
+              </div>
+              
+              {expandedFolders.enrolled && (
+                <>
+                  <div 
+                    className={`folder-item ${currentView === 'collection-enrolled' ? 'active' : ''}`}
+                    style={{ paddingLeft: 60 }}
+                    onClick={() => onNavigate('collection-enrolled', ['Collections', 'Enrolled', 'Philosophy 101'])}
+                  >
+                    <span className="folder-icon">📖</span>
+                    <span>Philosophy 101</span>
+                  </div>
+                  <div 
+                    className="folder-item"
+                    style={{ paddingLeft: 60 }}
+                    onClick={() => onNavigate('collection-enrolled', ['Collections', 'Enrolled', 'Wellness Journey'])}
+                  >
+                    <span className="folder-icon">🌱</span>
+                    <span>Wellness Journey</span>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* My Collections */}
+            <div className="folder-tree">
+              <div className="folder-item" onClick={() => onToggleFolder('myCollections')}>
+                <span className="folder-expand">
+                  {expandedFolders.myCollections ? '▼' : '▶'}
+                </span>
+                <span className="folder-icon">📁</span>
+                <span>My Collections</span>
+              </div>
+              
+              {expandedFolders.myCollections && (
+                <>
+                  <div 
+                    className={`folder-item ${currentView === 'collection-my' ? 'active' : ''}`}
+                    style={{ paddingLeft: 60 }}
+                    onClick={() => onNavigate('collection-my', ['Collections', 'My Collections', 'Morning Pages'])}
+                  >
+                    <span className="folder-icon">☀️</span>
+                    <span>Morning Pages</span>
+                  </div>
+                  <div 
+                    className="folder-item"
+                    style={{ paddingLeft: 60 }}
+                    onClick={() => onNavigate('collection-my', ['Collections', 'My Collections', 'Best Insights 2024'])}
+                  >
+                    <span className="folder-icon">✨</span>
+                    <span>Best Insights 2024</span>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function Header({ path, onNavigate, onPublish }) {
+      return (
+        <div className="header">
+          <div className="breadcrumb">
+            {path.map((item, i) => (
+              <React.Fragment key={i}>
+                {i > 0 && <span className="breadcrumb-separator">/</span>}
+                <span 
+                  className={`breadcrumb-item ${i === path.length - 1 ? 'current' : ''}`}
+                  onClick={() => {
+                    if (i === 0) onNavigate(item.toLowerCase(), [item]);
+                  }}
+                >
+                  {item}
+                </span>
+              </React.Fragment>
+            ))}
+          </div>
+          
+          <div className="header-actions">
+            <button className="btn btn-secondary">🛠️ Tools</button>
+            <button className="btn btn-primary" onClick={onPublish}>
+              + Publish Collection
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    function TodayView() {
+      return (
+        <div>
+          <h2 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>
+            Thursday, October 23
+          </h2>
+          <p style={{ color: '#7f8c8d', marginBottom: 32 }}>
+            2 items scheduled for today
+          </p>
+
+          <div className="card">
+            <div className="card-header">
+              <div>
+                <div style={{ fontSize: 12, color: '#7f8c8d', marginBottom: 4 }}>
+                  FROM PHILOSOPHY 101
+                </div>
+                <div className="card-title">Week 2: The Trolley Problem</div>
+              </div>
+              <div className="card-badge facilitated">Facilitated</div>
+            </div>
+            <p style={{ color: '#7f8c8d', fontSize: 14, marginBottom: 16 }}>
+              Explore the ethical dimensions of the classic trolley problem...
+            </p>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button className="btn btn-primary">Begin Now</button>
+              <button className="btn btn-secondary">Tomorrow</button>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-header">
+              <div>
+                <div style={{ fontSize: 12, color: '#7f8c8d', marginBottom: 4 }}>
+                  FROM YOUR JOURNAL
+                </div>
+                <div className="card-title">Morning Check-in</div>
+              </div>
+            </div>
+            <p style={{ color: '#7f8c8d', fontSize: 14, marginBottom: 16 }}>
+              Your daily reflection practice
+            </p>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button className="btn btn-primary">Begin Now</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function MailboxView() {
+      return (
+        <div>
+          <h2 style={{ fontSize: 24, fontWeight: 600, marginBottom: 24 }}>Mailbox</h2>
+          
+          <div className="card">
+            <div className="card-header">
+              <div>
+                <div style={{ fontSize: 12, color: '#7f8c8d', marginBottom: 4 }}>
+                  FROM PHILOSOPHY 101
+                </div>
+                <div className="card-title">Week 2: The Trolley Problem</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div className="card-badge facilitated">Facilitated</div>
+                <div className="card-meta">Due: Today</div>
+              </div>
+            </div>
+            <button className="btn btn-secondary" style={{ marginTop: 12 }}>
+              View Details
+            </button>
+          </div>
+
+          <div className="card">
+            <div className="card-header">
+              <div>
+                <div style={{ fontSize: 12, color: '#7f8c8d', marginBottom: 4 }}>
+                  LETTER FROM SARAH CHEN
+                </div>
+                <div className="card-title">Re: Your thoughts on virtue ethics</div>
+              </div>
+              <div className="card-meta">2 hours ago</div>
+            </div>
+            <p style={{ color: '#7f8c8d', fontSize: 14 }}>
+              I loved your response! Have you considered...
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    function JournalView() {
+      return (
+        <div>
+          <h2 style={{ fontSize: 24, fontWeight: 600, marginBottom: 24 }}>Journal</h2>
+          
+          <div className="page-list">
+            <div className="page-item">
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <span className="page-item-icon">📝</span>
+                <div className="page-item-content">
+                  <div className="page-item-title">Morning Reflection</div>
+                  <div className="page-item-meta">Today at 7:30 AM</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="page-item">
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <span className="page-item-icon">📝</span>
+                <div className="page-item-content">
+                  <div className="page-item-title">Ideas for next project</div>
+                  <div className="page-item-meta">Yesterday at 2:15 PM</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="page-item">
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <span className="page-item-icon">📝</span>
+                <div className="page-item-content">
+                  <div className="page-item-title">Book notes: Atomic Habits</div>
+                  <div className="page-item-meta">3 days ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button className="btn btn-primary" style={{ marginTop: 16 }}>
+            + New Page
+          </button>
+        </div>
+      );
+    }
+
+    function EnrolledCollectionView() {
+      return (
+        <div>
+          <div className="collection-header">
+            <div className="collection-header-badge">📚 FACILITATED</div>
+            <div className="collection-header-title">Philosophy 101</div>
+            <div className="collection-header-meta">
+              Led by Dr. Sarah Chen • 12 participants • 8 weeks
+            </div>
+            <div className="collection-actions">
+              <button className="btn btn-white">View My Responses</button>
+              <button className="btn btn-outline">Gallery</button>
+            </div>
+          </div>
+
+          <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 16 }}>
+            Released Prompts
+          </h3>
+
+          <div className="page-list">
+            <div className="page-item">
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <span className="page-item-icon">✅</span>
+                <div className="page-item-content">
+                  <div className="page-item-title">Week 1: Introduction to Ethics</div>
+                  <div className="page-item-meta">Completed • Shared with facilitator</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="page-item">
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <span className="page-item-icon">📝</span>
+                <div className="page-item-content">
+                  <div className="page-item-title">Week 2: The Trolley Problem</div>
+                  <div className="page-item-meta">In progress • Due today</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="page-item">
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <span className="page-item-icon">🔒</span>
+                <div className="page-item-content">
+                  <div className="page-item-title">Week 3: Consequentialism</div>
+                  <div className="page-item-meta">Releases Monday, Oct 27</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function MyCollectionView() {
+      return (
+        <div>
+          <div className="collection-header" style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}>
+            <div className="collection-header-badge">☀️ SELF-PACED</div>
+            <div className="collection-header-title">Morning Pages</div>
+            <div className="collection-header-meta">
+              Created by you • Private • 30 pages
+            </div>
+            <div className="collection-actions">
+              <button className="btn btn-white">Edit Collection</button>
+              <button className="btn btn-outline">Share Link</button>
+            </div>
+          </div>
+
+          <p style={{ color: '#7f8c8d', marginBottom: 24 }}>
+            Your daily reflection practice. These pages help you start each morning with intention.
+          </p>
+
+          <div className="page-list">
+            <div className="page-item">
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <span className="page-item-icon">📄</span>
+                <div className="page-item-content">
+                  <div className="page-item-title">Morning Check-in Template</div>
+                  <div className="page-item-meta">Has questions • Has routes</div>
+                </div>
+              </div>
+              <button className="btn btn-secondary">Edit</button>
+            </div>
+
+            <div className="page-item">
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <span className="page-item-icon">📄</span>
+                <div className="page-item-content">
+                  <div className="page-item-title">Energy Assessment</div>
+                  <div className="page-item-meta">Has questions • Routes to activities</div>
+                </div>
+              </div>
+              <button className="btn btn-secondary">Edit</button>
+            </div>
+
+            <div className="page-item">
+              <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <span className="page-item-icon">📄</span>
+                <div className="page-item-content">
+                  <div className="page-item-title">Gratitude Practice</div>
+                  <div className="page-item-meta">Simple text</div>
+                </div>
+              </div>
+              <button className="btn btn-secondary">Edit</button>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 32, padding: 24, background: '#f8f9fa', borderRadius: 12 }}>
+            <h4 style={{ fontSize: 16, fontWeight: 600, marginBottom: 8 }}>
+              Turn into Facilitated Collection
+            </h4>
+            <p style={{ fontSize: 14, color: '#7f8c8d', marginBottom: 16 }}>
+              Schedule releases and run this with a group
+            </p>
+            <button className="btn btn-primary">Set Up Facilitation</button>
+          </div>
+        </div>
+      );
+    }
+
+    function CollectionDetailView() {
+      return (
+        <div>
+          <h2 style={{ fontSize: 24, fontWeight: 600, marginBottom: 24 }}>
+            Collection Detail View
+          </h2>
+          <p>Placeholder for collection detail</p>
+        </div>
+      );
+    }
+
+    function PublishModal({ mode, setMode, onClose }) {
+      return (
+        <div className="modal-overlay" onClick={onClose}>
+          <div className="modal" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">Publish Collection</div>
+
+            <div className="form-group">
+              <label className="form-label">Collection Title</label>
+              <input type="text" className="form-input" placeholder="Morning Reflection Practice" />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Description</label>
+              <input type="text" className="form-input" placeholder="A daily check-in to start your day with intention" />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">How will this be used?</label>
+              <div className="form-radio-group">
+                <div 
+                  className={`form-radio ${mode === 'self-paced' ? 'selected' : ''}`}
+                  onClick={() => setMode('self-paced')}
+                >
+                  <input 
+                    type="radio" 
+                    checked={mode === 'self-paced'}
+                    onChange={() => setMode('self-paced')}
+                  />
+                  <div className="form-radio-content">
+                    <div className="form-radio-title">📖 Self-Paced</div>
+                    <div className="form-radio-description">
+                      Anyone can use this anytime. Like a book or tutorial.
+                    </div>
+                  </div>
+                </div>
+
+                <div 
+                  className={`form-radio ${mode === 'facilitated' ? 'selected' : ''}`}
+                  onClick={() => setMode('facilitated')}
+                >
+                  <input 
+                    type="radio" 
+                    checked={mode === 'facilitated'}
+                    onChange={() => setMode('facilitated')}
+                  />
+                  <div className="form-radio-content">
+                    <div className="form-radio-title">👥 Facilitated</div>
+                    <div className="form-radio-description">
+                      You'll guide a group through this. Schedule releases, see analytics.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
+              <button className="btn btn-secondary" onClick={onClose}>Cancel</button>
+              <button className="btn btn-primary">Publish</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

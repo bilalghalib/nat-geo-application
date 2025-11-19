@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-Facilitation Interface</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .tab {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #666;
+        }
+        .tab.active {
+            background: #f0f0f0;
+            color: #000;
+        }
+        
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .member-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .member-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        
+        .member-card.owner {
+            background: #f0f9ff;
+            border-color: #3b82f6;
+        }
+        
+        .member-card.co-facilitator {
+            background: #f9f9f9;
+            border-color: #999;
+        }
+        
+        .member-info {
+            flex: 1;
+        }
+        
+        .member-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .member-role {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .role-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .role-badge.owner {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .role-badge.co-facilitator {
+            background: #999;
+            color: white;
+        }
+        
+        .member-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .btn-primary {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+        
+        .permissions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .permissions-table th {
+            background: #f9f9f9;
+            padding: 12px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .permissions-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+        
+        .permissions-table td:first-child {
+            font-weight: 500;
+        }
+        
+        .check {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .cross {
+            color: #ccc;
+            font-weight: bold;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border: 1px solid #2196F3;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #0d47a1;
+        }
+        
+        .activity-log {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .activity-item {
+            display: flex;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            font-size: 20px;
+        }
+        
+        .activity-details {
+            flex: 1;
+        }
+        
+        .activity-text {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .activity-time {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .invite-form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            min-height: 80px;
+            font-family: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Philosophy 101: Fall 2025</h1>
+            <div style="color: #666; font-size: 14px; margin-top: 5px;">
+                32 participants • You are the owner
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab">Facilitate</div>
+            <div class="tab">Review</div>
+            <div class="tab">Gallery</div>
+            <div class="tab">Suggestions</div>
+            <div class="tab active">Members</div>
+        </div>
+
+        <!-- FACILITATORS SECTION -->
+        <div class="section">
+            <div class="section-title">Facilitators & Roles</div>
+            
+            <div class="info-box">
+                <strong>Co-facilitation enabled!</strong> You can invite other facilitators to help send prompts, review submissions, and curate the gallery. Co-facilitators can't delete the group or change core settings.
+            </div>
+            
+            <div class="member-list">
+                <div class="member-card owner">
+                    <div class="member-info">
+                        <div class="member-name">
+                            Dr. Sarah Chen (you)
+                            <span class="role-badge owner">Owner</span>
+                        </div>
+                        <div class="member-role">Full control • Created Oct 1, 2025</div>
+                    </div>
+                </div>
+                
+                <div class="member-card co-facilitator">
+                    <div class="member-info">
+                        <div class="member-name">
+                            Prof. Alex Morgan
+                            <span class="role-badge co-facilitator">Co-facilitator</span>
+                        </div>
+                        <div class="member-role">Can send prompts, review, curate • Invited Oct 5, 2025</div>
+                    </div>
+                    <div class="member-actions">
+                        <button class="btn">Change role ▾</button>
+                        <button class="btn">Remove</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" style="margin-top: 15px;" onclick="document.getElementById('invite-form').style.display='block'">
+                + Invite co-facilitator
+            </button>
+            
+            <div id="invite-form" class="invite-form" style="display: none; margin-top: 20px;">
+                <h3 style="margin-bottom: 15px;">Invite Co-Facilitator</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Email or Cursive username</label>
+                    <input type="text" class="form-input" placeholder="alex@westwood.edu or alex@cursive.com" />
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Personal message (optional)</label>
+                    <textarea class="form-textarea" placeholder="Hi Alex, I'd love your help facilitating this course..."></textarea>
+                </div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-primary">Send invitation</button>
+                    <button class="btn" onclick="document.getElementById('invite-form').style.display='none'">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PERMISSIONS MATRIX -->
+        <div class="section">
+            <div class="section-title">Permissions Matrix</div>
+            
+            <table class="permissions-table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Owner</th>
+                        <th>Co-facilitator</th>
+                        <th>Participant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Send prompts</td>
+                        <td class="check">✓</td>
+                        <td class="check">✓</td>
+                        <td class="cross">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Review submissions</td>
+                        <td class="check">✓</td>
+                        <td class="check">✓</td>
+                        <td class="cross">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Request to feature (gallery)</td>
+                        <td class="check">✓</td>
+                        <td class="check">✓</td>
+                        <td class="cross">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Edit guide/curriculum</td>
+                        <td class="check">✓</td>
+                        <td class="check">✓</td>
+                        <td class="cross">✗</td>
+                    </tr>
+                    <tr>
+                        <td>View all submissions</td>
+                        <td class="check">✓</td>
+                        <td class="check">✓</td>
+                        <td class="cross">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Leave private comments</td>
+                        <td class="check">✓</td>
+                        <td class="check">✓</td>
+                        <td class="cross">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Invite co-facilitators</td>
+                        <td class="check">✓</td>
+                        <td class="cross">✗</td>
+                        <td class="cross">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Change group settings</td>
+                        <td class="check">✓</td>
+                        <td class="cross">✗</td>
+                        <td class="cross">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Delete group</td>
+                        <td class="check">✓</td>
+                        <td class="cross">✗</td>
+                        <td class="cross">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Suggest new prompts</td>
+                        <td class="check">✓</td>
+                        <td class="check">✓</td>
+                        <td class="check">✓ (if enabled)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ACTIVITY LOG -->
+        <div class="section">
+            <div class="section-title">Facilitation Activity</div>
+            
+            <div class="activity-log">
+                <div class="activity-item">
+                    <div class="activity-icon">📬</div>
+                    <div class="activity-details">
+                        <div class="activity-text">
+                            <strong>Prof. Alex Morgan</strong> sent "Exercise #3: The Cave Allegory" to 32 participants
+                        </div>
+                        <div class="activity-time">Today at 9:15am</div>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">✨</div>
+                    <div class="activity-details">
+                        <div class="activity-text">
+                            <strong>Dr. Sarah Chen</strong> requested to feature Jordan Lee's submission
+                        </div>
+                        <div class="activity-time">Yesterday at 4:30pm</div>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">💬</div>
+                    <div class="activity-details">
+                        <div class="activity-text">
+                            <strong>Prof. Alex Morgan</strong> left a comment on Sam Parker's submission
+                        </div>
+                        <div class="activity-time">Yesterday at 2:15pm</div>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">📝</div>
+                    <div class="activity-details">
+                        <div class="activity-text">
+                            <strong>Dr. Sarah Chen</strong> edited the guide schedule
+                        </div>
+                        <div class="activity-time">Oct 18 at 11:00am</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADVANCED SETTINGS -->
+        <div class="section">
+            <div class="section-title">Co-Facilitation Settings</div>
+            
+            <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; margin-bottom: 5px;">Show co-facilitators to participants</div>
+                        <div style="font-size: 13px; color: #666;">
+                            Participants can see who the facilitators are in the group header
+                        </div>
+                    </div>
+                    <div style="min-width: 100px; text-align: right;">
+                        <select style="padding: 6px 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px;">
+                            <option selected>Visible</option>
+                            <option>Hidden</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; margin-bottom: 5px;">Attribution on sent prompts</div>
+                        <div style="font-size: 13px; color: #666;">
+                            Show which facilitator sent each prompt
+                        </div>
+                    </div>
+                    <div style="min-width: 100px; text-align: right;">
+                        <select style="padding: 6px 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px;">
+                            <option selected>Show name</option>
+                            <option>Generic "Facilitator"</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="padding: 15px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; margin-bottom: 5px;">Notification preferences</div>
+                        <div style="font-size: 13px; color: #666;">
+                            Get notified when co-facilitators take actions
+                        </div>
+                    </div>
+                    <div style="min-width: 100px; text-align: right;">
+                        <select style="padding: 6px 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px;">
+                            <option>All actions</option>
+                            <option selected>Major actions only</option>
+                            <option>None</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #f0f9ff; padding: 15px; border-left: 3px solid #3b82f6; margin-top: 20px; font-size: 13px; color: #1e3a8a;">
+            <strong>Use Cases for Co-Facilitation:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li><strong>Teaching teams:</strong> Multiple instructors share facilitation duties</li>
+                <li><strong>TA support:</strong> Teaching assistants help with review and feedback</li>
+                <li><strong>Peer facilitation:</strong> Advanced students help guide newer participants</li>
+                <li><strong>Rotating leadership:</strong> Different facilitators lead different modules</li>
+                <li><strong>Cross-disciplinary:</strong> Experts from different fields co-facilitate</li>
+            </ul>
+        </div>
+
+        <div style="background: #fff3cd; padding: 15px; border-left: 3px solid #ffc107; margin-top: 10px; font-size: 13px; color: #856404;">
+            <strong>Important:</strong> Co-facilitators have significant permissions. Only invite people you trust to help facilitate the group. They can't delete the group or change ownership, but they can send prompts and access all submissions.
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federation - Import Guide from Another Instance</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .guide-card {
+            padding: 20px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .guide-card.from-other-instance {
+            border-left: 4px solid #3b82f6;
+            background: #f0f9ff;
+        }
+        .guide-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .guide-author {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .guide-description {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .guide-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: #999;
+            flex-wrap: wrap;
+        }
+        .instance-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-primary {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+        .import-form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .info-box {
+            background: #e3f2fd;
+            border: 1px solid #2196F3;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #0d47a1;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #856404;
+        }
+        .preview-section {
+            background: white;
+            padding: 20px;
+            border: 2px solid #3b82f6;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .page-list {
+            margin: 15px 0;
+        }
+        .page-item {
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Import Guide from Another Instance</h1>
+            <div style="color: #666; font-size: 14px; margin-top: 5px;">
+                You're at: westwood.edu • Browsing guides across the Cursive federation
+            </div>
+        </div>
+
+        <!-- SEARCH / BROWSE -->
+        <div class="section">
+            <div class="section-title">Discover Guides</div>
+            
+            <div class="info-box">
+                <strong>Federation enabled!</strong> You can import guides from any Cursive instance. The guide becomes a copy on your instance—you can customize vocabulary, timing, and content.
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Search across all federated instances</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" class="form-input" placeholder="Search by topic, author, or keywords..." />
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <strong>Or browse by instance:</strong>
+                <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                    <button class="btn">cursive.com</button>
+                    <button class="btn">stanford.edu</button>
+                    <button class="btn">artcenter.edu</button>
+                    <button class="btn">+ Add custom instance</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BROWSE RESULTS -->
+        <div class="section">
+            <div class="section-title">Available Guides from cursive.com</div>
+
+            <div class="guide-card from-other-instance">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                    <div style="flex: 1;">
+                        <div class="guide-title">Embodied Philosophy: A Walking Curriculum</div>
+                        <div class="guide-author">
+                            by Dr. Alex Chen (@alex@cursive.com)
+                            <span class="instance-badge">cursive.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-description">
+                    A 6-week journey that pairs philosophical readings with physical experiences. Each week includes a place to visit, embodied exercises, and reflective prompts. Topics include Plato's allegory through sculpture, Merleau-Ponty's phenomenology through walking, and Dewey's pragmatism through making.
+                </div>
+
+                <div class="guide-meta">
+                    <span>6 letters</span>
+                    <span>Weekly cadence</span>
+                    <span>Used by 47 groups</span>
+                    <span>CC-BY-SA license</span>
+                    <span>⭐ 4.8/5 (23 reviews)</span>
+                </div>
+
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <button class="btn btn-primary" onclick="document.getElementById('preview').style.display='block'">Preview & import</button>
+                    <button class="btn">View on cursive.com</button>
+                </div>
+            </div>
+
+            <div class="guide-card">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                    <div style="flex: 1;">
+                        <div class="guide-title">Introduction to Ethics (Local)</div>
+                        <div class="guide-author">
+                            by Prof. Sarah Martinez
+                            <span class="instance-badge" style="background: #d4edda; color: #155724;">westwood.edu (local)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-description">
+                    A 10-week introduction to ethical theory and practice, covering utilitarianism, deontology, virtue ethics, and care ethics. Includes case studies and applied scenarios.
+                </div>
+
+                <div class="guide-meta">
+                    <span>10 letters</span>
+                    <span>Weekly cadence</span>
+                    <span>Used by 5 groups</span>
+                </div>
+
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <button class="btn btn-primary">Use this guide</button>
+                    <button class="btn">Preview</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREVIEW & IMPORT -->
+        <div id="preview" class="section" style="display: none;">
+            <div class="section-title">Preview: Embodied Philosophy</div>
+
+            <div class="warning-box">
+                <strong>⚠️ Cross-instance import</strong><br>
+                This guide is from <strong>cursive.com</strong>. You're importing a copy to <strong>westwood.edu</strong>. The original will remain at cursive.com—you'll have your own independent version.
+            </div>
+
+            <div class="preview-section">
+                <h3 style="margin-bottom: 15px;">Guide Contents</h3>
+
+                <div style="margin-bottom: 20px;">
+                    <strong>Author:</strong> Dr. Alex Chen (@alex@cursive.com)<br>
+                    <strong>License:</strong> CC-BY-SA 4.0 (you can modify and share)<br>
+                    <strong>Original URL:</strong> <a href="#">cursive.com/guides/embodied-philosophy</a>
+                </div>
+
+                <div class="page-list">
+                    <div class="page-item">
+                        <strong>Week 1:</strong> Plato's Cave & the Sculpture Garden<br>
+                        <span style="font-size: 13px; color: #666;">📍 Requires: Local sculpture garden or art space</span>
+                    </div>
+                    <div class="page-item">
+                        <strong>Week 2:</strong> Merleau-Ponty & the Phenomenology of Walking<br>
+                        <span style="font-size: 13px; color: #666;">📍 Requires: Walking route (park, urban area, nature trail)</span>
+                    </div>
+                    <div class="page-item">
+                        <strong>Week 3:</strong> Dewey's Learning by Doing<br>
+                        <span style="font-size: 13px; color: #666;">🛠️ Requires: Materials for simple making project</span>
+                    </div>
+                    <div class="page-item">
+                        <strong>Week 4:</strong> The Body in Buddhist Philosophy<br>
+                        <span style="font-size: 13px; color: #666;">🧘 Includes meditation & movement exercises</span>
+                    </div>
+                    <div class="page-item">
+                        <strong>Week 5:</strong> Feminist Epistemology & Standpoint Theory<br>
+                        <span style="font-size: 13px; color: #666;">📚 Reading + discussion prompts</span>
+                    </div>
+                    <div class="page-item">
+                        <strong>Week 6:</strong> Integration - Your Embodied Practice<br>
+                        <span style="font-size: 13px; color: #666;">Final project: design your own embodied learning experience</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="import-form">
+                <h3 style="margin-bottom: 15px;">Customize Before Importing</h3>
+
+                <div class="form-group">
+                    <label class="form-label">Guide name on your instance</label>
+                    <input type="text" class="form-input" value="Embodied Philosophy: A Walking Curriculum" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Customize vocabulary (optional)</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Default: "Letter"</div>
+                            <input type="text" class="form-input" placeholder="e.g., Reflection, Entry" />
+                        </div>
+                        <div>
+                            <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Default: "Submit"</div>
+                            <input type="text" class="form-input" placeholder="e.g., Share, Send" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Schedule</label>
+                    <select class="form-input">
+                        <option selected>Keep original schedule (weekly, 6 weeks)</option>
+                        <option>Bi-weekly (12 weeks)</option>
+                        <option>Custom schedule (I'll set dates manually)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" checked />
+                        <span style="margin-left: 8px; font-size: 14px;">
+                            Keep attribution to Dr. Alex Chen (required by CC-BY-SA license)
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" />
+                        <span style="margin-left: 8px; font-size: 14px;">
+                            Notify Dr. Alex Chen that I'm using this guide (optional)
+                        </span>
+                    </label>
+                </div>
+
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button class="btn btn-primary">Import guide to westwood.edu</button>
+                    <button class="btn" onclick="document.getElementById('preview').style.display='none'">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMPORT BY URL -->
+        <div class="section">
+            <div class="section-title">Import by URL</div>
+
+            <div style="font-size: 14px; color: #666; margin-bottom: 15px;">
+                Have a direct link to a guide? Paste it here to import:
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <input 
+                    type="text" 
+                    class="form-input" 
+                    placeholder="https://cursive.com/guides/embodied-philosophy or https://stanford.edu/guides/ethics-101" 
+                    style="flex: 1;"
+                />
+                <button class="btn btn-primary">Import</button>
+            </div>
+
+            <div style="margin-top: 15px; font-size: 13px; color: #666;">
+                <strong>Supported formats:</strong>
+                <ul style="margin-left: 20px; margin-top: 5px;">
+                    <li>Cursive guide URLs (any instance)</li>
+                    <li>Exported guide JSON files</li>
+                    <li>ActivityPub collections</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="background: #f0f9ff; padding: 15px; border-left: 3px solid #3b82f6; margin-top: 20px; font-size: 13px; color: #1e3a8a;">
+            <strong>How federation works:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li><strong>Discover:</strong> Browse guides across all Cursive instances</li>
+                <li><strong>Import:</strong> Create a copy on your instance (independent from original)</li>
+                <li><strong>Customize:</strong> Change vocabulary, schedule, even content (respect license)</li>
+                <li><strong>Attribution:</strong> Original author credit preserved (required for CC licenses)</li>
+                <li><strong>Updates:</strong> Original author can't change your copy (you control it now)</li>
+                <li><strong>Network effects:</strong> Good guides spread across instances organically</li>
+            </ul>
+        </div>
+
+        <div style="background: #fff3cd; padding: 15px; border-left: 3px solid #ffc107; margin-top: 10px; font-size: 13px; color: #856404;">
+            <strong>License matters:</strong> Respect the guide's license. CC-BY-SA means you can modify and share, but must keep attribution and use the same license. Some guides may be "All Rights Reserved"—you can import and use, but can't redistribute modified versions.
+        </div>
+
+    </div>
+</body>
+</html>

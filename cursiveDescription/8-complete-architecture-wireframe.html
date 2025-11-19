@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursive System Architecture - Complete View</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .architecture-diagram {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .layer {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .layer:last-child {
+            border-bottom: none;
+        }
+        
+        .layer-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .primitives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .primitive-card {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .primitive-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .primitive-desc {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .flow-diagram {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 2;
+        }
+        
+        .use-case {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .use-case-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .persona {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .value-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .value-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .value-desc {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border: 1px solid #2196F3;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #0d47a1;
+        }
+        
+        .phase {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .phase-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="hero">
+            <h1>Cursive: Convivial Infrastructure for Embodied Learning</h1>
+            <p>A federated protocol for human correspondence, dialogue, and collaborative making</p>
+        </div>
+
+        <!-- CORE PRIMITIVES -->
+        <div class="architecture-diagram">
+            <h2 style="margin-bottom: 20px; font-size: 24px;">Core Primitives</h2>
+
+            <div class="layer">
+                <div class="layer-title">Layer 1: Content (Portable)</div>
+                <div class="primitives-grid">
+                    <div class="primitive-card">
+                        <div class="primitive-name">Letter</div>
+                        <div class="primitive-desc">
+                            1+ pages of writing/drawing. Self-contained, exportable as JSON/Markdown. Can be private, public, or shared via magic link.
+                        </div>
+                    </div>
+                    <div class="primitive-card">
+                        <div class="primitive-name">Guide</div>
+                        <div class="primitive-desc">
+                            Sequence of letters + schedule + facilitation settings. Importable/exportable across instances. Has vocabulary, license, attribution.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">Layer 2: Identity (Federated)</div>
+                <div class="primitives-grid">
+                    <div class="primitive-card">
+                        <div class="primitive-name">Identity</div>
+                        <div class="primitive-desc">
+                            alex@cursive.com or bilal@westwood.edu. Works across all instances. ActivityPub compatible. Has public profile, RSS feed.
+                        </div>
+                    </div>
+                    <div class="primitive-card">
+                        <div class="primitive-name">Instance</div>
+                        <div class="primitive-desc">
+                            cursive.com, westwood.edu, etc. Self-hostable, federated. Instances can share guides, subscribe to feeds, discover users.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">Layer 3: Organization (Groups)</div>
+                <div class="primitives-grid">
+                    <div class="primitive-card">
+                        <div class="primitive-name">Group</div>
+                        <div class="primitive-desc">
+                            A cohort using a guide. Has facilitators (owner + co-facilitators) and participants. Lives on one instance but can use guides from others.
+                        </div>
+                    </div>
+                    <div class="primitive-card">
+                        <div class="primitive-name">Mail</div>
+                        <div class="primitive-desc">
+                            Delivery system for letters. Can be in-app notifications, actual email, or both. Supports scheduling, magic links, postponing.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">Layer 4: Context (Knowledge Graph)</div>
+                <div class="primitives-grid">
+                    <div class="primitive-card">
+                        <div class="primitive-name">Knowledge Graph</div>
+                        <div class="primitive-desc">
+                            Entities (people, concepts, places) extracted from letters. Opt-in, privacy-preserving. Enables discovery and connections.
+                        </div>
+                    </div>
+                    <div class="primitive-card">
+                        <div class="primitive-name">Whispers</div>
+                        <div class="primitive-desc">
+                            AI suggestions that appear in chrome (not in content). Connection suggestions, related concepts, embodied activities.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- USER FLOWS -->
+        <div class="architecture-diagram">
+            <h2 style="margin-bottom: 20px; font-size: 24px;">Complete User Flows</h2>
+
+            <div class="use-case">
+                <div class="use-case-title">
+                    <span class="persona">Participant</span>
+                    Daily Writing & Responding to Prompts
+                </div>
+                <div class="flow-diagram">
+1. Wake up → Open Today page (/@alex/main/today/2025-10-20)
+2. See new prompt (full-width transclusion): "Sculpture Garden Visit"
+3. Prompt is geocached → unlock by visiting physical location
+4. At location → prompt unlocks → "Start writing"
+5. Write in inline editor or open full worksheet
+6. Add location tag: "Written at Westwood Sculpture Garden"
+7. Submit when ready → snapshot goes to facilitator's Review
+8. Facilitator requests to feature → Alex approves
+9. Letter appears in Group gallery (consent-based curation)
+10. Letter also published to public profile → ActivityPub followers see it
+                </div>
+            </div>
+
+            <div class="use-case">
+                <div class="use-case-title">
+                    <span class="persona">Facilitator</span>
+                    Creating & Running a Course
+                </div>
+                <div class="flow-diagram">
+1. Create guide at westwood.edu/guides/new
+2. Add 6 letter templates (one with geocached unlock)
+3. Set schedule: weekly, Mondays at 9am, 1-day confirmation window
+4. Invite co-facilitator (Prof. Morgan) → they can help send/review
+5. Create group → "Philosophy 101 Fall 2025"
+6. Assign guide to group → letters queue up on schedule
+7. Oct 27: Get confirmation request → "Send next letter tomorrow?"
+8. Confirm → letter sent to all 32 participants
+9. Submissions arrive → appear in Review workspace
+10. Leave margin notes (private comments)
+11. Request to feature excellent work → student approves
+12. Participant suggests new prompt → review in Suggestions tab
+13. Approve suggestion → becomes next scheduled letter
+14. End of semester → export all data, analytics, featured work
+                </div>
+            </div>
+
+            <div class="use-case">
+                <div class="use-case-title">
+                    <span class="persona">Creator</span>
+                    Publishing & Sharing a Guide
+                </div>
+                <div class="flow-diagram">
+1. Create guide at cursive.com: "Embodied Philosophy"
+2. Set license: CC-BY-SA (others can adapt with attribution)
+3. Publish to guide marketplace
+4. Dr. Chen at stanford.edu discovers it via federation
+5. Imports to stanford.edu → customizes vocabulary
+6. Runs with 50 students → provides feedback
+7. You iterate on guide based on cross-instance feedback
+8. Guide spreads organically: used by 15 institutions
+9. Earn via marketplace: $10/use for institutional licenses
+10. Guide becomes standard curriculum → network effects
+                </div>
+            </div>
+
+            <div class="use-case">
+                <div class="use-case-title">
+                    <span class="persona">Personal Writer</span>
+                    Public Writing & Correspondence
+                </div>
+                <div class="flow-diagram">
+1. Write letter in daily journal (private by default)
+2. Decide to make public → toggle "Public" → appears at cursive.com/alex/letter-slug
+3. Share direct link OR let people discover via:
+   - ActivityPub (Mastodon users follow @alex@cursive.com)
+   - RSS feed (cursive.com/alex/feed.rss)
+   - Knowledge graph discovery (opt-in)
+4. Sarah at westwood.edu finds your work via semantic search
+5. Requests to connect → you approve → correspondence begins
+6. Send letter via magic link → works even if recipient has no account
+7. Recipient reads, decides to join → onboarding via that letter
+8. Over time: build corpus at cursive.com/alex/public/
+9. Export anytime as static HTML → host on your own domain
+10. Your work exists beyond any single platform
+                </div>
+            </div>
+        </div>
+
+        <!-- VALUES IN ACTION -->
+        <div class="architecture-diagram">
+            <h2 style="margin-bottom: 20px; font-size: 24px;">Values → Mechanical Expression</h2>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-title">🤝 Consent & Agency</div>
+                    <div class="value-desc">
+                        • Letters private by default<br>
+                        • Gallery requires approval<br>
+                        • Can postpone prompts<br>
+                        • Export data anytime
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-title">🌍 Embodiment</div>
+                    <div class="value-desc">
+                        • Geocached prompts<br>
+                        • Location tagging<br>
+                        • Drawing/ink fidelity<br>
+                        • "Go outside" task patterns
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-title">🎨 Human Craft</div>
+                    <div class="value-desc">
+                        • AI whispers, not writes<br>
+                        • Facilitator must confirm sends<br>
+                        • Curation is explicit<br>
+                        • Sacred pages principle
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-title">🔓 Openness</div>
+                    <div class="value-desc">
+                        • Open source core<br>
+                        • Portable formats<br>
+                        • Federation protocol<br>
+                        • ActivityPub native
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-title">🐌 Slowness</div>
+                    <div class="value-desc">
+                        • No gamification<br>
+                        • Offline journaling<br>
+                        • Contemplative pace<br>
+                        • Low-tech mode option
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-title">🔍 Transparency</div>
+                    <div class="value-desc">
+                        • Knowledge graph visible<br>
+                        • Provenance always shown<br>
+                        • Attribution required<br>
+                        • Data export/audit
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMPLEMENTATION PHASES -->
+        <div class="architecture-diagram">
+            <h2 style="margin-bottom: 20px; font-size: 24px;">Implementation Roadmap</h2>
+
+            <div class="phase">
+                <div class="phase-title">Phase 0: Foundation (Now - 3 months)</div>
+                <ul style="margin-left: 20px; font-size: 14px; color: #666;">
+                    <li>Letter format as portable JSON ✓</li>
+                    <li>Today page with full-width transclusion ✓</li>
+                    <li>Group facilitation + review workspace ✓</li>
+                    <li>Export/import in settings ✓</li>
+                    <li>Magic link sharing ✓</li>
+                    <li>Basic guide creation ✓</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <div class="phase-title">Phase 1: Open Backend (3-6 months)</div>
+                <ul style="margin-left: 20px; font-size: 14px; color: #666;">
+                    <li>Open source cursive-core (MIT license)</li>
+                    <li>Self-hosting guide (Docker)</li>
+                    <li>REST API for extensions</li>
+                    <li>Public profiles with RSS</li>
+                    <li>Geocached prompts</li>
+                    <li>Comment system (margin notes)</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <div class="phase-title">Phase 2: Federation (6-12 months)</div>
+                <ul style="margin-left: 20px; font-size: 14px; color: #666;">
+                    <li>Instance registration</li>
+                    <li>Cross-instance guide sharing</li>
+                    <li>Webhooks for federation</li>
+                    <li>ActivityPub integration</li>
+                    <li>OAuth identity (cursive.com as provider)</li>
+                    <li>Guide marketplace</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <div class="phase-title">Phase 3: Context Layer (Year 2)</div>
+                <ul style="margin-left: 20px; font-size: 14px; color: #666;">
+                    <li>Knowledge graph (opt-in)</li>
+                    <li>Semantic discovery</li>
+                    <li>Cross-instance connections</li>
+                    <li>Advanced whispers</li>
+                    <li>Place-based context</li>
+                    <li>Co-editing modes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BUSINESS MODEL -->
+        <div class="info-box">
+            <strong>💰 Sustainable Business Model (Discourse-style)</strong>
+            <div style="margin-top: 15px;">
+                <strong>Free tier (cursive.com):</strong> Unlimited personal letters, basic guides, public profiles<br><br>
+                
+                <strong>Creator ($10/mo):</strong> Unlimited guides, marketplace selling, advanced whispers<br><br>
+                
+                <strong>Institution ($500-2000/mo):</strong> Custom domain, managed hosting, SSO, white-label, support<br><br>
+                
+                <strong>Marketplace (15% fee):</strong> Creators sell guides, we handle payments/licensing<br><br>
+                
+                <strong>Open source core:</strong> Anyone can self-host for free, but most pay for convenience
+            </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="architecture-diagram">
+            <h2 style="margin-bottom: 15px; font-size: 24px;">The Complete System</h2>
+            
+            <div style="font-size: 16px; line-height: 1.8; color: #333;">
+                Cursive is infrastructure for <strong>learning by doing together</strong>. It combines:
+                <br><br>
+                • <strong>Letters</strong> (portable, human-authored content)<br>
+                • <strong>Guides</strong> (shareable curricula)<br>
+                • <strong>Groups</strong> (cohort-based facilitation)<br>
+                • <strong>Federation</strong> (cross-instance collaboration)<br>
+                • <strong>Context</strong> (privacy-preserving discovery)<br>
+                • <strong>Embodiment</strong> (location-based, offline-capable)<br>
+                <br>
+                All designed around values of consent, craft, slowness, and openness.
+                <br><br>
+                It's not a platform—it's a <strong>protocol</strong>. Like email for thoughtful correspondence.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Interface Wireframe</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .guide-meta {
+            color: #666;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .tab {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #666;
+        }
+        .tab.active {
+            background: #f0f0f0;
+            color: #000;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .page-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .page-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        .page-item:hover {
+            background: #f5f5f5;
+        }
+        .page-info {
+            flex: 1;
+        }
+        .page-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .page-preview {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+        }
+        .page-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .btn-primary {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+        .annotation {
+            background: #f9f9f9;
+            padding: 12px;
+            margin-top: 20px;
+            border-left: 3px solid #ddd;
+            font-size: 13px;
+            color: #666;
+        }
+        .flow-diagram {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.8;
+            color: #666;
+        }
+        .vocab-section {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .vocab-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Philosophy 101: Foundations</h1>
+            <div class="guide-meta">
+                A guide by Dr. Sarah Chen • 12 pages • Used by 3 groups
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active">Pages</div>
+            <div class="tab">Settings</div>
+            <div class="tab">Vocabulary</div>
+            <div class="tab">Publish</div>
+        </div>
+
+        <!-- PAGES TAB: The guide as template -->
+        <div class="section">
+            <h2 style="margin-bottom: 15px;">Guide Pages (Templates)</h2>
+            
+            <div class="page-list">
+                <div class="page-item">
+                    <div class="page-info">
+                        <div class="page-title">1. The Examined Life</div>
+                        <div class="page-preview">"Socrates said the unexamined life is not worth living. Begin by examining..."</div>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn">Edit template</button>
+                        <button class="btn">Preview</button>
+                    </div>
+                </div>
+
+                <div class="page-item">
+                    <div class="page-info">
+                        <div class="page-title">2. Truth vs. Opinion</div>
+                        <div class="page-preview">"What's the difference between believing something and knowing it?"</div>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn">Edit template</button>
+                        <button class="btn">Preview</button>
+                    </div>
+                </div>
+
+                <div class="page-item">
+                    <div class="page-info">
+                        <div class="page-title">3. The Cave Allegory</div>
+                        <div class="page-preview">"Read Plato's allegory. What shadows are you seeing?"</div>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn">Edit template</button>
+                        <button class="btn">Preview</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" style="margin-top: 15px;">+ Add new page to guide</button>
+        </div>
+
+        <!-- VOCABULARY TAB -->
+        <div class="section">
+            <h2 style="margin-bottom: 15px;">Custom Vocabulary</h2>
+            <div class="vocab-section">
+                <div class="vocab-item">
+                    <span style="color: #999;">Default: "Exercise"</span>
+                    <span><input type="text" value="Reflection" style="padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px;" /></span>
+                </div>
+                <div class="vocab-item">
+                    <span style="color: #999;">Default: "Submit"</span>
+                    <span><input type="text" value="Share with teacher" style="padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px;" /></span>
+                </div>
+                <div class="vocab-item">
+                    <span style="color: #999;">Default: "Gallery"</span>
+                    <span><input type="text" value="Class anthology" style="padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px;" /></span>
+                </div>
+            </div>
+            <div style="font-size: 13px; color: #666;">
+                Groups using this guide will see your custom terms. Leave blank to use defaults.
+            </div>
+        </div>
+
+        <div class="annotation">
+            <strong>Design note:</strong> A Guide is like an application template. It contains a sequence of pages (prompts/exercises). When a facilitator "runs" this guide in a group, it generates worksheet instances for participants. The guide itself is reusable—you can use it across multiple groups, fork it, or publish it to a library.
+        </div>
+
+        <div class="annotation" style="margin-top: 10px;">
+            <strong>The flow:</strong>
+            <div class="flow-diagram">
+Guide (template)
+    ↓
+Facilitator uses in Group
+    ↓
+"Send next page" → creates mail_item
+    ↓
+Participant clicks "Begin" → creates worksheet section
+    ↓
+Worksheet lives in group folder (not in guide)
+    ↓
+Submission creates snapshot → goes to Review
+    ↓
+If curated → goes to Gallery (with consent)
+            </div>
+        </div>
+
+        <div class="annotation" style="margin-top: 10px;">
+            <strong>White-label implications:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li><strong>Domain independence:</strong> A guide URL could be cursive.ai/guides/phil101 OR school.edu/guides/phil101</li>
+                <li><strong>Custom vocabulary:</strong> Each instance can rename primitives (exercise→reflection, gallery→anthology)</li>
+                <li><strong>Forking:</strong> Anyone can fork a published guide, modify it, and run their own version</li>
+                <li><strong>Cross-instance:</strong> A guide published on cursive.ai could be imported/used on school.edu</li>
+            </ul>
+        </div>
+
+        <div class="annotation" style="margin-top: 10px;">
+            <strong>Values alignment:</strong>
+            <ul style="margin-top: 8px; margin-left: 20px;">
+                <li><strong>Human curation:</strong> The guide is human-authored, not generated</li>
+                <li><strong>Renamability:</strong> Vocabulary respects different contexts (classroom vs salon vs newsroom)</li>
+                <li><strong>Slowness:</strong> Pages are released over time, not all at once</li>
+                <li><strong>Transparency:</strong> Students see who created the guide, can see the template</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

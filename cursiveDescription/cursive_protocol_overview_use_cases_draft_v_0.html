@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cursive Protocol — Overview & Use‑Cases (Draft v0.1)</title>
+  <style>
+    :root{
+      --bg:#0f1115;--panel:#171a21;--ink:#e5e7eb;--muted:#959bb3;--accent:#7dd3fc;--accent2:#a78bfa;--good:#34d399;--warn:#f59e0b;--bad:#f87171;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.4;margin:0}
+    header{max-width:1120px;margin:32px auto 16px;padding:0 20px}
+    header h1{font-size:clamp(28px,3.6vw,44px);margin:0 0 6px}
+    header p.lede{color:var(--muted);max-width:72ch}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(12,minmax(0,1fr));max-width:1120px;margin:0 auto;padding:0 20px}
+    section.card{grid-column:1/-1;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 20px}
+    h2{font-size:clamp(20px,2.4vw,28px);margin:0 0 8px}
+    h3{font-size:18px;margin:16px 0 6px}
+    p,li{color:#d3d6e3}
+    .two{grid-column:span 6}
+    .three{grid-column:span 4}
+    code,kbd,pre{font-family:var(--mono)}
+    pre{background:#0b0d12;border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:12px;overflow:auto}
+    .tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.16);margin-right:6px;color:#cbd5e1}
+    .tag.accent{border-color:rgba(125,211,252,.5);color:#a5f3fc}
+    .tag.purple{border-color:rgba(167,139,250,.5);color:#ddd0ff}
+    .tag.good{border-color:rgba(52,211,153,.5);color:#d1fae5}
+    .stack{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+    .cols{columns:2;gap:24px}
+    details{background:#0b0d12;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 12px;margin:10px 0}
+    details>summary{cursor:pointer;color:#c7d2fe}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:#121520;border:1px dashed rgba(255,255,255,.12);color:#bcd}
+    .diagram{border:1px dashed rgba(255,255,255,.18);border-radius:12px;padding:12px;margin:8px 0;background:linear-gradient(0deg,rgba(255,255,255,.02),rgba(255,255,255,.01))}
+    .kbd{background:#11131a;border:1px solid rgba(255,255,255,.2);padding:2px 6px;border-radius:6px;font-family:var(--mono)}
+    .foot{color:var(--muted);font-size:12px;margin-top:8px}
+    a{color:#a5f3fc}
+    @media (max-width:900px){.two,.three{grid-column:1/-1}.cols{columns:1}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cursive Protocol — Core + Profiles (v0.1 Draft)</h1>
+    <p class="lede">One protocol, two profiles. <strong>Core</strong> defines portable pages, embeddings, routing hints, exports, and explainability. <strong>Solo</strong> uses Core for personal/authoring apps (pages that route). <strong>Cohort</strong> adds signed curation, invitations, and capability‑gated collaboration. Feeds (RSS/JSON Feed) carry your galleries today; a <em>signed Cursive Curation Manifest</em> (CCM) preserves rationale & provenance.
+    </p>
+    <div class="stack">
+      <span class="tag accent">Portable</span>
+      <span class="tag purple">Human‑first</span>
+      <span class="tag good">Convivial</span>
+      <span class="tag">Local‑first</span>
+      <span class="tag">Explainable</span>
+      <span class="tag">Interoperable</span>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <section class="card">
+      <h2>Layered Stack</h2>
+      <div class="diagram">
+        <pre><code>CURSIVE PROTOCOL v0.1
+
+Core (required for all)
+  • Cursive Page (content + ink + provenance)
+  • Embedding Header (vector + model metadata)
+  • Routing Hints (CRL: deterministic expressions)
+  • Explainability (Because‑panel metadata)
+  • Export (.cursive.zip) + Feed mapping (RSS/JSON Feed)
+
+Profiles
+  SOLO   → Core only (pages that route; personal/learning tools)
+  COHORT → Core + Curation Manifest (CCM), Invitations, Capabilities
+</code></pre>
+      </div>
+      <p class="foot">Conformance: Level 0 (render pages) → Level 1 (Solo) → Level 2 (Cohort).</p>
+    </section>
+
+    <section class="card two">
+      <h2>Core Artifacts</h2>
+      <h3>1) Cursive Page (excerpt)</h3>
+      <pre><code class="language-json">{
+  "version": "1.0",
+  "content": { /* TipTap JSON (human‑authored) */ },
+  "ink_strokes": [ /* optional handwriting data */ ],
+  "provenance": {
+    "author_id": "did:example:alice",
+    "created_at": "2025-11-05T10:04:00Z",
+    "fingerprint": {"confidence": 0.92, "idle_pauses": [5234,8923]}
+  },
+  "embedding": {
+    "vector": [0.012, -0.334, ...],
+    "model": "text-embedding-3-small",
+    "version": "2025-05",
+    "scope": "content"
+  },
+  "routing_hints": {
+    "semantic_triggers": [
+      {"if_similar_to": ["tag:advanced"], "distance": 0.22, "then": "route:office_hours"}
+    ],
+    "gap_detection": {
+      "required_topics": ["integration_basics","u_substitution"],
+      "if_gap_found": "route:fundamentals"
+    }
+  },
+  "explainability": {"why": "Struggle markers & topic mismatch detected."}
+}</code></pre>
+
+      <h3>2) Routing DSL (CRL) — deterministic, sandboxed</h3>
+      <pre><code class="language-yaml">spec: cursive-route-lang/1.0
+when: trigger == "continue"
+if:   embedding.distance(page, topic("integration_basics")) &gt;= 0.5
+then:
+  - action: find_similar
+    params: { corpus: "cohort_pages", max_distance: 0.35, limit: 3,
+              filters: ["has_tag('peer_example')"] }
+  - action: create_page
+    template: "guided_practice"
+    fields:
+      peer_examples: $find_similar.results
+      focus_topic:   "integration_basics"
+  - action: explain
+    message: "Routed to guided practice because your page is semantically far from prerequisite topics."
+</code></pre>
+
+      <h3>3) Export & Feeds</h3>
+      <pre><code class="language-json">.cursive.zip/
+  manifest.json
+  pages/*.json
+  ink/*.ndjson
+  sessions/*.ndjson
+
+// Feed (JSON Feed 1.1) with Cursive extension
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Studio Gallery — Week 2",
+  "items": [ {"id":"…","url":"https://…/page/abc","title":"Alice — Shadow Study"} ],
+  "cursive": { "manifest": "https://…/gallery.ccm.json", "signature": "…JWS…" }
+}
+</code></pre>
+    </section>
+
+    <section class="card three">
+      <h2>Cohort Extensions</h2>
+      <h3>Signed Curation Manifest (CCM)</h3>
+      <pre><code class="language-json">{
+  "ccm": "1.0",
+  "gallery": {
+    "id": "urn:gallery:week2",
+    "title": "Week 2 — Light & Shadow",
+    "items": [
+      {
+        "page": "https://example.org/p/abc",
+        "placement": "featured",
+        "order_index": 1,
+        "rationale": "Exemplary edge transitions and negative space.",
+        "evidence": [{"rel":"poh","href":"https://…/evidence/abc.json"}]
+      }
+    ]
+  },
+  "curator": {"id": "did:example:salih", "name": "Salih"},
+  "signature": {"alg":"Ed25519","jws":"…"}
+}
+</code></pre>
+      <h3>Invitations & Capabilities</h3>
+      <p>Invitations schedule prompts (relative/recurring). Capability tokens (e.g., UCAN) gate side‑effects like tagging peers or posting to a gallery.</p>
+      <pre><code class="language-json">{
+  "invite": {"group":"studio‑A","release":"2025-11-06","page":"gesture-warmup"},
+  "capability": {"can":"tag_peer","aud":"did:example:cohortA","exp":"2025-12-01"}
+}
+</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Use‑Case #1 — Drawing Cohort Game + Curated Gallery</h2>
+      <p><span class="pill">Profile: Cohort</span> <span class="pill">Feeds + CCM</span> <span class="pill">Because‑panel</span></p>
+      <div class="cols">
+        <div>
+          <h3>Goal</h3>
+          <p>Weekly drawing prompts, playful scoring, and a <em>human‑curated</em> public gallery with rationales instead of likes.</p>
+          <h3>Flow</h3>
+          <ol>
+            <li>Host releases <em>Prompt: Shadow Studies</em> → invitations land in participants’ Today view.</li>
+            <li>Participants draw (ink captured); tools can <em>suggest</em> (never write) via the whisper panel.</li>
+            <li>Submissions appear in the review queue → co‑facilitators curate with short “Because …” notes.</li>
+            <li>Gallery publishes as <strong>JSON Feed/RSS</strong> for instant syndication; a signed <strong>CCM</strong> preserves placement, order, and rationale.</li>
+            <li>Embeddable widget renders the gallery anywhere; if CCM present, it upgrades to show badges & rationales.</li>
+          </ol>
+          <details><summary>Why this matters</summary>
+            <p>Replaces bottom‑brain likes with intentional, explainable curation; keeps artifacts portable via feeds and verifiable via signatures.</p>
+          </details>
+        </div>
+        <div>
+          <h3>Artifacts</h3>
+          <ul>
+            <li>Cursive Pages with ink + PoH metrics</li>
+            <li>CCM (signed placements + rationales)</li>
+            <li>JSON Feed/RSS for wide distribution</li>
+            <li>Route DSL for playful “next” (e.g., unlock harder prompts after consistency)</li>
+          </ul>
+          <h3>Example: Curator rationale (Because‑panel)</h3>
+          <pre><code>Because: Your edge control on the seated figure shows deliberate value grouping.
+Next: Try 5 one‑minute gestures focusing only on negative shapes.</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Use‑Case #2 — Self‑Navigating Calculus Book + Help‑Tag Tool</h2>
+      <p><span class="pill">Profile: Solo → Cohort</span> <span class="pill">Routing DSL + Embeddings</span> <span class="pill">Chrome Tool (capability‑gated)</span></p>
+      <div class="cols">
+        <div>
+          <h3>Goal</h3>
+          <p>A living calculus text that routes you to prerequisites when you struggle, then lets you tag a classmate for help via a Chrome tool.</p>
+          <h3>Flow</h3>
+          <ol>
+            <li>You work an <em>Integration</em> exercise; your page’s embedding drifts far from <code>integration_basics</code>.</li>
+            <li>CRL fires: routes to a guided practice page and finds 3 semantically similar peer examples.</li>
+            <li>Click <span class="kbd">Ask a peer</span> → Chrome tool prompts you to tag a classmate; a capability token allows the ping without exposing your data.</li>
+            <li>Peer gets an invitation to comment; their notes appear as a <em>tool card</em>, not a write, and you explicitly apply what helps.</li>
+          </ol>
+          <details><summary>Privacy & Sovereignty</summary>
+            <p>Embeddings carry model metadata + rotate over time; help‑tags are explicit, capability‑scoped actions; no background writes.</p>
+          </details>
+        </div>
+        <div>
+          <h3>CRL snippet (gap → route → explain)</h3>
+          <pre><code>if embedding.distance(page, topic("integration_basics")) &gt;= 0.5 then
+  create_page template:"guided_practice" fields:{ focus:"integration_basics" }
+  find_similar corpus:"cohort_pages" filters:["has_tag('peer_example')"]
+  explain "We routed you to fundamentals because your solution diverged semantically from key patterns."
+</code></pre>
+          <h3>Help‑tag envelope</h3>
+          <pre><code>{
+  "action":"tag_peer",
+  "page":"https://…/p/xyz",
+  "peer":"did:example:bob",
+  "cap":{ "can":"tag_peer","aud":"did:example:cohortA","exp":"2025-12-01" }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Use‑Case #3 — Field Journal → “Slow Web Zine”</h2>
+      <p><span class="pill">Profile: Solo & Cohort</span> <span class="pill">GPS + Daily Rhythm + Transclusion</span> <span class="pill">Feed‑first distribution</span></p>
+      <div class="cols">
+        <div>
+          <h3>Goal</h3>
+          <p>Local field notes (sketches, photos, species lists) roll up into a monthly, human‑curated zine. Proof‑of‑human preserves trust; feeds distribute broadly.</p>
+          <h3>Flow</h3>
+          <ol>
+            <li>Writers sketch daily; Today page <em>transcludes</em> prompts and personal notes.</li>
+            <li>CRL clusters pages by place & theme; curators assemble a zine issue with rationales.</li>
+            <li>Publish as JSON Feed/RSS + signed CCM; communities embed the gallery widget on their sites.</li>
+            <li>Export the whole issue as <code>.cursive.zip</code> for archival and offline printing.</li>
+          </ol>
+        </div>
+        <div>
+          <h3>What this leverages</h3>
+          <ul>
+            <li>Daily rhythm + transclusion (lightweight planning)</li>
+            <li>PoH + GPS anchors (placeful authenticity)</li>
+            <li>Signed curation (explainable editorial voice)</li>
+            <li>Feed‑first interoperability (no lock‑in)</li>
+          </ul>
+          <h3>CCM rationale example</h3>
+          <pre><code>Because: Nadia’s chestnut study triangulates with Ahmed’s soil note—together they reveal a seasonal water table shift.
+Next: Invite both to co‑author the “Autumn Hydrology” spread.</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="card two">
+      <h2>Security, Privacy, Hospitality</h2>
+      <ul>
+        <li><strong>No background writes</strong> — tools propose; humans apply.</li>
+        <li><strong>Because‑panel</strong> everywhere routing/curation acts.</li>
+        <li><strong>Capability‑gated side effects</strong> (e.g., help‑tags), auditable trails.</li>
+        <li><strong>Embeddings labeled</strong> with model/scope/version; rotation supported.</li>
+        <li><strong>PoH</strong> badges summarize process; raw signals shared only with consent.</li>
+      </ul>
+    </section>
+
+    <section class="card three">
+      <h2>Conformance Levels</h2>
+      <ol>
+        <li><strong>Level 0 — Reader</strong>: parse/render Cursive Pages; ignore hints.</li>
+        <li><strong>Level 1 — Solo</strong>: implement embeddings + CRL + explainability.</li>
+        <li><strong>Level 2 — Cohort</strong>: add CCM, invitations, capabilities.</li>
+      </ol>
+      <p class="foot">Feeds work at all levels; CCM upgrades readers that support it.</p>
+    </section>
+
+    <section class="card">
+      <h2>Why this changes how we publish</h2>
+      <p>HTML made documents link. Cursive makes documents understand themselves, route responsibly, and enter <em>explainable, human‑curated</em> public space without surrendering sovereignty. It’s the web’s missing third move: from links → feeds → <strong>signed, because‑first curation</strong>.</p>
+    </section>
+
+  </div>
+
+  <footer class="grid" style="margin-bottom:32px">
+    <section class="card">
+      <p class="foot">Draft v0.1 — For discussion & iteration. Replace example DIDs/URLs before publication.</p>
+    </section>
+  </footer>
+</body>
+</html>
