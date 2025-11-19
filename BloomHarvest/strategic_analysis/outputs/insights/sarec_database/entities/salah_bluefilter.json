@@ -1,0 +1,428 @@
+{
+  "entity_id": "salah_bluefilter",
+  "interview_date": "2024-09-03",
+  "program": "ACSI3_Accelerator",
+  "business": {
+    "name": "Blue Filter",
+    "sector": "WaterTreatment_Humanitarian_CleanTech",
+    "country": "Palestine_Gaza_USA",
+    "location": "Currently USA (considering Jordan, Oman, Portugal relocation)",
+    "stage": "active_humanitarian_gaza_operations",
+    "technology": "Water purification using plant seeds + eggshells (natural, non-chemical)",
+    "mission": "Safe drinking water in crisis zones, especially Gaza"
+  },
+  "financial_metrics": {
+    "monthly_revenue": {
+      "value": null,
+      "status": "humanitarian_crisis_operations",
+      "note": "Running water distribution campaign in Gaza. Not traditional revenue model - fellowship stipends + campaign fundraising",
+      "confidence": 0.88
+    },
+    "funding_sources": [
+      {
+        "source": "Fellowships",
+        "type": "Green finance, climate programs (Netherlands, Italy, Germany)",
+        "status": "Provides symbolic salary, allows continuation",
+        "note": "Programs online but Salah based in USA"
+      },
+      {
+        "source": "Water distribution campaign",
+        "campaign_1": "Completed (distributed water in Gaza)",
+        "campaign_2": "Ongoing (started 2 weeks ago, currently active)",
+        "note": "Fundraising to distribute clean water in Gaza"
+      },
+      {
+        "source": "Accelerator prizes",
+        "examples": "Qatar, Saudi Arabia, Japan, Europe",
+        "status": "Competitive but accessible",
+        "note": "Financial benefits from international accelerator participation"
+      }
+    ],
+    "company_status": {
+      "gaza_company": "Had company in Gaza - DESTROYED",
+      "remaining_assets": "Some filters/equipment stored in safe places, being reused/recycled",
+      "water_stations": "Some remaining stations extract water from wells, distribute directly (causing diseases)",
+      "confidence": 0.94
+    }
+  },
+  "sentiment_analysis": {
+    "overall_interview_sentiment": {
+      "score": 0.65,
+      "label": "trapped_persevering_family_separation_trauma",
+      "confidence": 0.92
+    },
+    "topic_sentiments": {
+      "visa_immigration_trapped": {
+        "score": 0.35,
+        "label": "imprisoned_uncertain_desperate",
+        "evidence": [
+          "In USA but can't get green card (applied 8 months ago, takes time)",
+          "If leaves USA, might not be able to return - even with green card",
+          "Told: If you know a senator, they can speed up your application",
+          "Lost 15 international invitations because can't travel",
+          "December: 3 invitations (Saudi, Qatar, Italy) - can't attend",
+          "'I feel like I'm imprisoned in a big prison, don't know how to leave'",
+          "Considering Jordan (wife already there - got her out of Gaza), Oman, Portugal, Europe"
+        ],
+        "confidence": 0.96
+      },
+      "family_separated_gaza": {
+        "score": 0.30,
+        "label": "deeply_painful_daily_trauma",
+        "evidence": [
+          "Wife: Escaped Gaza to Jordan (alhamdulillah)",
+          "Rest of family: STILL IN GAZA",
+          "Sister + brother got diseases from polluted water (first diseases in family)",
+          "Bilal started call with dua for Gaza - Salah said: 'We pray for them every day, hearts hurt, but don't know how to help'",
+          "Salah stays in touch with families in Gaza, shares baby photos, they share theirs - 'This is important to them, they're happy we talk'",
+          "Feels if he had more relationships like this, would feel Gaza cause is HIS cause, not just 'genocide bad'"
+        ],
+        "confidence": 0.96
+      },
+      "water_crisis_gaza": {
+        "score": 0.40,
+        "label": "dire_creative_solutions_limited",
+        "evidence": [
+          "Water in Gaza: contaminated, not suitable for drinking or human consumption",
+          "Using damaged wells with broken solar panels (30% power instead of 100%)",
+          "Solar panels hidden under tents (if drones spot them, targeted)",
+          "5-6 panels combined in hidden ways to pump water",
+          "Water contaminated with bombs, sewage",
+          "Diseases spreading from water (sister + brother sick)",
+          "Sea access: DANGEROUS - Israelis kill anyone approaching (even for food drops)",
+          "Egypt + Jordan border: Closed by 'our own people' - Salah very critical"
+        ],
+        "confidence": 0.98
+      },
+      "blue_filter_gaza_operations": {
+        "score": 0.70,
+        "label": "working_constrained_not_everyone_reached",
+        "evidence": [
+          "Blue Filter devices EXIST in Gaza, being used NOW",
+          "But: 'Not everyone drinks clean water - only areas we can reach'",
+          "Filter uses plant seeds (olive, date pits) + eggshells (treated, sun-dried to kill salmonella)",
+          "Natural materials, not chemical (chemicals banned from entering)",
+          "Materials sourced in Gaza: eggshells collected from anyone using eggs, seeds from beans/lentils/hummus in aid",
+          "Process requires treating materials naturally (sun exposure for eggshells)",
+          "Running campaigns to distribute, but limited by access"
+        ],
+        "confidence": 0.94
+      },
+      "arab_governments_betrayal": {
+        "score": 0.20,
+        "label": "angry_disappointed_betrayed",
+        "evidence": [
+          "'Whole world wants to help except Arabs. Except Arabs unfortunately.'",
+          "'Jordan and Egypt - strange policies. Very strange. Put a bad mark on them'",
+          "On Egypt blocking aid: 'In beginning of war, maybe could say maybe, but things became clear. But clearer than this? NOTHING. This is evil. This is Satan walking on earth, destroying, killing, laughing in our faces'",
+          "On people who still haven't figured it out: 'How are people still trying to imagine there's something political to gain? I don't understand'",
+          "When aid reaches border: 'They throw away half the medicine' (Israel)"
+        ],
+        "confidence": 0.96
+      },
+      "bilal_father_water_device": {
+        "score": 0.75,
+        "label": "hopeful_collaborative_practical",
+        "evidence": [
+          "Bilal's father has magnetic water desalination device (4 inch diameter tube)",
+          "Uses water pressure to spin magnet for ionization (no external power)",
+          "Salah interested: 'If you give me brochure describing device, I can promote it, see who's willing to bring to Gaza or use elsewhere'",
+          "Cautious: 'Need to verify magnet quality - we tried with farmers, some magnets don't actually remove salts. Need quality check (8000 TDS brackish water)'",
+          "Connected Bilal with Dr. Falah (works with Bilal's father on projects in Iraq, Turkey, Abu Dhabi)"
+        ],
+        "confidence": 0.90
+      }
+    }
+  },
+  "needs_analysis": {
+    "explicit_needs": [
+      {
+        "category": "immigration_legal_help",
+        "priority": "critical_life_determining",
+        "evidence": "Stuck in USA, can't travel, green card pending 8+ months, might not return if leaves. Needs senator connection or immigration lawyer help",
+        "bilal_response": "Sister is immigration lawyer (Syrian), works with Palestinians, can help with questions/advice",
+        "confidence": 0.96
+      },
+      {
+        "category": "relocation_visa_support",
+        "priority": "high",
+        "evidence": "Considering Jordan (wife there), Oman (easier 2-year residence), Portugal, Europe. Needs help securing residence/visa outside USA",
+        "constraint": "As Palestinian passport holder, very limited travel freedom",
+        "confidence": 0.92
+      },
+      {
+        "category": "gaza_device_entry_pathways",
+        "priority": "high",
+        "evidence": "For Bilal's father's water device: 'Don't know if we can enter devices through Red Cross or international organizations. If you give me specs, I'll ask'",
+        "challenge": "Devices need power (even if water-pressure powered, Israel controls electricity/solar)",
+        "confidence": 0.88
+      },
+      {
+        "category": "campaign_fundraising_amplification",
+        "priority": "medium",
+        "evidence": "Running water distribution campaign (ongoing, 2 weeks old). Shared with Bilal to help amplify",
+        "constraint": "$1000 sent only reaches $500 in Gaza (restrictions, fees)",
+        "confidence": 0.90
+      }
+    ],
+    "implied_needs": [
+      {
+        "category": "emotional_connection_gaza_families",
+        "priority": "high_wellbeing",
+        "inference": "Salah deeply values staying in touch with Gaza families, sharing baby photos. Felt Bilal's drift-paths project (message in bottle) wasn't practical but the RELATIONSHIP BUILDING was valuable",
+        "evidence": "'When I talk with families in Gaza and they're so happy we talk, share photos - if more people had these relationships, they'd feel Gaza cause is their cause, not just abstract genocide'",
+        "confidence": 0.92
+      },
+      {
+        "category": "international_conference_access",
+        "priority": "medium",
+        "inference": "Lost 15 invitations, has 3 more in December (Saudi, Qatar, Italy). Represents lost networking, funding, legitimacy opportunities",
+        "blocker": "Can't travel from USA without risking return",
+        "confidence": 0.90
+      }
+    ]
+  },
+  "values_alignment": {
+    "core_values": [
+      {
+        "value": "humanitarian_water_access",
+        "strength": "absolute_mission",
+        "evidence": "Prophet (ﷺ) said best charity is providing water (سقاية الماء). Salah's entire work focused on this during worst humanitarian crisis",
+        "alignment_with_islamic_values": 0.98,
+        "confidence": 0.96
+      },
+      {
+        "value": "natural_not_chemical_solutions",
+        "strength": "core_technical",
+        "evidence": "Blue Filter uses plant seeds + eggshells (natural materials). No chemicals (also because chemicals banned from Gaza). Sustainable, locally sourceable",
+        "alignment_with_regenerative": 0.92,
+        "confidence": 0.94
+      },
+      {
+        "value": "resilience_under_oppression",
+        "strength": "lived_reality",
+        "evidence": "Company destroyed, family separated, can't travel, but continues work through fellowships, campaigns, hidden solar panels, recycled equipment",
+        "alignment_with_steadfastness": 0.96,
+        "confidence": 0.96
+      },
+      {
+        "value": "accountability_to_affected",
+        "strength": "high",
+        "evidence": "Stays in daily contact with Gaza families. Knows sister+brother got sick from water. Knows exact conditions (broken wells, 30% solar, hidden panels, drone targeting)",
+        "alignment_with_grounded_impact": 0.94,
+        "confidence": 0.94
+      },
+      {
+        "value": "relationship_over_transaction",
+        "strength": "emerging_insight",
+        "evidence": "Bilal's drift-paths project: Salah said sea approach dangerous, not practical for food. BUT the relationship-building piece resonated: 'If more people had relationships with Gaza families like I do, they'd feel it's their cause'",
+        "alignment_with_ubuntu": 0.88,
+        "confidence": 0.90
+      }
+    ]
+  },
+  "cooperative_engagement": {
+    "interest_level": {
+      "score": 0.55,
+      "label": "focused_on_gaza_crisis_not_longterm_structure",
+      "evidence": [
+        "In crisis mode: family in Gaza, visa trapped, running emergency campaigns",
+        "Needs: immigration help, relocation support, Gaza access, not revenue-sharing model",
+        "Has fellowship income (green finance programs) for sustainability",
+        "Participates in accelerators (Qatar, Saudi, Japan) for funding"
+      ],
+      "note": "Wrong timing and wrong fit. Salah in humanitarian crisis, not business development phase",
+      "confidence": 0.85
+    },
+    "bloom_program_feedback": {
+      "participation": "ACSI3 Accelerator (completed)",
+      "most_valuable": "Not discussed in depth - interview focused on current crisis",
+      "current_relevance": "Low - Salah's life radically changed since program (Gaza war, family separation, visa issues)",
+      "engagement": "crisis_mode_not_developmental_mode",
+      "confidence": 0.75
+    }
+  },
+  "readiness_assessment": {
+    "id": "readiness.cooperative_pilot.salah_bluefilter.v1",
+    "overall_score": 0.45,
+    "reasoning": "Extraordinary humanitarian work in Gaza crisis. Deep technical expertise (water treatment), Islamic values alignment (best charity is water), resilience under oppression. BUT: In crisis mode (family in Gaza, visa trapped in USA, can't travel, running emergency campaigns). Needs immigration help, relocation support, Gaza device access - NOT revenue-sharing cooperative model. Wrong timing. Could be future participant after crisis stabilizes + relocation secured.",
+    "dimensions": {
+      "financial_stability": 0.60,
+      "values_alignment": 0.96,
+      "engagement_feasibility": 0.30,
+      "crisis_mode": 0.95,
+      "technical_expertise": 0.96,
+      "cooperative_interest": 0.40
+    },
+    "evidence": [
+      {"type": "crisis", "name": "family_in_gaza", "severity": "extreme", "weight": "blocking"},
+      {"type": "visa", "name": "trapped_in_usa", "mobility": "zero", "weight": "blocking"},
+      {"type": "company", "name": "gaza_destroyed", "status": "operating_under_siege", "weight": "high"},
+      {"type": "values", "name": "water_is_best_charity", "alignment": "perfect_islamic", "weight": "high"},
+      {"type": "fellowships", "name": "green_finance_programs", "stability": "moderate", "weight": "medium"}
+    ],
+    "confidence": 0.88,
+    "recommendation": {
+      "invite_to_pilot": "no_wrong_timing",
+      "role": "future_participant_post_crisis_or_humanitarian_case_study",
+      "timing": "not_now_maybe_2026_post_relocation",
+      "support_needed_now": [
+        "Immigration legal help (Bilal's sister - immigration lawyer)",
+        "Relocation visa support (Jordan, Oman, Portugal connections)",
+        "Bilal's father's water device brochure/specs for Gaza entry assessment",
+        "Campaign amplification (water distribution fundraising)",
+        "Emotional support network (relationship with Gaza families)",
+        "Dr. Falah connection (water projects Iraq/Turkey/Abu Dhabi)"
+      ],
+      "unique_value": "Gaza humanitarian crisis expertise, water treatment innovation (natural/non-chemical), Islamic best charity embodiment, Palestinian representation, crisis resilience, green finance fellowship experience",
+      "special_note": "Salah is in SURVIVAL mode, not DEVELOPMENT mode. Bloom can help through: (1) Bilal's sister immigration lawyer, (2) Bilal's father water device collaboration, (3) Campaign support, (4) Relocation connections. NOT through cooperative membership right now. Revisit 2026 if relocates + stabilizes.",
+      "confidence": 0.85
+    }
+  },
+  "specific_opportunities": {
+    "bilal_sister_immigration_lawyer": {
+      "opportunity_id": "salah_visa_legal_help",
+      "type": "humanitarian_urgent_support",
+      "description": "Bilal's sister is immigration lawyer (Syrian), works with Palestinians on asylum/visa. Can help Salah with green card questions, travel concerns, relocation options",
+      "specifics": {
+        "salah_need": "Green card pending 8+ months, can't travel, might not return if leaves USA",
+        "sister_expertise": "Immigration law, Palestinian cases, speaks Arabic (Iraqi dialect but Syrian family)",
+        "salah_response": "'Yarit wallah, yarit wallah (I wish, I wish). Especially with travel - I want to leave, have conference invitations'",
+        "action": "Bilal connects Salah with sister for consultation"
+      },
+      "action_required": "URGENT - Bilal makes introduction via WhatsApp",
+      "potential_impact": "very_high_life_changing",
+      "timeline": "immediate",
+      "confidence": 0.95
+    },
+    "bilal_father_water_device_gaza": {
+      "opportunity_id": "magnetic_desalination_gaza_collab",
+      "type": "technical_humanitarian_collaboration",
+      "description": "Bilal's father has magnetic water desalination device (4\" tube, uses water pressure to spin magnet, ionization, no external power). Could help Gaza water crisis",
+      "specifics": {
+        "device": "Magnetic desalination, 4 inch diameter, water-pressure powered (no electricity needed)",
+        "manufacturer": "Company in Egypt makes it",
+        "bilal_father_network": "Projects in Iraq, Turkey, Abu Dhabi (works with Dr. Falah)",
+        "salah_interest": "High - if brochure/specs provided, will promote + assess Gaza entry pathways",
+        "salah_caution": "Need to verify magnet quality (tried with farmers before, some don't actually remove salts)",
+        "challenge": "Entry to Gaza (through Red Cross? International orgs?)"
+      },
+      "action_required": "Bilal gets device brochure/specs from father, shares with Salah + Dr. Falah",
+      "potential_impact": "high_if_can_enter_gaza",
+      "confidence": 0.80
+    },
+    "dr_falah_water_projects_connection": {
+      "opportunity_id": "salah_falah_collaboration",
+      "type": "regional_water_expertise_network",
+      "description": "Dr. Falah works with Bilal's father on water projects (Iraq, Turkey, Abu Dhabi, Germany relationships). Could collaborate with Salah on Blue Filter expansion",
+      "specifics": {
+        "dr_falah_expertise": "Water projects, regional connections, business development",
+        "salah_expertise": "Blue Filter technology, Gaza operations, green finance fellowships",
+        "overlap": "Both water treatment, both regional (Salah wants to relocate to Jordan/Oman/region)",
+        "potential": "Blue Filter expansion to other crisis zones (Iraq, Syria, Yemen?), partnerships"
+      },
+      "action_required": "Bilal creates WhatsApp group: Salah + Father + Dr. Falah",
+      "potential_impact": "medium_regional_expansion",
+      "confidence": 0.75
+    },
+    "gaza_projects_operating_now": {
+      "opportunity_id": "salah_connect_bloom_gaza_entrepreneurs",
+      "type": "humanitarian_network",
+      "description": "Salah knows accelerator in West Bank supporting entrepreneurs OPERATING IN GAZA NOW (bakeries, kitchens, ovens, water). Bilal wants to learn + potentially support",
+      "specifics": {
+        "accelerator": "West Bank-based, supports Gaza entrepreneurs on the ground",
+        "projects": "Kitchens (food), bakeries (bread), ovens, water distribution - operating NOW during war",
+        "salah_connection": "Met with program director 2 days ago, can introduce",
+        "bilal_interest": "Learn how they operate, see if Bloom network can help",
+        "challenge": "How do businesses operate during active genocide? What do they need?"
+      },
+      "action_required": "Salah introduces Bilal to accelerator program director",
+      "potential_impact": "high_gaza_solidarity_learning",
+      "confidence": 0.90
+    },
+    "entrepreneurship_for_palestine": {
+      "opportunity_id": "salah_iva_efp_connection",
+      "type": "network_overlap",
+      "description": "Salah knows Iva from Entrepreneurship for Palestine (EFP). Bilal has call with Iva on Thursday. Salah participates in all their meetings",
+      "specifics": {
+        "organization": "Entrepreneurship for Palestine (EFP)",
+        "salah_role": "Regular participant, Iva knows him well, attends all meetings with team",
+        "bilal_connection": "First call with Iva on Thursday",
+        "overlap": "Salah told Bilal: 'Iva knows me well, tell her you talked with me'",
+        "efp_work": "Supporting Palestinian entrepreneurs (Salah said they're doing amazing work given constraints)"
+      },
+      "action_required": "Bilal mentions Salah in call with Iva, explores collaboration",
+      "potential_impact": "medium_network_strengthening",
+      "confidence": 0.92
+    },
+    "water_campaign_amplification": {
+      "opportunity_id": "salah_gaza_water_campaign",
+      "type": "fundraising_support",
+      "description": "Salah running water distribution campaign in Gaza (2 weeks old, ongoing). Shared with Bilal to help amplify through Bloom network",
+      "specifics": {
+        "campaign_1": "Completed - distributed 18,000 hygiene items (Mediterranean Movement Funds support)",
+        "campaign_2": "Ongoing (2 weeks) - water distribution",
+        "challenge": "$1000 sent = $500 reaches Gaza (restrictions, fees, transfer costs)",
+        "bilal_offer": "Share with Bloom network (1300+ entrepreneurs)",
+        "salah_materials": "Sent campaign link via WhatsApp to Bilal"
+      },
+      "action_required": "Bilal shares campaign with Bloom newsletter/network",
+      "potential_impact": "medium_fundraising_boost",
+      "confidence": 0.85
+    },
+    "conference_residency_programs": {
+      "opportunity_id": "salah_residency_model_insight",
+      "type": "new_accelerator_trend",
+      "description": "Salah shared new trend: Residency programs (5 years) where accelerators select top 3-4 projects, provide residence visa + implementation support + investor connections in that country",
+      "specifics": {
+        "model": "Not just $10K grant. 5-year residency + project implementation support + investor intros",
+        "examples": "American in Egypt (moved headquarters to Cairo, targeting MENA entrepreneurs), UAE, Qatar pilot",
+        "salah_example": "Louis (American) contacted via LinkedIn, moved everything to Cairo, working on residency program for entrepreneurs",
+        "benefit": "Long-term relationship with entrepreneur, country benefits, accelerator gets equity share, investors get returns",
+        "vs_traditional": "Traditional: give money, goodbye. New: give residency, implement together, ongoing support"
+      },
+      "action_required": "Bloom consider residency model for next phase (Bilal mentioned this aligns with his thinking)",
+      "potential_impact": "very_high_bloom_strategy_evolution",
+      "confidence": 0.88
+    }
+  },
+  "key_quotes": {
+    "on_being_trapped": "I feel like I'm imprisoned in a big prison, I don't know how to leave. I might stay 3 years, maybe 5 years, maybe 10 years. I feel like I'm wasting time.",
+    "on_family_separation": "Alhamdulillah, I got my wife out of Gaza to Jordan. But the rest of my family is still there. My sister and brother got diseases from the contaminated water - first diseases in our family from this.",
+    "on_gaza_water_crisis": "The water in Gaza is contaminated, not suitable for drinking or human consumption. We're using damaged wells, broken solar panels giving 30% power. If drones spot solar panels, they target them with suicide drones. So we hide panels under tents, combine 5-6 panels in hidden ways.",
+    "on_arab_governments": "The whole world wants to help, except Arabs. Except Arabs unfortunately. Jordan and Egypt - strange policies, very strange. They put a bad mark on themselves. This is clearer than anything - this is evil, Satan walking on earth, destroying, killing, laughing in our faces. And people are still trying to find political benefit? I don't understand.",
+    "on_relationships_vs_projects": "When I talk with families in Gaza, share baby photos, they share theirs - this is SO important to them, they're so happy we talk. I feel if more people had these relationships, they'd feel Gaza's cause is THEIR cause, not just abstract 'genocide bad.' It becomes personal.",
+    "on_best_charity": "The Prophet ﷺ said the best charity is providing water (سقاية الماء). This is what we're working on. Alhamdulillah.",
+    "on_blue_filter_materials": "We use plant seeds - olive pits, date pits, treated and mixed with eggshells. The eggshells need to be cleaned to avoid salmonella, so we sun-dry them. The mixture removes nitrites, chlorides, some pollutants. Natural materials, not chemicals - chemicals are banned from entering anyway.",
+    "on_residency_programs": "The new programs I'm seeing are RESIDENCY programs. They select top 3-4 projects, give 5-year residency visa, help implement project in that country, introduce to investors. Not just $10K and goodbye. They want long-term relationship - you implement, they get equity share, investors get returns. This is the new model.",
+    "on_travel_restrictions": "I lost 15 international invitations in past 2 years. I have 3 more in December - Saudi Arabia, Qatar, Italy. But I'm stuck. If I leave USA, I might not return. Even with green card - if I leave, who knows if I can come back? And I'm Palestinian, so already limited everywhere."
+  },
+  "meta_insights": {
+    "entrepreneurial_archetype": "humanitarian_crisis_innovator_displaced_resilient",
+    "strengths": [
+      "Water treatment innovation (natural, non-chemical)",
+      "Gaza operations under siege (destroyed company but continues)",
+      "Green finance fellowship access (Netherlands, Italy, Germany)",
+      "Natural material sourcing (seeds, eggshells - locally available)",
+      "Islamic best charity embodiment (water provision)",
+      "Relationship-building with Gaza families (emotional support network)",
+      "International accelerator competition success",
+      "Resilience under extreme oppression",
+      "Technical expertise (environmental, water quality, green tech)"
+    ],
+    "growth_edges": [
+      "Visa/immigration crisis (trapped, can't travel)",
+      "Family separation trauma (wife in Jordan, family in Gaza)",
+      "Company destroyed (operating from ruins)",
+      "Limited mobility (Palestinian passport + USA visa uncertainty)",
+      "Crisis mode not development mode"
+    ],
+    "unique_contribution": "ONLY entrepreneur working in active genocide zone. Gaza humanitarian crisis expertise. Water is best charity (Islamic). Natural/non-chemical innovation. Represents Palestinian resilience. But in survival mode, not ready for cooperative. Needs: immigration help, relocation support, technical collaboration. Future participant after crisis stabilizes."
+  },
+  "assessor": {
+    "type": "llm",
+    "model": "claude-sonnet-4.5",
+    "timestamp": "2025-11-18T19:30:00Z",
+    "analyst": "bilal_ghalib"
+  }
+}

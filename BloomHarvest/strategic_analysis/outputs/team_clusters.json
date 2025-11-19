@@ -1,0 +1,237 @@
+{
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "themes": [
+        "health"
+      ],
+      "team_count": 3,
+      "teams": [
+        {
+          "name": "AnalySens",
+          "founder": "Badia Alfathi",
+          "program": "Applied ACSI4"
+        },
+        {
+          "name": "The Smart Sensory",
+          "founder": "Keren Makari",
+          "program": "HMN 2022 Accel"
+        },
+        {
+          "name": "Tram Alwaan",
+          "founder": "Nada Darwish",
+          "program": "HMN 2023 Bootcamp"
+        }
+      ],
+      "potential_synergies": [
+        "Clinical partnerships",
+        "Shared health data standards",
+        "Joint research initiatives",
+        "Collective healthcare provider relationships"
+      ],
+      "cooperative_opportunities": [
+        "Shared services co-op (accounting, legal, HR)",
+        "Joint fundraising vehicle",
+        "Collective bargaining for vendor contracts",
+        "Knowledge sharing community"
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "themes": [
+        "edtech"
+      ],
+      "team_count": 12,
+      "teams": [
+        {
+          "name": "Little Stars",
+          "founder": "Clara Harmouche",
+          "program": "ACSI4 Accel"
+        },
+        {
+          "name": "Ecobath",
+          "founder": "Ehab Toufic Bou Fakhr",
+          "program": "ACSI4 Accel"
+        },
+        {
+          "name": "The Parents_ Hub",
+          "founder": "Garene Kaloustian",
+          "program": "ACSI4 Accel"
+        },
+        {
+          "name": "Takadam",
+          "founder": "Hany Anan",
+          "program": "ACSI4 Accel"
+        },
+        {
+          "name": "RobotX",
+          "founder": "Hussein Husseiny",
+          "program": "ACSI3 Accel"
+        },
+        {
+          "name": "Hazel Farm",
+          "founder": "Iman Mostafa",
+          "program": "HMN 2023 Accel"
+        },
+        {
+          "name": "Courssaty",
+          "founder": "Louai Al Shalabi",
+          "program": "ACSI4 Accel"
+        },
+        {
+          "name": "GreeNX",
+          "founder": "Mohamad Sabsabi",
+          "program": "ACSI4 Accel"
+        },
+        {
+          "name": "Khutwa",
+          "founder": "Reem Daher",
+          "program": "ACSI2 Sprint"
+        },
+        {
+          "name": "Talk with Siwar",
+          "founder": "Siwar bassam AlKhawaldeh",
+          "program": "ACSI4 Accel"
+        },
+        {
+          "name": "Rouh",
+          "founder": "Sumayya Abu Ramouz",
+          "program": "ACSI3 Bootcamp"
+        },
+        {
+          "name": "Unknown",
+          "founder": "Unknown",
+          "program": "Unknown"
+        }
+      ],
+      "potential_synergies": [
+        "Content sharing partnerships",
+        "Joint marketing to educational institutions",
+        "Technology platform integration",
+        "Shared customer success resources"
+      ],
+      "cooperative_opportunities": [
+        "Shared services co-op (accounting, legal, HR)",
+        "Joint fundraising vehicle",
+        "Collective bargaining for vendor contracts",
+        "Knowledge sharing community"
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "themes": [
+        "fintech"
+      ],
+      "team_count": 4,
+      "teams": [
+        {
+          "name": "Unknown",
+          "founder": "Unknown",
+          "program": "Unknown"
+        },
+        {
+          "name": "Hello World",
+          "founder": "Ezalden Saifelddin",
+          "program": "ACSI4 Accel"
+        },
+        {
+          "name": "Blue Filter",
+          "founder": "Salah El Sadi",
+          "program": "ACSI3 Accel"
+        },
+        {
+          "name": "Pal-Lend",
+          "founder": "Shaban Hammad",
+          "program": "ACSI3 Bootcamp"
+        }
+      ],
+      "potential_synergies": [
+        "Payment infrastructure sharing",
+        "Joint compliance resources",
+        "Cross-platform integration",
+        "Shared risk management"
+      ],
+      "cooperative_opportunities": [
+        "Shared services co-op (accounting, legal, HR)",
+        "Joint fundraising vehicle",
+        "Collective bargaining for vendor contracts",
+        "Knowledge sharing community"
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "themes": [
+        "agtech"
+      ],
+      "team_count": 1,
+      "teams": [
+        {
+          "name": "Palexus",
+          "founder": "Salam Quraan",
+          "program": "ACSI4 Bootcamp"
+        }
+      ],
+      "potential_synergies": [
+        "Shared supply chain optimization",
+        "Joint sustainability certifications",
+        "Collective impact measurement",
+        "Green financing consortium"
+      ],
+      "cooperative_opportunities": [
+        "Shared services co-op (accounting, legal, HR)",
+        "Joint fundraising vehicle",
+        "Collective bargaining for vendor contracts",
+        "Knowledge sharing community"
+      ]
+    }
+  ],
+  "cross_cluster_opportunities": {
+    "platform_plays": [
+      {
+        "sector": "health",
+        "team_count": 3,
+        "opportunity": "Create shared health platform serving all 3 teams"
+      },
+      {
+        "sector": "edtech",
+        "team_count": 12,
+        "opportunity": "Create shared edtech platform serving all 12 teams"
+      },
+      {
+        "sector": "fintech",
+        "team_count": 4,
+        "opportunity": "Create shared fintech platform serving all 4 teams"
+      }
+    ],
+    "ecosystem_partnerships": [],
+    "collective_services": [
+      {
+        "service": "Shared back-office (accounting, legal, HR)",
+        "potential_users": 20,
+        "cost_savings": "Estimated 30-40% savings vs individual contracts"
+      },
+      {
+        "service": "Joint grant writing and fundraising support",
+        "potential_users": 20,
+        "impact": "Higher success rates through specialized expertise"
+      },
+      {
+        "service": "Collective purchasing power for vendors",
+        "potential_users": 20,
+        "impact": "Volume discounts on software, infrastructure, services"
+      },
+      {
+        "service": "Shared marketing and communications resources",
+        "potential_users": 20,
+        "impact": "Professional marketing at fraction of individual cost"
+      }
+    ],
+    "joint_ventures": []
+  },
+  "summary": {
+    "total_teams": 20,
+    "total_clusters": 4,
+    "largest_cluster": "edtech",
+    "largest_cluster_size": 12
+  }
+}

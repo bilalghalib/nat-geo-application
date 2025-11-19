@@ -1,0 +1,30 @@
+{
+  "total_teams": 20,
+  "by_program": {
+    "Applied ACSI4": 1,
+    "ACSI4 Accel": 8,
+    "Unknown": 2,
+    "ACSI3 Accel": 2,
+    "HMN 2023 Accel": 1,
+    "HMN 2022 Accel": 1,
+    "HMN 2023 Bootcamp": 1,
+    "ACSI2 Sprint": 1,
+    "ACSI4 Bootcamp": 1,
+    "ACSI3 Bootcamp": 2
+  },
+  "by_stage": {
+    "Applied": 1,
+    "Accelerator": 12,
+    "Unknown": 2,
+    "Bootcamp": 4,
+    "Sprint": 1
+  },
+  "by_sector": {
+    "health": 3,
+    "edtech": 12,
+    "fintech": 4,
+    "agtech": 1
+  },
+  "partnerships_needed": 8,
+  "grants_received": 20
+}

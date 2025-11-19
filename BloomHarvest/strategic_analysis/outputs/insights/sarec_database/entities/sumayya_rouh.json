@@ -1,0 +1,506 @@
+{
+  "entity_id": "sumayya_rouh",
+  "interview_date": "2024-08-18",
+  "program": "ACSI3_Bootcamp",
+  "business": {
+    "name": "Rouh (Soul)",
+    "sector": "Media_MentalHealth_TraumaInformed_Journalism_AI",
+    "country": "Palestine_Hebron",
+    "stage": "operating_scaling_ai_tool_development",
+    "origin": "Founded after Sumayya's master's degree focused on media + psychology intersection",
+    "model": "Trauma-informed digital storytelling + AI tool for content safety + training for content creators"
+  },
+  "financial_metrics": {
+    "monthly_revenue": {
+      "value": null,
+      "status": "some_revenue_from_productions_not_disclosed",
+      "note": "Generates revenue from digital productions, but primarily grant-funded. Amount not disclosed",
+      "confidence": 0.75
+    },
+    "funding_sources": {
+      "grants": "Primary funding source (European Union, Leaders International, others)",
+      "revenue": "Some income from digital story productions",
+      "future_model": "Planning to sell AI tool + crowdfunding + international donors",
+      "confidence": 0.88
+    },
+    "team_composition": {
+      "core_full_time": 5,
+      "roles": [
+        "Sumayya (founder, media + psychology)",
+        "Media specialists",
+        "Tech team",
+        "Psychology expert",
+        "PR/relations person"
+      ],
+      "part_time_contractors": "~15 people (varies by project season)",
+      "gaza_team": "4-5 people in Gaza for Season 2 filming",
+      "confidence": 0.92
+    },
+    "office": {
+      "location": "Hebron",
+      "status": "Rented office space (initially 6 months with incubator, continued after)",
+      "confidence": 0.90
+    },
+    "awards": [
+      "Arabic Digital Content Award (aligned with SDGs)",
+      "Gizelle Khoury Award"
+    ]
+  },
+  "sentiment_analysis": {
+    "overall_interview_sentiment": {
+      "score": 0.72,
+      "label": "mission_driven_pragmatic_seeking_sustainability",
+      "confidence": 0.88
+    },
+    "topic_sentiments": {
+      "rouh_mission_accomplishment": {
+        "score": 0.85,
+        "label": "proud_meaningful_personal_professional",
+        "evidence": [
+          "Founder: 'This was the first time I had courage to start a project and see it succeed'",
+          "Awards recognition gives sense of accomplishment",
+          "Working with 5,000+ people (various roles)",
+          "AI tool first of its kind globally",
+          "Website operational: rouhmedia.com"
+        ],
+        "confidence": 0.92
+      },
+      "trauma_informed_journalism_philosophy": {
+        "score": 0.88,
+        "label": "core_ethical_mission",
+        "evidence": [
+          "Master's degree specialized in media + psychology",
+          "'Ethical journalism is part of protecting audiences from traumatic content'",
+          "AI tool blurs graphic content while preserving context (like 'hijab' for images)",
+          "Training content creators on trauma-informed production",
+          "Therapy sessions for people exposed to traumatic content"
+        ],
+        "confidence": 0.94
+      },
+      "gaza_war_personal_overwhelm": {
+        "score": 0.38,
+        "label": "deeply_affected_helpless_then_strategic",
+        "evidence": [
+          "At start of war: watched news 24/7, cried at night, couldn't eat",
+          "After a while: 'I lost ability to watch. Felt helpless, couldn't control'",
+          "'Sometimes I wouldn't open social media for 2-3 days'",
+          "Recent Dr. Adnan al-Bursh case: 'Images left bad impression, I imagined how it affects people who love the victims'",
+          "Shifted to strategic approach: content safety without losing audience"
+        ],
+        "confidence": 0.94
+      },
+      "dignity_in_death_media_ethics": {
+        "score": 0.82,
+        "label": "principled_cultural_critique",
+        "evidence": [
+          "'Would you want to see your mother, sister, brother shown this way on social media?'",
+          "Israeli media during Intifada showed child's shoe with blood - you understand tragedy without seeing bodies",
+          "'We need to elevate our media discourse. Why do we distort images in strange ways? We forget our humanity'",
+          "Covering bodies with white shroud is dignified (Islamic tradition)",
+          "Graphic content loses audience after a month - both ethical and strategic problem"
+        ],
+        "confidence": 0.92
+      },
+      "gaza_season_2_production_challenges": {
+        "score": 0.70,
+        "label": "proud_collaborative_difficult_conditions",
+        "evidence": [
+          "Worked with 4-5 people in Gaza filming during war",
+          "Stories focused on resilience: tailor continued work at shelter, dialysis patient traveled 4 hours on bike",
+          "Production challenges: fire zones, evacuation orders, changed locations multiple times",
+          "Team commitment: 'Gazans were able to work and continue. Sometimes video upload took 2 days due to internet'",
+          "Quality maintained despite extreme conditions"
+        ],
+        "confidence": 0.90
+      },
+      "ai_tool_innovation": {
+        "score": 0.80,
+        "label": "excited_proud_strategic",
+        "evidence": [
+          "AI tool to blur graphic content while preserving context",
+          "'First of its kind globally'",
+          "Tested prototype with strong results",
+          "Different from YouTube/Facebook (which fully block or blur everything)",
+          "Considering selling tool to generate revenue for sustainability"
+        ],
+        "confidence": 0.88
+      },
+      "financial_sustainability_challenge": {
+        "score": 0.62,
+        "label": "pragmatic_concerned_seeking_alternatives",
+        "evidence": [
+          "'Funding from USAID changed, stopped. Projects that depended on it stopped'",
+          "'Sustainability became dependent on creating income sources, not just waiting for funders'",
+          "Interested in crowdfunding, individual international donors",
+          "Considering selling AI tool: 'I'm willing to sell the tool for profit, to fund humanitarian/social side'",
+          "'Institutions need to talk about financial sustainability, not just keep providing grants'"
+        ],
+        "confidence": 0.90
+      },
+      "bloom_program_post_relationship": {
+        "score": 0.55,
+        "label": "grateful_but_wants_continued_connection",
+        "evidence": [
+          "'I'm very happy Bilal reached out. This is first time I've experienced continued relationship after program'",
+          "'Usually when you're in a place and leave, rarely does connection continue'",
+          "'Organizations finish program, cut ties. Few check if initiatives continue'",
+          "Competitive environment in Palestine: 'People view you as threat once you achieve something'",
+          "Wants partnerships + recommendations to funders, not just grants"
+        ],
+        "confidence": 0.92
+      },
+      "bilal_drift_tracker_support": {
+        "score": 0.85,
+        "label": "supportive_collaborative_practical",
+        "evidence": [
+          "Bilal shared Gaza aid bottle drift tracker project",
+          "Sumayya: 'I promise I'll send you Gaza contact numbers so you can connect'",
+          "Will connect him to Egypt contacts too (Bilal's friend testing in 2 weeks)",
+          "'I loved the idea. The humanitarian side winning is easy - when you plant good, people plant good in yours'"
+        ],
+        "confidence": 0.90
+      },
+      "journalist_training_therapeutic_moment": {
+        "score": 0.88,
+        "label": "meaningful_vulnerable_healing",
+        "evidence": [
+          "Last week: ~20 journalists came for training",
+          "'I can't describe the atmosphere - they were laughing but had real desire to be heard'",
+          "'Unfortunately we hear everyone but no one hears us. Sometimes you must appear strong but...'",
+          "'I felt like masks fell from faces. First time I felt I really knew them despite already knowing them'",
+          "Therapeutic unmasking for journalists carrying trauma"
+        ],
+        "confidence": 0.92
+      }
+    }
+  },
+  "needs_analysis": {
+    "explicit_needs": [
+      {
+        "category": "financial_sustainability_beyond_grants",
+        "priority": "critical",
+        "evidence": "We can't rely on funders anymore. Need to create income sources. Considering: (1) Selling AI tool, (2) Crowdfunding, (3) Production contracts, (4) International individual donors",
+        "confidence": 0.94
+      },
+      {
+        "category": "international_network_access",
+        "priority": "high",
+        "evidence": "Need bridge to communities outside Palestine. Want partnerships with organizations that share vision, can provide: (1) Recommendations to funders abroad, (2) Collaborations with similar missions, (3) Expansion opportunities",
+        "confidence": 0.92
+      },
+      {
+        "category": "crowdfunding_platform_access",
+        "priority": "medium_high",
+        "evidence": "Interested in crowdfunding campaigns. Need: (1) Window to international community, (2) Platforms that work for Palestine, (3) Training on crowdfunding best practices",
+        "confidence": 0.88
+      },
+      {
+        "category": "gaza_mental_health_partnerships",
+        "priority": "high",
+        "evidence": "Very interested in working with children/youth in Gaza on mental health. Bilal mentioned Schools Without Borders. Sumayya: 'We're ready to explore this. Real need, and we can make real change'",
+        "confidence": 0.90
+      }
+    ],
+    "implied_needs": [
+      {
+        "category": "founder_psychological_support",
+        "priority": "medium_personal",
+        "inference": "Sumayya feels pressure to 'always appear strong', struggles with war content overwhelming her personally while running mental health media project",
+        "evidence": "Can't watch news anymore after initial 24/7 watching. Therapist for others but who supports the supporter? Training moment where 'masks fell' suggests need for founder peer support",
+        "confidence": 0.85
+      },
+      {
+        "category": "ai_tool_commercialization_strategy",
+        "priority": "high_strategic",
+        "inference": "Has AI tool prototype with strong results. Needs: business model, pricing, legal/licensing, go-to-market strategy for selling to media organizations",
+        "evidence": "Considering selling AI tool to generate revenue. 'First of its kind globally' = market opportunity. But no mention of commercialization plan",
+        "confidence": 0.88
+      },
+      {
+        "category": "regional_trauma_informed_media_network",
+        "priority": "medium_collaboration",
+        "inference": "Rouh's trauma-informed journalism approach could be regional standard. Connect to other media organizations, train trainers, scale methodology",
+        "evidence": "Training 20 journalists, developing global-first AI tool, awards recognition. Could be regional hub for trauma-informed media",
+        "confidence": 0.80
+      },
+      {
+        "category": "competitive_environment_navigation",
+        "priority": "medium_contextual",
+        "inference": "Palestine's competitive entrepreneurship environment makes collaboration difficult. Need supportive ecosystem outside local context",
+        "evidence": "Once you achieve something, people view you as threat. Competition for limited funding creates rivalry not collaboration",
+        "confidence": 0.85
+      }
+    ]
+  },
+  "values_alignment": {
+    "core_values": [
+      {
+        "value": "human_dignity_in_media",
+        "strength": "foundational_mission",
+        "evidence": "'Would you want your family shown this way?' Covering bodies = Islamic dignity. Child's shoe with blood (Intifada example) = tragedy without dehumanization",
+        "alignment_with_islamic_ethics": 0.96,
+        "confidence": 0.94
+      },
+      {
+        "value": "trauma_informed_journalism",
+        "strength": "core_expertise",
+        "evidence": "Master's degree specialized in this. 'Ethical journalism protects audiences from trauma.' AI tool, training, therapy sessions all serve this",
+        "alignment_with_mental_health": 0.94,
+        "confidence": 0.94
+      },
+      {
+        "value": "context_preservation_not_censorship",
+        "strength": "high_nuanced",
+        "evidence": "AI tool blurs graphic parts but preserves story context. Not full censorship (like YouTube) - 'like hijab for images'. Truth + dignity",
+        "alignment_with_ethical_journalism": 0.92,
+        "confidence": 0.90
+      },
+      {
+        "value": "resilience_focused_storytelling",
+        "strength": "high",
+        "evidence": "Gaza Season 2: tailor continuing work at shelter, dialysis patient on bike 4 hours. Not victim narratives - survival and agency stories",
+        "alignment_with_empowerment": 0.90,
+        "confidence": 0.88
+      },
+      {
+        "value": "sustainability_over_dependency",
+        "strength": "emerging_strategic",
+        "evidence": "Selling AI tool to fund humanitarian work = social enterprise thinking. 'Can't wait for funders.' Crowdfunding interest. Strategic independence",
+        "alignment_with_self_reliance": 0.88,
+        "confidence": 0.88
+      },
+      {
+        "value": "continued_relationships_not_transactional",
+        "strength": "high_relational",
+        "evidence": "'First time I've experienced continued relationship after program.' Critiques transactional program model. Values long-term partnerships",
+        "alignment_with_ubuntu": 0.86,
+        "confidence": 0.90
+      },
+      {
+        "value": "planting_good_reciprocity",
+        "strength": "spiritual_cultural",
+        "evidence": "On Bilal's drift tracker: 'When you plant good in people's paths, they plant good in yours.' Islamic reciprocity concept",
+        "alignment_with_islamic_values": 0.92,
+        "confidence": 0.88
+      }
+    ]
+  },
+  "cooperative_engagement": {
+    "interest_level": {
+      "score": 0.75,
+      "label": "pragmatically_interested_seeking_alternatives_to_grants",
+      "evidence": [
+        "Explicitly seeking financial sustainability beyond grants",
+        "Open to new models: crowdfunding, selling AI tool, partnerships",
+        "Values continued relationships over transactional programs",
+        "Wants international network connections",
+        "Cooperative model not discussed but aligns with: sustainability seeking, collaboration values, moving beyond grant dependency"
+      ],
+      "note": "Revenue-share cooperative could appeal IF framed as: alternative to grant dependency, international network access, continued support relationships. Risk: Competitive Palestine environment may make her cautious of revenue transparency.",
+      "confidence": 0.78
+    },
+    "bloom_program_feedback": {
+      "participation": "Completed ACSI3 Bootcamp with Leaders International + EU funding",
+      "most_valuable": [
+        "Initial grant helped establish Rouh foundation",
+        "Training gave practical steps",
+        "Awards/recognition gave validation"
+      ],
+      "critical_feedback": [
+        "Usually programs cut ties after completion - 'rarely does connection continue'",
+        "Organizations don't check if initiatives continue after program",
+        "Need long-term partnerships, not just initial support",
+        "Wants recommendations to international funders, not just local grants",
+        "Institutions should address financial sustainability, not just provide endless grants"
+      ],
+      "appreciation": [
+        "'Very happy Bilal reached out - first time experiencing continued relationship'",
+        "'This is rare - usually when you leave a place, connection ends'"
+      ],
+      "engagement": "grateful_wants_continued_partnership",
+      "confidence": 0.92
+    }
+  },
+  "readiness_assessment": {
+    "id": "readiness.cooperative_pilot.sumayya_rouh.v1",
+    "overall_score": 0.76,
+    "reasoning": "Strong mission-driven media + mental health innovation, operating business with 5 FT team + office, awards recognition, proven Gaza production under extreme conditions, AI tool development (global first), values-aligned (dignity, trauma-informed, sustainability-seeking). Strengths: Operating at scale (5,000+ people engaged), revenue-generating (some), seeking alternatives to grant dependency, collaborative mindset (supported Bilal's drift tracker, wants partnerships), continued relationship values. Challenges: Revenue amount unclear, competitive Palestine environment, financial sustainability not yet achieved, primarily grant-funded. Moderate-high cooperative fit: Seeks sustainability beyond grants, values long-term relationships, open to new models (crowdfunding, social enterprise). Palestine representation, trauma-informed media expertise, mental health + journalism intersection.",
+    "dimensions": {
+      "financial_stability": 0.68,
+      "business_operations": 0.82,
+      "values_alignment": 0.92,
+      "engagement_enthusiasm": 0.75,
+      "cooperative_interest": 0.70,
+      "innovation_ai_tool": 0.88,
+      "social_impact": 0.90,
+      "sustainability_seeking": 0.85,
+      "team_scale": 0.85
+    },
+    "evidence": [
+      {"type": "team", "name": "5_ft_plus_15_pt", "scale": "operational", "weight": "high"},
+      {"type": "awards", "name": "sdgs_gizelle_khoury", "recognition": "international", "weight": "medium_high"},
+      {"type": "innovation", "name": "ai_tool_trauma_blurring", "status": "prototype_tested_strong_results", "uniqueness": "global_first", "weight": "high"},
+      {"type": "production", "name": "gaza_season_2_war_conditions", "team": "4_5_people_gaza", "resilience": "extreme", "weight": "high"},
+      {"type": "revenue", "name": "some_from_productions", "status": "not_disclosed_primarily_grants", "weight": "medium_negative"},
+      {"type": "values", "name": "trauma_informed_dignity", "strength": "masters_degree_core_mission", "weight": "high"},
+      {"type": "sustainability", "name": "seeking_alternatives_to_grants", "strategies": "ai_tool_sale_crowdfunding_intl_donors", "weight": "high"},
+      {"type": "relationship", "name": "continued_connection_valued", "critique": "programs_usually_cut_ties", "weight": "medium"}
+    ],
+    "confidence": 0.82,
+    "recommendation": {
+      "invite_to_pilot": "yes_good_fit",
+      "role": "trauma_informed_media_mental_health_innovator_palestine_hebron_ai_developer",
+      "timing": "early_cohort",
+      "support_needed": [
+        "AI tool commercialization strategy (pricing, licensing, go-to-market)",
+        "International funder network access (Sumayya's top request)",
+        "Crowdfunding platform + campaign support",
+        "Gaza mental health partnerships (Schools Without Borders connection)",
+        "Regional trauma-informed media network development",
+        "Founder peer support (psychological wellbeing)",
+        "Social enterprise model consulting (selling AI tool to fund humanitarian side)"
+      ],
+      "unique_value": "Trauma-informed journalism expertise, mental health + media intersection, AI tool innovation (global first for content safety), Palestine Hebron representation, Gaza production under war conditions, dignity-centered ethics, resilience storytelling, awards recognition, journalist training capacity, therapy session facilitation, Islamic dignity framework",
+      "special_note": "Sumayya explicitly critiqued typical program model: 'Organizations cut ties after program, rarely check if initiatives continue.' Her appreciation for Bilal's continued outreach ('first time experiencing this') shows: cooperative's long-term relationship model would be major value proposition for her. She's seeking: (1) Financial sustainability beyond grants, (2) International network access, (3) Continued partnerships. Cooperative addresses all three.",
+      "confidence": 0.80
+    }
+  },
+  "specific_opportunities": {
+    "schools_without_borders_gaza_mental_health": {
+      "opportunity_id": "sumayya_swb_children_youth_trauma",
+      "type": "direct_partnership_gaza",
+      "description": "Bilal connected Sumayya to Schools Without Borders (SWB) working with children in Gaza. SWB needs mental health support for kids experiencing war trauma.",
+      "specifics": {
+        "swb_need": "Mental health training/support for children and youth in Gaza",
+        "rouh_capacity": "Trauma-informed approach, therapy sessions, content for healing, training educators/caregivers",
+        "sumayya_response": "'Very interested. If there's real need, we can make real change. Ready to explore'",
+        "potential_model": "Train SWB educators on trauma-informed approaches, create age-appropriate content, therapy sessions for children"
+      },
+      "action_required": "Bilal introduce Sumayya to Schools Without Borders team. Co-design mental health support program for Gaza children.",
+      "potential_impact": "very_high_children_mental_health_gaza",
+      "confidence": 0.88
+    },
+    "dalal_neuroscience_palestinian_women_collaboration": {
+      "opportunity_id": "sumayya_dalal_media_neuroscience_partnership",
+      "type": "expertise_collaboration",
+      "description": "Bilal mentioned Dalal - works with Palestinian women, sings old songs, neuroscientist working on media influence + psychology. Perfect match for Rouh's mission.",
+      "specifics": {
+        "dalal_expertise": "Neuroscience, media psychology, Palestinian women's work, cultural preservation (songs)",
+        "rouh_expertise": "Trauma-informed media, AI tool, digital storytelling, psychology + media intersection",
+        "overlap": "Both work on media + psychology intersection, both focused on Palestinian context",
+        "collaboration_potential": "Co-research media trauma impacts, joint workshops, neuroscience validation for AI tool"
+      },
+      "action_required": "Bilal introduce Sumayya + Dalal. Explore collaboration on neuroscience of trauma-informed media.",
+      "potential_impact": "high_research_credibility_partnership",
+      "confidence": 0.85
+    },
+    "ai_tool_commercialization_social_enterprise": {
+      "opportunity_id": "rouh_ai_tool_global_market",
+      "type": "revenue_generation_scaling",
+      "description": "Rouh's AI tool (blurs graphic content while preserving context) is 'first of its kind globally'. Sumayya willing to sell tool to fund humanitarian work. Social enterprise model.",
+      "specifics": {
+        "product": "AI tool for trauma-safe content (blurs graphic parts, preserves context)",
+        "uniqueness": "First globally - YouTube/Facebook only do full block/blur",
+        "target_customers": "Media organizations, social media platforms, content creators, NGOs, news outlets",
+        "current_status": "Prototype tested with strong results",
+        "sumayya_willingness": "'I'm willing to sell the tool for profit, to reinvest in humanitarian/social side'",
+        "needs": "Business model, pricing, licensing, go-to-market, legal, partnerships"
+      },
+      "action_required": "Social enterprise consulting for Rouh: (1) Market analysis for AI tool, (2) Pricing strategy, (3) Partnerships with media organizations, (4) Legal/licensing framework, (5) Revenue split: commercial sales → fund free trauma-informed journalism",
+      "potential_impact": "very_high_financial_sustainability_global_scaling",
+      "confidence": 0.82
+    },
+    "bilal_gaza_drift_tracker_contacts": {
+      "opportunity_id": "sumayya_gaza_egypt_contacts_for_bilal",
+      "type": "network_connection_mutual_support",
+      "description": "Bilal developing Gaza aid bottle drift tracker. Needs Gaza + Egypt contacts for testing. Sumayya will provide journalist contacts in Gaza + people who left to Egypt.",
+      "specifics": {
+        "bilal_project": "Ocean drift model to predict where aid bottles land when thrown from Egypt shore",
+        "bilal_need": "Gaza contacts (know beach access points), Egypt contacts (test launch in 2 weeks with Lebanese friend)",
+        "sumayya_network": "Gaza journalists from Season 2 production, people who evacuated Gaza to Egypt",
+        "sumayya_commitment": "'I promise I'll send you Gaza contact numbers + Egypt contacts'"
+      },
+      "action_required": "Sumayya send Gaza + Egypt contacts to Bilal for drift tracker testing. Bilal update Sumayya on results.",
+      "potential_impact": "medium_humanitarian_logistics_support",
+      "confidence": 0.90
+    },
+    "trauma_informed_journalism_regional_network": {
+      "opportunity_id": "rouh_mena_media_ethics_hub",
+      "type": "regional_scaling_network",
+      "description": "Rouh's trauma-informed journalism methodology + AI tool could be regional standard for MENA media. Training journalists, creating ethical frameworks, scaling approach.",
+      "specifics": {
+        "rouh_expertise": "Trauma-informed production, AI tool, journalist training (20 in last workshop), therapy sessions",
+        "regional_need": "MENA media often shows graphic content without ethical framework (Sumayya's critique)",
+        "opportunity": "Regional trauma-informed journalism network - train trainers, share AI tool, ethical standards",
+        "dignity_framework": "Islamic dignity in death (covering bodies), contextual truth without dehumanization"
+      },
+      "action_required": "Design MENA Trauma-Informed Media Network with Rouh as anchor. Monthly workshops, AI tool licensing to regional media, ethical journalism certification.",
+      "potential_impact": "very_high_regional_media_transformation",
+      "confidence": 0.78
+    },
+    "crowdfunding_international_donors": {
+      "opportunity_id": "rouh_individual_donor_network",
+      "type": "alternative_funding_model",
+      "description": "Sumayya explicitly wants: (1) Crowdfunding campaigns, (2) Individual international donors, (3) Recommendations from trusted organizations like Bloom. Alternative to institutional grants.",
+      "specifics": {
+        "sumayya_request": "'Need bridge to communities outside Palestine. Organizations that believe in our vision can recommend us to international funders'",
+        "crowdfunding_interest": "Very interested in crowdfunding, sees it as sustainability path",
+        "recommendation_value": "'When organization like Bloom recommends you, doors open easier'",
+        "individual_donors": "Wants access to individuals abroad who support mission, not just institutions"
+      },
+      "action_required": "IF cooperative launches: (1) Bloom recommendation letters for Rouh to international funders, (2) Crowdfunding campaign support (LaunchGood? Patreon for ongoing support?), (3) Connect to individual donor networks",
+      "potential_impact": "high_funding_diversification",
+      "confidence": 0.85
+    }
+  },
+  "key_quotes": {
+    "on_human_dignity": "I always ask people: Would you want to see your mother, sister, or brother shown this way on social media? I want to see photos of people I love where they're alive, not distorted in death.",
+    "on_israeli_media_strategy": "During the Intifada, Israeli media didn't show bodies. They'd show a child's shoe with blood - and you understand there was a tragedy. They studied psychology. We need to elevate our discourse.",
+    "on_gaza_personal_overwhelm": "At the start of the war, I was ready to watch news 24 hours. What do you do after that? I cried at night, sometimes didn't eat. After a while, I lost ability to watch. I felt helpless, couldn't control it. Sometimes I wouldn't open social media for 2-3 days.",
+    "on_losing_humanity": "Why do we keep distorting images in strange ways for journalistic credibility and social media engagement? We forget our humanity.",
+    "on_strategic_content_approach": "If I lose my audience after a month because they can't watch anymore, I've lost part of the battle. I'd rather present content with less harm to mental health AND maintain ability to bypass algorithms.",
+    "on_founder_pressure": "Unfortunately, we hear everyone but no one hears us. Sometimes you must appear strong, but there are things on personal level...",
+    "on_journalist_training_moment": "20 journalists came last week. I can't describe the atmosphere - they were laughing but had real desire to be heard. I felt like masks fell from their faces. For the first time I felt I really knew them.",
+    "on_financial_sustainability": "The topic of funders and financial support is key for continuation. We can achieve income through productions, but sustainability became dependent on creating income sources, not just waiting for funders.",
+    "on_selling_ai_tool": "I'm willing to sell the AI tool for profit, to reinvest in the humanitarian and social side. That's how Rouh can continue.",
+    "on_continued_relationships": "I'm very happy you reached out, Bilal. This is first time I've experienced continued relationship after a program. Usually programs cut ties - few organizations check if initiatives continue.",
+    "on_bloom_value": "When organization like Bloom is convinced of your vision and recommends you to international institutions, doors open easier. It's about partnerships, not just grants.",
+    "on_competitive_environment": "In our country, competition creates strange dynamics. Once you achieve something, people view you as threat. We need real partnerships with people whose goal isn't just financial profit.",
+    "on_bilal_drift_tracker": "I loved the idea. The humanitarian side winning is easy when it comes to planting good. When you plant good in people's paths, they come and plant good in yours too.",
+    "on_gaza_commitment": "We're very interested in working in Gaza on mental health. If there's real need, we can make real change in people's lives who are suffering right now."
+  },
+  "meta_insights": {
+    "entrepreneurial_archetype": "trauma_informed_media_innovator_pragmatic_sustainability_seeker",
+    "strengths": [
+      "Trauma-informed journalism expertise (master's degree specialization)",
+      "AI tool innovation (global first for content safety)",
+      "Operating scale (5 FT + 15 PT team, 5,000+ people engaged)",
+      "Gaza production under war conditions (Season 2 resilience)",
+      "Awards recognition (SDGs, Gizelle Khoury)",
+      "Journalist training capacity (therapeutic approach)",
+      "Therapy session facilitation (mental health support)",
+      "Human dignity ethics (Islamic framework)",
+      "Resilience storytelling (not victim narratives)",
+      "Social enterprise thinking (sell AI tool → fund humanitarian work)",
+      "Collaborative mindset (supported Bilal's drift tracker, wants partnerships)",
+      "Long-term relationship values (appreciated continued connection)"
+    ],
+    "growth_edges": [
+      "Financial sustainability not yet achieved (primarily grant-funded)",
+      "Revenue amount unclear (some from productions, not disclosed)",
+      "AI tool not yet commercialized (prototype stage)",
+      "Competitive Palestine environment (makes local collaboration difficult)",
+      "Founder psychological support (carries trauma while supporting others)",
+      "Crowdfunding inexperience (wants to do it, hasn't yet)",
+      "International network access limited (needs bridges abroad)"
+    ],
+    "unique_contribution": "Trauma-informed journalism + AI innovation, mental health + media intersection, Palestine Hebron representation, dignity-centered Islamic ethics, Gaza war production resilience, journalist trauma support, global-first content safety tool, social enterprise vision (profit → humanitarian reinvestment), regional media ethics potential, awards credibility",
+    "critical_insight": "Sumayya's critique of typical program model is key cooperative insight: 'Organizations cut ties after program ends - few check if initiatives continue.' Her gratitude for Bilal's continued outreach ('first time experiencing this') reveals: cooperative's long-term relationship model is itself a value proposition. She explicitly seeks: (1) Sustainability beyond grants, (2) International network access, (3) Continued partnerships. Cooperative addresses all three. Her willingness to sell AI tool to fund humanitarian work = social enterprise mindset aligned with cooperative solidarity economy principles."
+  },
+  "assessor": {
+    "type": "llm",
+    "model": "claude-sonnet-4.5",
+    "timestamp": "2025-11-18T21:30:00Z",
+    "analyst": "bilal_ghalib"
+  }
+}

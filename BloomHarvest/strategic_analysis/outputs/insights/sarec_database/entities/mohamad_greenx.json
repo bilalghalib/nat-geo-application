@@ -1,0 +1,277 @@
+{
+  "entity_id": "mohamad_greenx",
+  "interview_date": "2024-09-12",
+  "program": "ACSI4_Accelerator",
+  "business": {
+    "name": "GreeNX",
+    "sector": "CleanTech_Renewable_Energy",
+    "country": "Lebanon",
+    "stage": "revenue_generating_innovating",
+    "motto": "Make the world green again"
+  },
+  "financial_metrics": {
+    "monthly_revenue": {
+      "value_estimate": "3000-5000",
+      "currency": "USD",
+      "status": "inferred_from_context",
+      "inference": "Profitable with rent covered, 3 people team, but cautious about stability",
+      "confidence": 0.65
+    },
+    "revenue_breakdown": {
+      "wind_turbines": {
+        "share": "50%",
+        "products": ["installation", "supervision", "maintenance"],
+        "status": "stable_primary_revenue",
+        "quote": "Wind turbines are 50% of our revenue stream",
+        "confidence": 0.94
+      },
+      "solar_systems": {
+        "share": "significant",
+        "products": ["solar_installation", "maintenance"],
+        "status": "active",
+        "confidence": 0.88
+      },
+      "biogas_mvp": {
+        "share": "0%_currently",
+        "status": "under_testing_not_launched",
+        "quote": "We haven't launched the MVP yet... we're testing",
+        "future_potential": "high",
+        "confidence": 0.92
+      },
+      "tire_battery_boxes": {
+        "share": "0%_currently",
+        "status": "concept_applied_to_ngo",
+        "description": "Recycled tire rubber insulation boxes for solar batteries",
+        "innovation": "dual_impact_pollution_reduction_plus_battery_efficiency",
+        "confidence": 0.90
+      }
+    },
+    "team_size": {
+      "estimate": "2-3_core",
+      "inference": "Mentioned 'we' repeatedly, workshop mentioned, rent covered by Bloom",
+      "confidence": 0.70
+    },
+    "profitability": {
+      "status": "slightly_profitable",
+      "quote": "I'm making a bit of profit, more than what I'm putting in... I'm earning but not losing",
+      "runway": "covered_by_operations",
+      "confidence": 0.88
+    },
+    "bloom_funding_impact": {
+      "critical_use": "rent_for_workshop",
+      "quote": "If not for this fund I wouldn't be in the shop now... you allowed me to use it for rent... this simplified everything",
+      "differentiation": "Unlike other accelerators that buy materials (bad quality, no autonomy)",
+      "confidence": 0.96
+    }
+  },
+  "sentiment_analysis": {
+    "overall_interview_sentiment": {
+      "score": 0.75,
+      "label": "positive_innovative_resilient",
+      "confidence": 0.90
+    },
+    "topic_sentiments": {
+      "innovation_problem_solving": {
+        "score": 0.90,
+        "label": "passionate_solution_oriented",
+        "evidence": [
+          "Need is mother of invention",
+          "We researched for over a year... read many books and analyses",
+          "We solved two problems: battery efficiency + tire pollution"
+        ],
+        "confidence": 0.94
+      },
+      "crisis_context": {
+        "score": 0.55,
+        "label": "realistic_resilient",
+        "evidence": [
+          "Your mother is sick, you don't run away... your country is your mother",
+          "Tried Germany, Canada 3 times, didn't work",
+          "USAID meeting cancelled, funding stopped"
+        ],
+        "confidence": 0.92
+      },
+      "bloom_program": {
+        "score": 0.88,
+        "label": "very_positive_differentiated_value",
+        "evidence": [
+          "The thing Bloom has that no one else has: you can use funding for rent or salaries",
+          "Other accelerators buy materials for you (bad)"
+        ],
+        "confidence": 0.95
+      },
+      "sustainability_focus": {
+        "score": 0.92,
+        "label": "core_identity",
+        "evidence": ["Our motto is 'make the world green again'", "Impact on community", "Environmental solutions"],
+        "confidence": 0.93
+      }
+    }
+  },
+  "needs_analysis": {
+    "explicit_needs": [
+      {
+        "category": "customized_funding",
+        "priority": "high",
+        "evidence": "Bloom should customize funding based on each business's needs... some need $3830, some need less",
+        "solution_proposed": "Assessment-based allocation vs. equal distribution",
+        "willingness_to_pay": "n/a_funding_context",
+        "confidence": 0.92
+      },
+      {
+        "category": "policy_bureaucracy_navigation",
+        "priority": "medium",
+        "evidence": "We're governed by policies... working with municipality and government and investor, takes time",
+        "confidence": 0.85
+      }
+    ],
+    "implied_needs": [
+      {
+        "category": "market_validation",
+        "subcategory": "mvp_launch_support",
+        "priority": "high",
+        "inference": "Biogas MVP under testing for 1.5 years - may need push to launch or validation methodology",
+        "confidence": 0.78
+      },
+      {
+        "category": "international_connections",
+        "subcategory": "iraq_expansion_network",
+        "priority": "medium",
+        "inference": "Bilal mentioned Iraq reconstruction project - GreeNX products highly relevant but Mohamad needs intro",
+        "confidence": 0.82
+      },
+      {
+        "category": "intellectual_property",
+        "subcategory": "tire_battery_box_innovation",
+        "priority": "medium",
+        "inference": "Novel innovation - should protect IP and/or publicize for impact",
+        "confidence": 0.70
+      }
+    ]
+  },
+  "values_alignment": {
+    "core_values": [
+      {
+        "value": "environmental_regeneration",
+        "strength": "core_identity",
+        "evidence": "Make the world green again... solving pollution + energy problems",
+        "alignment_with_regenerative": 0.96,
+        "confidence": 0.95
+      },
+      {
+        "value": "loyalty_to_place",
+        "strength": "high",
+        "evidence": "Your country is your mother, sick, you don't abandon her... I tried to leave 3 times but couldn't, so I continue",
+        "alignment_with_local_commitment": 0.94,
+        "confidence": 0.92
+      },
+      {
+        "value": "necessity_drives_innovation",
+        "strength": "core_philosophy",
+        "evidence": "Need is mother of invention... electricity crisis → solar/wind/biogas innovation",
+        "alignment_with_resilience": 0.93,
+        "confidence": 0.94
+      },
+      {
+        "value": "religious_ethical_grounding",
+        "strength": "foundational",
+        "evidence": "Generosity and ethics come from religion... this strengthens these traits",
+        "alignment_with_ethics": 0.90,
+        "confidence": 0.88
+      }
+    ]
+  },
+  "cooperative_engagement": {
+    "interest_level": {
+      "score": null,
+      "note": "Cooperative model not explicitly discussed in this interview - focused on business and Bloom program feedback",
+      "inference": "Would likely be interested given values alignment, but needs direct conversation",
+      "confidence": 0.60
+    },
+    "bloom_program_feedback": {
+      "most_valuable": "funding_flexibility_for_rent",
+      "improvement_suggestions": ["customized_funding_amounts", "differentiated_support_by_stage"],
+      "engagement": "thoughtful_constructive",
+      "confidence": 0.92
+    }
+  },
+  "readiness_assessment": {
+    "id": "readiness.cooperative_pilot.mohamad_greenx.v1",
+    "overall_score": 0.74,
+    "reasoning": "Strong values alignment + innovation capacity + environmental impact. Moderate financial stability. Multiple MVPs in pipeline suggest potential but also complexity/focus challenges. Good pilot candidate for values contribution and environmental sector representation.",
+    "dimensions": {
+      "financial_stability": 0.70,
+      "values_alignment": 0.95,
+      "engagement_enthusiasm": 0.65,
+      "innovation_capacity": 0.92,
+      "growth_potential": 0.78,
+      "environmental_impact": 0.94
+    },
+    "evidence": [
+      {"type": "metric", "name": "profitability", "value": "slightly_positive", "weight": "medium"},
+      {"type": "alignment", "name": "environmental_regenerative", "score": 0.96, "weight": "high"},
+      {"type": "pattern", "name": "innovation_multiple_products", "count": 4, "weight": "high"},
+      {"type": "concern", "name": "mvp_launch_delay", "note": "1.5_years_testing", "weight": "medium"}
+    ],
+    "confidence": 0.82,
+    "recommendation": {
+      "invite_to_pilot": true,
+      "role": "environmental_innovator_values_anchor",
+      "timing": "early_cohort",
+      "support_needed": ["mvp_launch_methodology", "iraq_iraq_network_intro", "focus_prioritization"],
+      "unique_value": "environmental_sector_representation",
+      "confidence": 0.80
+    }
+  },
+  "specific_opportunities": [
+    {
+      "opportunity_id": "iraq_mosul_reconstruction_greenx",
+      "type": "market_expansion_product_fit",
+      "description": "Bilal working on Iraq post-conflict reconstruction (Mosul, 200 homes) with ITC + UN. GreeNX products (solar, insulation, sustainability) are perfect fit.",
+      "specifics": {
+        "project": "Green home design for 200 model homes in Mosul",
+        "organizations": ["ITC (International Trade Center)", "UN"],
+        "search_terms": "Beit Mosul Iraq ITC",
+        "products_relevant": ["solar_systems", "battery_boxes", "insulation", "biogas_potentially"],
+        "bilal_role": "consultant_trainer",
+        "mohamad_role": "product_supplier_technical_partner"
+      },
+      "action_required": "bilal_introduce_mohamad_to_itc_contacts",
+      "potential_impact": "very_high",
+      "scalability": "200_homes_demo_then_nationwide",
+      "effort": "medium",
+      "timeline": "near_term_project_active",
+      "confidence": 0.86
+    },
+    {
+      "opportunity_id": "tire_battery_box_scaling",
+      "type": "product_innovation_ip",
+      "description": "Novel dual-impact innovation: recycled tire rubber → battery insulation boxes. Solves pollution + battery efficiency.",
+      "technical_details": {
+        "problem_1": "Tire burning pollution (cancer, environmental damage)",
+        "problem_2": "Solar battery efficiency drops in cold (Lebanon winters)",
+        "solution": "Repurpose tires → rubber insulation boxes for batteries",
+        "benefits": ["extends_battery_life_3_to_4.5_years", "reduces_pollution", "creates_circular_economy"]
+      },
+      "revenue_potential": {
+        "b2b": "Every solar installation needs battery boxes",
+        "b2b2": "Sell rubber to construction/sports companies",
+        "b2b3": "Sell extracted steel"
+      },
+      "action_required": ["patent_or_open_source_decision", "production_scaling", "marketing_to_solar_installers"],
+      "confidence": 0.88
+    }
+  ],
+  "meta_insights": {
+    "entrepreneurial_archetype": "crisis_innovator_environmental_problem_solver",
+    "strengths": ["Innovation capacity", "Environmental impact", "Resilience", "Values clarity", "Multi-product thinking"],
+    "growth_edges": ["Focus (multiple MVPs in parallel)", "Launch velocity", "Market positioning"],
+    "unique_contribution": "Environmental sector leadership, crisis → innovation mindset, regenerative tech"
+  },
+  "assessor": {
+    "type": "llm",
+    "model": "claude-sonnet-4.5",
+    "timestamp": "2025-11-18T13:10:00Z",
+    "analyst": "bilal_ghalib"
+  }
+}

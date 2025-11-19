@@ -1,0 +1,29 @@
+{
+  "total_addressable_market": 1046,
+  "annual_fee_per_team": 1000,
+  "scenarios": {
+    "conservative": {
+      "adoption_rate": 0.1,
+      "teams": 104,
+      "annual_revenue": 104600,
+      "description": "Conservative: 10% adoption - early adopters only"
+    },
+    "moderate": {
+      "adoption_rate": 0.3,
+      "teams": 313,
+      "annual_revenue": 313800,
+      "description": "Moderate: 30% adoption - successful outreach campaign"
+    },
+    "optimistic": {
+      "adoption_rate": 0.5,
+      "teams": 523,
+      "annual_revenue": 523000,
+      "description": "Optimistic: 50% adoption - strong network effects"
+    }
+  },
+  "five_year_projection": {
+    "conservative": 523000,
+    "moderate": 1569000,
+    "optimistic": 2615000
+  }
+}

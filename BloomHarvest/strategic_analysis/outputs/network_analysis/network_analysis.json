@@ -1,0 +1,105 @@
+{
+  "total_teams": 1046,
+  "by_sector": {
+    "Unknown": {
+      "count": 1046,
+      "percentage": 100.0,
+      "teams": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "by_country": {
+    "Unknown": {
+      "count": 1046,
+      "percentage": 100.0,
+      "teams": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "by_program": {
+    "Unknown": {
+      "count": 1046,
+      "percentage": 100.0,
+      "teams": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "by_stage": {
+    "Unknown": {
+      "count": 978,
+      "percentage": 93.5,
+      "teams": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "Pre": {
+      "count": 56,
+      "percentage": 5.4,
+      "teams": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "Post": {
+      "count": 11,
+      "percentage": 1.1,
+      "teams": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "In Progress": {
+      "count": 1,
+      "percentage": 0.1,
+      "teams": [
+        ""
+      ]
+    }
+  },
+  "top_sectors": [
+    {
+      "category": "Unknown",
+      "count": 1046,
+      "percentage": 100.0
+    }
+  ],
+  "top_countries": [
+    {
+      "category": "Unknown",
+      "count": 1046,
+      "percentage": 100.0
+    }
+  ],
+  "top_programs": [
+    {
+      "category": "Unknown",
+      "count": 1046,
+      "percentage": 100.0
+    }
+  ]
+}

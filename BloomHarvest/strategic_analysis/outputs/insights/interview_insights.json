@@ -1,0 +1,308 @@
+{
+  "metadata": {
+    "total_interviews": 20,
+    "total_words": 103836,
+    "analysis_date": "2025-11-18"
+  },
+  "themes": {
+    "community_support": {
+      "total_mentions": 121,
+      "avg_per_interview": 6.0,
+      "keywords": [
+        "support",
+        "community",
+        "network",
+        "connections",
+        "relationships",
+        "peer",
+        "help each other",
+        "together",
+        "collective"
+      ],
+      "top_quotes": []
+    },
+    "sustainability": {
+      "total_mentions": 166,
+      "avg_per_interview": 8.3,
+      "keywords": [
+        "sustainable",
+        "sustainability",
+        "donor",
+        "funding",
+        "funds",
+        "revenue",
+        "income",
+        "financial",
+        "self-sustaining"
+      ],
+      "top_quotes": []
+    },
+    "programs_valuable": {
+      "total_mentions": 129,
+      "avg_per_interview": 6.5,
+      "keywords": [
+        "program",
+        "accelerator",
+        "boot camp",
+        "training",
+        "learned",
+        "supportive",
+        "commitment",
+        "experts",
+        "mentorship"
+      ],
+      "top_quotes": []
+    },
+    "post_program_needs": {
+      "total_mentions": 46,
+      "avg_per_interview": 2.3,
+      "keywords": [
+        "after",
+        "follow up",
+        "ended",
+        "continued",
+        "ongoing",
+        "stay connected",
+        "alumni",
+        "maintain"
+      ],
+      "top_quotes": []
+    },
+    "crisis_context": {
+      "total_mentions": 114,
+      "avg_per_interview": 5.7,
+      "keywords": [
+        "crisis",
+        "war",
+        "Lebanon",
+        "Palestine",
+        "conflict",
+        "electricity",
+        "economic collapse",
+        "instability",
+        "challenges"
+      ],
+      "top_quotes": []
+    },
+    "cooperative_interest": {
+      "total_mentions": 80,
+      "avg_per_interview": 4.0,
+      "keywords": [
+        "cooperative",
+        "pool",
+        "sharing",
+        "collective",
+        "mutual aid",
+        "together",
+        "ubuntu",
+        "collaboration"
+      ],
+      "top_quotes": []
+    },
+    "pain_points": {
+      "total_mentions": 54,
+      "avg_per_interview": 2.7,
+      "keywords": [
+        "struggle",
+        "difficult",
+        "challenge",
+        "problem",
+        "frustration",
+        "hard",
+        "barrier",
+        "obstacle"
+      ],
+      "top_quotes": []
+    },
+    "opportunities": {
+      "total_mentions": 37,
+      "avg_per_interview": 1.9,
+      "keywords": [
+        "opportunity",
+        "potential",
+        "possibility",
+        "excited",
+        "interested",
+        "curious",
+        "innovative",
+        "experiment"
+      ],
+      "top_quotes": []
+    },
+    "resources_needed": {
+      "total_mentions": 158,
+      "avg_per_interview": 7.9,
+      "keywords": [
+        "need",
+        "lacking",
+        "missing",
+        "require",
+        "want",
+        "access",
+        "resources",
+        "capacity"
+      ],
+      "top_quotes": []
+    },
+    "values": {
+      "total_mentions": 48,
+      "avg_per_interview": 2.4,
+      "keywords": [
+        "ubuntu",
+        "values",
+        "ethics",
+        "regenerative",
+        "anti-extractive",
+        "wellbeing",
+        "impact",
+        "purpose",
+        "why"
+      ],
+      "top_quotes": []
+    }
+  },
+  "bilal_questions": [],
+  "interviews": [
+    {
+      "name": "Badia Alfathi 21 Aug AnalySens (Applied ACSI4)",
+      "file": "[Transcript] Badia Alfathi 21 Aug AnalySens (Applied ACSI4).md",
+      "word_count": 4673,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Clara Harmouche 19 Sept Little Stars (ACSI4 Accel)",
+      "file": "[Transcript] Clara Harmouche 19 Sept Little Stars (ACSI4 Accel).md",
+      "word_count": 1798,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Crowdfunding SWANA Discussion 27 Sept",
+      "file": "[Transcript] Crowdfunding SWANA Discussion 27 Sept.md",
+      "word_count": 1914,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Ehab Toufic Bou Fakhr 19 Sept Ecobath (ACSI4 Accel)",
+      "file": "[Transcript] Ehab Toufic Bou Fakhr 19 Sept Ecobath (ACSI4 Accel).md",
+      "word_count": 8181,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Ezalden Saifelddin 5 Sept Hello World (ACSI4 Accel)",
+      "file": "[Transcript] Ezalden Saifelddin 5 Sept Hello World (ACSI4 Accel).md",
+      "word_count": 3556,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Garene Kaloustian 23 Oct The Parents_ Hub (ACSI4 Accel)",
+      "file": "[Transcript] Garene Kaloustian 23 Oct The Parents_ Hub (ACSI4 Accel).md",
+      "word_count": 12556,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Hany Anan 27 Aug Takadam (ACSI4 Accel)",
+      "file": "[Transcript] Hany Anan 27 Aug Takadam (ACSI4 Accel).md",
+      "word_count": 3673,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Hussein Husseiny 5 Sept RobotX (ACSI3 Accel)",
+      "file": "[Transcript] Hussein Husseiny 5 Sept RobotX (ACSI3 Accel).md",
+      "word_count": 4741,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Iman Mostafa 5 Sept Hazel Farm (HMN 2023 Accel)",
+      "file": "[Transcript] Iman Mostafa 5 Sept Hazel Farm (HMN 2023 Accel).md",
+      "word_count": 5056,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Keren Makari 9 Sept The Smart Sensory (HMN 2022 Accel)",
+      "file": "[Transcript] Keren Makari 9 Sept The Smart Sensory (HMN 2022 Accel).md",
+      "word_count": 4539,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Louai Al Shalabi 28 Aug Courssaty (ACSI4 Accel)",
+      "file": "[Transcript] Louai Al Shalabi 28 Aug Courssaty (ACSI4 Accel).md",
+      "word_count": 3101,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Mohamad Sabsabi 12 Sept GreeNX (ACSI4 Accel)",
+      "file": "[Transcript] Mohamad Sabsabi 12 Sept GreeNX (ACSI4 Accel).md",
+      "word_count": 6943,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Nada Darwish 13 Nov Tram Alwaan (HMN 2023 Bootcamp)",
+      "file": "[Transcript] Nada Darwish 13 Nov Tram Alwaan (HMN 2023 Bootcamp).md",
+      "word_count": 5682,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Reem Daher 11 Nov Khutwa (ACSI2 Sprint)",
+      "file": "[Transcript] Reem Daher 11 Nov Khutwa (ACSI2 Sprint).md",
+      "word_count": 3215,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Salah El Sadi 3 Sept Blue Filter (ACSI3 Accel)",
+      "file": "[Transcript] Salah El Sadi 3 Sept Blue Filter (ACSI3 Accel).md",
+      "word_count": 5939,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Salam Quraan 20 Aug Palexus (ACSI4 Bootcamp)",
+      "file": "[Transcript] Salam Quraan 20 Aug Palexus (ACSI4 Bootcamp).md",
+      "word_count": 3454,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Shaban Hammad 20 Aug Pal-Lend (ACSI3 Bootcamp)",
+      "file": "[Transcript] Shaban Hammad 20 Aug Pal-Lend (ACSI3 Bootcamp).md",
+      "word_count": 4549,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Siwar bassam AlKhawaldeh 3 Oct Talk with Siwar (ACSI4 Accel)",
+      "file": "[Transcript] Siwar bassam AlKhawaldeh 3 Oct Talk with Siwar (ACSI4 Accel).md",
+      "word_count": 7313,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Sumayya Abu Ramouz 18 Aug Rouh (ACSI3 Bootcamp)",
+      "file": "[Transcript] Sumayya Abu Ramouz 18 Aug Rouh (ACSI3 Bootcamp).md",
+      "word_count": 6873,
+      "speakers": [],
+      "num_speakers": 0
+    },
+    {
+      "name": "Ghinwa Husseini 27 Oct Urban Leaf (ACSI4 Accel)",
+      "file": "[Transcsript] Ghinwa Husseini 27 Oct Urban Leaf (ACSI4 Accel).md",
+      "word_count": 6080,
+      "speakers": [],
+      "num_speakers": 0
+    }
+  ],
+  "speaker_stats": {}
+}
